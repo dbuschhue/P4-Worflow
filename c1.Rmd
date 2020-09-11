@@ -1,0 +1,35 @@
+---
+title: "Untitled"
+
+---
+# Was ich am Anfang gerne über IRT Datenauswertung mit R gewusst hätte
+
+```{r setup, include=FALSE}
+library("TAM")
+```
+
+## Rasch-Modellierung
+Bei vielen Test geht es um die Frage, ob ein Probant eine bestimmt Fähigkeit besitzt und damit eine Aufgabe richtig lösen kann. Die Wahrscheinlichkeit, dass ein Proband eine Aufgabe aber richtig lösen kann, hängt sowohl von dessen Fähigkeit als auch von der Schwierigkeit der Aufgabe ab. Beide Punkte sind auf den ersten Blick nicht voneinander zu trennen. Die Rasch-Modellierung (benannt nach dem dänischen Statistiker Georg Rasch (1901–1980)) löst dieses Problem. Das Modell beschreibt wie wahrscheinlich es ist, dass ein Probandn $\nu$ ein Item i richtig löst in ab Abhängigkeit 
+
+* eines individuellen Personenparameters für jeden Probanden $\xi_\nu$, welcher das Fähigkeitsausmaß des Probanden $\nu$ beschreibt und
+* eines Aufgaben- oder Itemparameters $\sigma_i$, der ist den Schwierigkeitsgrad der Aufgabe i beschreibt. 
+
+Die Modellannahmen lauten wie folgt:
+
+* Das Maß der Fähigkeit jedes Probanden ist durch einen **einzigen** Parameter zu charakterisieren. Das heißt, dass es keine anderen Einflussfaktoren gibt und ein sog. eindimensionales Modell berechnet wird.
+
+* Die Schwierigkeit der einzelnen Aufgaben ist ebenfalls durch einen einzigen Parameter charakterisiert; die Schwierigkeit stellt also ebenfalls ein eindimensionales Merkmal dar.
+
+* Beide Parameter werden auf der selben Skala gemessen.
+
+* Die Leistungen eines Probanden hängt über alle Aufgaben hinweg – abgesehen von Zufall –, einzig von der Fähigkeit des Probanden und der Schwierigkeit der Aufgabe ab, nicht aber davon, welche anderen Aufgaben sie bereits gelöst hat oder noch lösen wird. 
+
+### Wie wird dar beste Fit gefunden?
+
+## Der Datensatz
+Der für diese Erklärung verwendete Datensatz stammt aus dem Paket TAM und hat das Format einer einfachen Matrix. Es handelt sich um simulierte Daten von 2000 Probanden (als Zeilen) zu jeweils 40 Items (als Spalten). Die Spalten für die einzelnen Items sind mit I1 bis I40 bezeichnet. Eine Spalte für eine Probanden ID oder ähnliches gibt es nicht. Auch hat der Datensatz keine fehlenden Daten, d.h. zu jedem Probanden gibt es Daten zu jedem Item. Die Items selbst sind alle dichotom (richtig/falsch) und mit 1 und 0 codiert. 
+
+```{r data}
+data(data.sim.rasch)
+data.sim.rasch
+```
