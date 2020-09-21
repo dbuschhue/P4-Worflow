@@ -1,7 +1,0 @@
-book_filename: "Einf"
-chapter_name: ""
-repo: https://github.com/dbuschhue/P4-Worflow
-output_dir: docs
-rmd_files: ["index.Rmd","c1.Rmd", "c2.Rmd", "c3.Rmd"]
-clean: [packages.bib, bookdown.bbl]
-new_session: yes
