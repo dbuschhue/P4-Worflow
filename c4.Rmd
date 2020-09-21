@@ -1,0 +1,61 @@
+---
+title: "Untitled"
+output: pdf_document
+---
+
+# Typische Fehlvorstellungen
+
+Im Laufe unserer Zeit sind wir immer wieder einigen Fehlvorstellungen und Fehlern begegnet. Einigen davon sind wir auch selbst erlegen gewesen bzw. haben wir selbst gemacht.
+
+## "Das Rasch-Modell berücksichtigt im Gegensatz zur klassischen Testheorie, welche Aufgaben richtig bearbeitet werden"
+
+Person A und B haben beide 2 Punkte im Test erreicht: 
+
+* Person A
+    * gelöst: Aufgabe 1 (leicht) und 2 (mittelschwer) 
+    * nicht gelöst: Aufgabe 3 (schwer)
+* Person B
+    * gelöst: Aufgabe 1 (leicht) und Aufgabe 3 (schwer)
+    * nicht gelöst: Aufgabe 3 (schwer)
+
+Eine typische Fehlvorstellung ist, anzunehmen, dass die richtige Bearbeitung von Aufgabe 3 im Rasch-Modell zu einer höheren Personenfähigkeit führt und somit für Person A ein niedrigerer Fähigkeitsparameter geschätzt würde als für Person B.
+
+Das stimmt aber so nicht: Es wird von der Punktesumme direkt auf den Personenparameter geschlossen (wenn alle Teilnehmenden, die gleichen Aufgaben bearbeitet haben).
+
+Es ist aber so, dass sich Person B nicht Rasch-Modell konform verhält. Wenn nur eine Art von Fähigkeit (z.B. die Fähigkeit zwei normale Zahlen zu addieren) verantwortlich ist für das Lösungsverhalten auf den Aufgaben, warum kann eine Person dann Aufgabe 3 richtig bearbeiten aber nicht Aufgabe 2, wobei Aufgabe 2 doch leichter sein sollte?
+
+Das Verhalten der Person geht insofern in die Rasch-Analyse ein, als sich das Verhalten von Person B als Residuum bemerkbar macht und so z.B. in die MNSQ von Aufgabe 2 zwei und drei einfließt.
+
+
+## Anwendung des eines T-Tests für unabhängige Stichproben auf verbundene Sample
+
+Eine typische naturwissenschaftsdidaktische Analyse ist die Überprüfung des Lernzuwachses.
+
+Häufig sieht man, dass ein t-Test für unverbundende Stichproben verwendet wird, wobei es doch um den individuellen Lernzuwachs geht.
+
+Besser wäre es deshalb hier einen Test zu verwenden, der die einzelnen Fähigkeitsparameterpaare nach Personen ordnet (was auch einem t-Test der Differenzenscores gegen 0 entspricht.)
+
+```{r}
+
+
+```
+
+## "Faktoranalyse ist klassiche Testtheorie"
+
+Dies ist insofern, nicht richtig als, in der klassischen Testtheorie Rohsummen-Wert berücksichtigt werden.
+
+Bei der Nutzung einer konfirmatorischen Faktorenanalyse werden demgegenüber Faktorscores ausgegeben.
+
+## "Ich habe lokal stochastische Items, dann kann ich keine Rasch-Modell nutzen, sondern nur klassische Testtheorie"
+
+Auch klassische Testtheorie geht von davon aus, dass die Items lokal-stochastisch unabhängig sind.
+
+In der der klassichen Testtheorie spricht wird gefordert, dass die Fehlerterme unkorreliert sind. Das ist gleich bedeutend.
+
+## Weitere 
+### PCA ist dasselbe wie Faktoranalyse
+
+
+
+
+

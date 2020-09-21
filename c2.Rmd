@@ -1,0 +1,60 @@
+---
+title: "Untitled"
+
+---
+
+# Item Analyse
+## Laden der benötigten Pakete und des Datensatzes
+
+```{r}
+library(TAM) # TAM-Paket
+library(WrightMap) # zur Erzeugung von Wright-Maps
+library(RColorBrewer) # für schönere Farben in den Wright-Maps
+data(data.sim.rasch) # data.sim.rasch: 2000 persons, 40 items
+```
+
+Das R-Paket "TAM" (Robitzsch, A., Kiefer, T., & Wu, M. (2019). TAM: Test Analysis Modules. R package version 3.3-10.
+  https://CRAN.R-project.org/package=TAM) ist freie Software unter der Lizenz GNU *General Public License*.
+  
+## Modellschätzung
+
+```{r Model 1: Rasch model (MML estimation), include=FALSE}
+mod1PL <- TAM::tam.mml(resp=data.sim.rasch)
+```
+
+Der Befehl erzeugt ein Listen-Objekt mit vielen Einträgen. Folgend wird ein Dataframe-Objekt aus dieser Liste ausgewählt und ausgegeben. Es enthält verschiedene Spalten mit deskriptiven Kennwerten:
+
+```{r Itemkennwerte}
+mod1PL$item
+```
+
+- *N*: Anzahl an Personen, die das jeweilige Item bearbeitet haben.
+
+- *M*: Deskriptive Schwierigkeit des Items ($M = \frac{N_{korrekt}}{N_{gelöst}}$).
+
+- *xsi.item*: *xsi* wird ausgesprochen wie geschrieben und bezieht sich auf den griechischen Buchstaben. Der $\xi$-Parameter ist die, mit dem Modell geschätzte, Aufgabenschwierigkeit auf der Skala von $-\infty$ bis $\infty$ mit 0 als Mittelwert. Übliche Werte in der Praxis liegen zwischen -3 bis 3. Eine Aufgabe mit Schwierigkeit $\xi=1$ ist dabei schwerer als eine Aufgabe mit Schwierigkeit $\xi=0$. Oft findet man den Schwierigkeitsparameter auch unter anderen griechischen Buchstaben in der Literatur, z. B. $\delta$ oder $\beta$. TAM übernimmt die Notation mit $\beta$ unter der Bezeichnung *IRT parametrization*. Siehe dazu den folgenden Output.
+
+```{r IRT_params}
+mod1PL$item_irt
+```
+
+
+- *AXsi_.Cat1*: Schwierigkeit, gegeben, dass das Item verschiedenen Personengruppen und/oder Testheften zugeordnet wurde und unter den jeweiligen Bedingungen unterschiedlich erfolgreich bearbeitet wurde. Da hier nur ein eindimensionales Modell ohne weitere Bedingungen berechnet wurde, entspricht der Wert dem $\xi$-Parameter.
+
+- *B.Cat1.Dim1*: Steigungsparameter. Im eindimensionalen 1-PL-Modell wird der B-Parameter nicht berechnet, sondern auf $B=1$ fixiert. Oft findet man den Steigungsparameter auch unter der Bezeichnung $\alpha$ (siehe Output oben zu *xsi.item*).
+
+## Erzeugen einer Wright-Map
+
+```{r}
+thetas_1pl <- tam.wle(mod1PL) # WLEs berechnen
+item_xsis_1pl <- mod1PL$xsi$xsi # Itemschwierigkeiten separieren
+
+wrightMap(thetas_1pl$theta, item_xsis_1pl, 
+          item.side = itemClassic,
+          main.title = "Beispiel für Wright-Map",
+          axis.persons = "Fähigkeitsverteilung",
+          axis.items = "Aufgabenverteilung")
+```
+
+
+

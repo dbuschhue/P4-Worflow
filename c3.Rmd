@@ -1,0 +1,103 @@
+---
+title: "Hackathon_P4_IRT"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(TAM)
+data(data.sim.rasch)
+# Model 1: Rasch model (MML estimation)
+mod1 <- TAM::tam.mml(resp=data.sim.rasch)
+# Model 2: 2PL model
+mod2 <- TAM::tam.mml.2pl(resp=data.sim.rasch,irtmodel="2PL")
+```
+
+## ICC (Item Characteristic Curve)
+
+<br></br>
+
+### Input
+
+Item Characterisitc Curves geben die Lösungswahrscheinlichkeit als Funktion der Fähigkeit der Probanden an. Dabei stellt die y-Achse die Lösungswahrscheinlichkeit und x-Achse die Probandenfähigkeit dar.
+
+<br></br>
+
+### R-Befehl für Generierung ICC in TAM
+
+Erstellung der ICC für Item 20 mit Gruppierung der Personenfähigkeiten in 6 Gruppen im Rasch-Modell:
+
+```{r}
+plot(mod1, items = 20, ngroups = 6, export = FALSE) # export = FALSE verhindert separates Abspeichern der .png-Datei
+```
+
+<br></br>
+
+### Interpretation ICC im Rasch-Modell (s. Wu et al. 2016)
+
+Ausführungen beziehen sich auf Item 20, s. obigen Plot
+
+<b>blaue Kurve</b>: Modellkurve (vom Modell vorhergesagter Zusammenhang zw. Fähigkeit und Lösungswahrscheinlichkeit) --> Probanden mit einer Fähigkeitsausprägung von 1, lösen das Item mit 75%iger Wahrscheinlichkeit richtig
+
+<b>gepunktete schwarze Kurve</b>: empirische Kurve (beobachtete Lösungswahrscheinlichkeit bzw. Lösungsquote) --> etwa 76 % der Probanden mit der Fähigkeitsausprägung (ability) = 1 lösten das Item richtig
+
+--> Bei diesem Beispiel (Item 20) liegt eine gute Passung beider Kurven vor, d.h. das Modell beschreibt das Item sehr gut.
+
+<br></br>
+
+#### Misfits
+
+Für die Beurteilung von Items, kann die Passung der empirischen Kurve zur Modellkurve herangezogen werden. Dabei muss nicht immer die empirische Kurve gut zur Modellkurve passen --> misfits
+
+Es wird dabei zw. overfit und underift unterschieden.
+
+<b>Overfit</b>: wMNSQ-Wert (Infit) < 1; empirische Kurve steiler als Modellkurve; entspricht hoher discrimination --> item unterscheidet Probanden verschiedener Fähigkeitsausprägungen besser als andere Items im Test
+
+<b>Underfit</b>: wMNSQ-Wert (Infit) > 1; empirische Kurve steiler als Modellkurve; entspricht geringerer discrimination
+
+Es wird empfohlen, Items mit einem Overfit zu behalten und Items mit einem Underfit aus dem Test zu entfernen. Dieses Vorgehen zeigt einen Einfluss auf die EAP-Reliabilität (s. Wu et al. 2016 p. 153)
+
+<br></br>
+
+### Gegenüberstellung leichtes - schweres Item
+
+```{r}
+mod1$xsi # Itemschwierigkeiten xsi aller Items
+```
+
+<b>Item 1</b>
+
+```{r}
+plot(mod1, items = 1, ngroups = 6, export = FALSE) # xsi = -1.96
+```
+
+<b>Item 40</b>
+
+```{r}
+plot(mod1, items = 40, ngroups = 6, export = FALSE) # xsi = 2.05
+```
+
+#### Interpretation
+
+Probanden mit einer geschätzten Fähigkeit von 0 lösen diese beiden Items mit unterschiedlichen Lösungswahrscheinlichkeiten. Während Probanden mit einer Fähigkeitsausprägung von 0 das Item 1 mit etwa 90%iger Wahrscheinlichkeit richtig lösen, lösen diese das Item 40 mit einer etwa 15%igen Lösungswahrscheinlichkeit.
+
+<br></br>
+
+### Gegenüberstellung ICC Rasch - 2PL
+
+<b>Item 40 Rasch</b>
+
+```{r}
+plot(mod1, items = 40, ngroups = 6, export = FALSE) # Steigungsparameter = 1
+```
+
+<b>Item 40 2PL</b>
+```{r}
+plot(mod2, items = 40, ngroups = 6, export = FALSE) # Steigungsparameter frei geschätzt
+```
+
+#### Deutung
+
+Beim 2PL Modell wird der Steigungsparamter für jedes Item frei geschätzt. Das zeigt sich unter anderem in den ICCs. Durch das Vorliegen des simulierten Datensatzes zeigt sich kein merkbarer Unterschied in den ICCs des Rasch und 2PL Modell. Dennoch sei an dieser Stelle angemerkt, dass es beim 2PL Modell durchaus zu ICCs kommen kann, die negative Steigungen aufweisen. Die Interpretation dahinter wäre: Bei steigender Probandenfähigkeit, sinkt die Lösungswahrscheinlichkeit des Items. Dies kann ein Indiz für ein nicht funktionierendes Item sein, aber ebenso ein Hinweis auf eine Mehrdimensionalität des Konstruktes (Bühner, 2011, p.506; Chalmers, 2015, p. 216). Jenes Item könnte demnach in eine andere Dimension fallen.
+
+<br></br>

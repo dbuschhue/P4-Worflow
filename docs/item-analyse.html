@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Item Analyse | Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von Naturwissenschaftsdidaktiker_innen</title>
+  <meta name="description" content="Alles was ich hätte wissen wollen" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Item Analyse | Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von Naturwissenschaftsdidaktiker_innen" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://github.com/dbuschhue/P4-Worflow" />
+  
+  <meta property="og:description" content="Alles was ich hätte wissen wollen" />
+  <meta name="github-repo" content="dbuschhue/P4-Worflow" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Item Analyse | Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von Naturwissenschaftsdidaktiker_innen" />
+  
+  <meta name="twitter:description" content="Alles was ich hätte wissen wollen" />
+  
+
+<meta name="author" content="Autoren" />
+
+
+<meta name="date" content="2020-09-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="einführung.html"/>
+<link rel="next" href="typische-fehlvorstellungen.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Files</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Vorwort: DISCLAIMER</a></li>
+<li class="chapter" data-level="2" data-path="einführung.html"><a href="einführung.html"><i class="fa fa-check"></i><b>2</b> Einführung</a><ul>
+<li class="chapter" data-level="2.1" data-path="einführung.html"><a href="einführung.html#rasch-modellierung"><i class="fa fa-check"></i><b>2.1</b> Rasch-Modellierung</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="einführung.html"><a href="einführung.html#wie-wird-der-beste-fit-gefunden"><i class="fa fa-check"></i><b>2.1.1</b> Wie wird der beste Fit gefunden?</a></li>
+<li class="chapter" data-level="2.1.2" data-path="einführung.html"><a href="einführung.html#zum-weiterschauen"><i class="fa fa-check"></i><b>2.1.2</b> zum Weiterschauen</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="einführung.html"><a href="einführung.html#der-datensatz"><i class="fa fa-check"></i><b>2.2</b> Der Datensatz</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="item-analyse.html"><a href="item-analyse.html"><i class="fa fa-check"></i><b>3</b> Item Analyse</a><ul>
+<li class="chapter" data-level="3.1" data-path="item-analyse.html"><a href="item-analyse.html#laden-der-benötigten-pakete-und-des-datensatzes"><i class="fa fa-check"></i><b>3.1</b> Laden der benötigten Pakete und des Datensatzes</a></li>
+<li class="chapter" data-level="3.2" data-path="item-analyse.html"><a href="item-analyse.html#modellschätzung"><i class="fa fa-check"></i><b>3.2</b> Modellschätzung</a></li>
+<li class="chapter" data-level="3.3" data-path="item-analyse.html"><a href="item-analyse.html#erzeugen-einer-wright-map"><i class="fa fa-check"></i><b>3.3</b> Erzeugen einer Wright-Map</a></li>
+<li class="chapter" data-level="3.4" data-path="item-analyse.html"><a href="item-analyse.html#icc-item-characteristic-curve"><i class="fa fa-check"></i><b>3.4</b> ICC (Item Characteristic Curve)</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="item-analyse.html"><a href="item-analyse.html#input"><i class="fa fa-check"></i><b>3.4.1</b> Input</a></li>
+<li class="chapter" data-level="3.4.2" data-path="item-analyse.html"><a href="item-analyse.html#r-befehl-für-generierung-icc-in-tam"><i class="fa fa-check"></i><b>3.4.2</b> R-Befehl für Generierung ICC in TAM</a></li>
+<li class="chapter" data-level="3.4.3" data-path="item-analyse.html"><a href="item-analyse.html#interpretation-icc-im-rasch-modell-s.-wu-et-al.-2016"><i class="fa fa-check"></i><b>3.4.3</b> Interpretation ICC im Rasch-Modell (s. Wu et al. 2016)</a></li>
+<li class="chapter" data-level="3.4.4" data-path="item-analyse.html"><a href="item-analyse.html#gegenüberstellung-leichtes---schweres-item"><i class="fa fa-check"></i><b>3.4.4</b> Gegenüberstellung leichtes - schweres Item</a></li>
+<li class="chapter" data-level="3.4.5" data-path="item-analyse.html"><a href="item-analyse.html#gegenüberstellung-icc-rasch---2pl"><i class="fa fa-check"></i><b>3.4.5</b> Gegenüberstellung ICC Rasch - 2PL</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html"><i class="fa fa-check"></i><b>4</b> Typische Fehlvorstellungen</a><ul>
+<li class="chapter" data-level="4.1" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#das-rasch-modell-berücksichtigt-im-gegensatz-zur-klassischen-testheorie-welche-aufgaben-richtig-bearbeitet-werden"><i class="fa fa-check"></i><b>4.1</b> “Das Rasch-Modell berücksichtigt im Gegensatz zur klassischen Testheorie, welche Aufgaben richtig bearbeitet werden”</a></li>
+<li class="chapter" data-level="4.2" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#anwendung-des-eines-t-tests-für-unabhängige-stichproben-auf-verbundene-sample"><i class="fa fa-check"></i><b>4.2</b> Anwendung des eines T-Tests für unabhängige Stichproben auf verbundene Sample</a></li>
+<li class="chapter" data-level="4.3" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#faktoranalyse-ist-klassiche-testtheorie"><i class="fa fa-check"></i><b>4.3</b> “Faktoranalyse ist klassiche Testtheorie”</a></li>
+<li class="chapter" data-level="4.4" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#ich-habe-lokal-stochastische-items-dann-kann-ich-keine-rasch-modell-nutzen-sondern-nur-klassische-testtheorie"><i class="fa fa-check"></i><b>4.4</b> “Ich habe lokal stochastische Items, dann kann ich keine Rasch-Modell nutzen, sondern nur klassische Testtheorie”</a></li>
+<li class="chapter" data-level="4.5" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#weitere"><i class="fa fa-check"></i><b>4.5</b> Weitere</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#pca-ist-dasselbe-wie-faktoranalyse"><i class="fa fa-check"></i><b>4.5.1</b> PCA ist dasselbe wie Faktoranalyse</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von Naturwissenschaftsdidaktiker_innen</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="item-analyse" class="section level1">
+<h1><span class="header-section-number">3</span> Item Analyse</h1>
+<div id="laden-der-benötigten-pakete-und-des-datensatzes" class="section level2">
+<h2><span class="header-section-number">3.1</span> Laden der benötigten Pakete und des Datensatzes</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="item-analyse.html#cb3-1"></a><span class="kw">library</span>(TAM) <span class="co"># TAM-Paket</span></span></code></pre></div>
+<pre><code>## Loading required package: CDM</code></pre>
+<pre><code>## Loading required package: mvtnorm</code></pre>
+<pre><code>## **********************************
+## ** CDM 7.5-15 (2020-03-10 14:19:21)      
+## ** Cognitive Diagnostic Models  **
+## **********************************</code></pre>
+<pre><code>## * TAM 3.5-19 (2020-05-05 22:45:39)</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="item-analyse.html#cb8-1"></a><span class="kw">library</span>(WrightMap) <span class="co"># zur Erzeugung von Wright-Maps</span></span>
+<span id="cb8-2"><a href="item-analyse.html#cb8-2"></a><span class="kw">library</span>(RColorBrewer) <span class="co"># für schönere Farben in den Wright-Maps</span></span>
+<span id="cb8-3"><a href="item-analyse.html#cb8-3"></a><span class="kw">data</span>(data.sim.rasch) <span class="co"># data.sim.rasch: 2000 persons, 40 items</span></span></code></pre></div>
+<p>Das R-Paket “TAM” (Robitzsch, A., Kiefer, T., &amp; Wu, M. (2019). TAM: Test Analysis Modules. R package version 3.3-10.
+<a href="https://CRAN.R-project.org/package=TAM" class="uri">https://CRAN.R-project.org/package=TAM</a>) ist freie Software unter der Lizenz GNU <em>General Public License</em>.</p>
+</div>
+<div id="modellschätzung" class="section level2">
+<h2><span class="header-section-number">3.2</span> Modellschätzung</h2>
+<p>Der Befehl erzeugt ein Listen-Objekt mit vielen Einträgen. Folgend wird ein Dataframe-Objekt aus dieser Liste ausgewählt und ausgegeben. Es enthält verschiedene Spalten mit deskriptiven Kennwerten:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="item-analyse.html#cb9-1"></a>mod1PL<span class="op">$</span>item</span></code></pre></div>
+<pre><code>##     item    N      M    xsi.item  AXsi_.Cat1 B.Cat1.Dim1
+## I1    I1 2000 0.8270 -1.95906755 -1.95906755           1
+## I2    I2 2000 0.8145 -1.85707784 -1.85707784           1
+## I3    I3 2000 0.8000 -1.74448741 -1.74448741           1
+## I4    I4 2000 0.7860 -1.64079925 -1.64079925           1
+## I5    I5 2000 0.7725 -1.54485365 -1.54485365           1
+## I6    I6 2000 0.7710 -1.53441512 -1.53441512           1
+## I7    I7 2000 0.7430 -1.34668186 -1.34668186           1
+## I8    I8 2000 0.7435 -1.34992594 -1.34992594           1
+## I9    I9 2000 0.7295 -1.26040238 -1.26040238           1
+## I10  I10 2000 0.6945 -1.04694135 -1.04694135           1
+## I11  I11 2000 0.6905 -1.02335166 -1.02335166           1
+## I12  I12 2000 0.6615 -0.85638275 -0.85638275           1
+## I13  I13 2000 0.6515 -0.80026553 -0.80026553           1
+## I14  I14 2000 0.6415 -0.74479292 -0.74479292           1
+## I15  I15 2000 0.6000 -0.52027584 -0.52027584           1
+## I16  I16 2000 0.5765 -0.39628492 -0.39628492           1
+## I17  I17 2000 0.5720 -0.37273730 -0.37273730           1
+## I18  I18 2000 0.5445 -0.22987456 -0.22987456           1
+## I19  I19 2000 0.5205 -0.10621935 -0.10621935           1
+## I20  I20 2000 0.5100 -0.05228424 -0.05228424           1
+## I21  I21 2000 0.4925  0.03753652  0.03753652           1
+## I22  I22 2000 0.4795  0.10429854  0.10429854           1
+## I23  I23 2000 0.4350  0.33421807  0.33421807           1
+## I24  I24 2000 0.4180  0.42310019  0.42310019           1
+## I25  I25 2000 0.3995  0.52082702  0.52082702           1
+## I26  I26 2000 0.3770  0.64147566  0.64147566           1
+## I27  I27 2000 0.3765  0.64418273  0.64418273           1
+## I28  I28 2000 0.3395  0.84834994  0.84834994           1
+## I29  I29 2000 0.3235  0.93942118  0.93942118           1
+## I30  I30 2000 0.3100  1.01785330  1.01785330           1
+## I31  I31 2000 0.2935  1.11597708  1.11597708           1
+## I32  I32 2000 0.2900  1.13714364  1.13714364           1
+## I33  I33 2000 0.2620  1.31159123  1.31159123           1
+## I34  I34 2000 0.2615  1.31479716  1.31479716           1
+## I35  I35 2000 0.2255  1.55581073  1.55581073           1
+## I36  I36 2000 0.2165  1.61968818  1.61968818           1
+## I37  I37 2000 0.2050  1.70383560  1.70383560           1
+## I38  I38 2000 0.1990  1.74896980  1.74896980           1
+## I39  I39 2000 0.1755  1.93517136  1.93517136           1
+## I40  I40 2000 0.1620  2.05013862  2.05013862           1</code></pre>
+<ul>
+<li><p><em>N</em>: Anzahl an Personen, die das jeweilige Item bearbeitet haben.</p></li>
+<li><p><em>M</em>: Deskriptive Schwierigkeit des Items (<span class="math inline">\(M = \frac{N_{korrekt}}{N_{gelöst}}\)</span>).</p></li>
+<li><p><em>xsi.item</em>: <em>xsi</em> wird ausgesprochen wie geschrieben und bezieht sich auf den griechischen Buchstaben. Der <span class="math inline">\(\xi\)</span>-Parameter ist die, mit dem Modell geschätzte, Aufgabenschwierigkeit auf der Skala von <span class="math inline">\(-\infty\)</span> bis <span class="math inline">\(\infty\)</span> mit 0 als Mittelwert. Übliche Werte in der Praxis liegen zwischen -3 bis 3. Eine Aufgabe mit Schwierigkeit <span class="math inline">\(\xi=1\)</span> ist dabei schwerer als eine Aufgabe mit Schwierigkeit <span class="math inline">\(\xi=0\)</span>. Oft findet man den Schwierigkeitsparameter auch unter anderen griechischen Buchstaben in der Literatur, z. B. <span class="math inline">\(\delta\)</span> oder <span class="math inline">\(\beta\)</span>. TAM übernimmt die Notation mit <span class="math inline">\(\beta\)</span> unter der Bezeichnung <em>IRT parametrization</em>. Siehe dazu den folgenden Output.</p></li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="item-analyse.html#cb11-1"></a>mod1PL<span class="op">$</span>item_irt</span></code></pre></div>
+<pre><code>##    item alpha        beta
+## 1    I1     1 -1.95906755
+## 2    I2     1 -1.85707784
+## 3    I3     1 -1.74448741
+## 4    I4     1 -1.64079925
+## 5    I5     1 -1.54485365
+## 6    I6     1 -1.53441512
+## 7    I7     1 -1.34668186
+## 8    I8     1 -1.34992594
+## 9    I9     1 -1.26040238
+## 10  I10     1 -1.04694135
+## 11  I11     1 -1.02335166
+## 12  I12     1 -0.85638275
+## 13  I13     1 -0.80026553
+## 14  I14     1 -0.74479292
+## 15  I15     1 -0.52027584
+## 16  I16     1 -0.39628492
+## 17  I17     1 -0.37273730
+## 18  I18     1 -0.22987456
+## 19  I19     1 -0.10621935
+## 20  I20     1 -0.05228424
+## 21  I21     1  0.03753652
+## 22  I22     1  0.10429854
+## 23  I23     1  0.33421807
+## 24  I24     1  0.42310019
+## 25  I25     1  0.52082702
+## 26  I26     1  0.64147566
+## 27  I27     1  0.64418273
+## 28  I28     1  0.84834994
+## 29  I29     1  0.93942118
+## 30  I30     1  1.01785330
+## 31  I31     1  1.11597708
+## 32  I32     1  1.13714364
+## 33  I33     1  1.31159123
+## 34  I34     1  1.31479716
+## 35  I35     1  1.55581073
+## 36  I36     1  1.61968818
+## 37  I37     1  1.70383560
+## 38  I38     1  1.74896980
+## 39  I39     1  1.93517136
+## 40  I40     1  2.05013862</code></pre>
+<ul>
+<li><p><em>AXsi_.Cat1</em>: Schwierigkeit, gegeben, dass das Item verschiedenen Personengruppen und/oder Testheften zugeordnet wurde und unter den jeweiligen Bedingungen unterschiedlich erfolgreich bearbeitet wurde. Da hier nur ein eindimensionales Modell ohne weitere Bedingungen berechnet wurde, entspricht der Wert dem <span class="math inline">\(\xi\)</span>-Parameter.</p></li>
+<li><p><em>B.Cat1.Dim1</em>: Steigungsparameter. Im eindimensionalen 1-PL-Modell wird der B-Parameter nicht berechnet, sondern auf <span class="math inline">\(B=1\)</span> fixiert. Oft findet man den Steigungsparameter auch unter der Bezeichnung <span class="math inline">\(\alpha\)</span> (siehe Output oben zu <em>xsi.item</em>).</p></li>
+</ul>
+</div>
+<div id="erzeugen-einer-wright-map" class="section level2">
+<h2><span class="header-section-number">3.3</span> Erzeugen einer Wright-Map</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="item-analyse.html#cb13-1"></a>thetas_1pl &lt;-<span class="st"> </span><span class="kw">tam.wle</span>(mod1PL) <span class="co"># WLEs berechnen</span></span></code></pre></div>
+<pre><code>## Iteration in WLE/MLE estimation  1   | Maximal change  0.8281 
+## Iteration in WLE/MLE estimation  2   | Maximal change  0.4335 
+## Iteration in WLE/MLE estimation  3   | Maximal change  0.0883 
+## Iteration in WLE/MLE estimation  4   | Maximal change  7e-04 
+## Iteration in WLE/MLE estimation  5   | Maximal change  0 
+## ----
+##  WLE Reliability= 0.894</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="item-analyse.html#cb15-1"></a>item_xsis_1pl &lt;-<span class="st"> </span>mod1PL<span class="op">$</span>xsi<span class="op">$</span>xsi <span class="co"># Itemschwierigkeiten separieren</span></span>
+<span id="cb15-2"><a href="item-analyse.html#cb15-2"></a></span>
+<span id="cb15-3"><a href="item-analyse.html#cb15-3"></a><span class="kw">wrightMap</span>(thetas_1pl<span class="op">$</span>theta, item_xsis_1pl, </span>
+<span id="cb15-4"><a href="item-analyse.html#cb15-4"></a>          <span class="dt">item.side =</span> itemClassic,</span>
+<span id="cb15-5"><a href="item-analyse.html#cb15-5"></a>          <span class="dt">main.title =</span> <span class="st">&quot;Beispiel für Wright-Map&quot;</span>,</span>
+<span id="cb15-6"><a href="item-analyse.html#cb15-6"></a>          <span class="dt">axis.persons =</span> <span class="st">&quot;Fähigkeitsverteilung&quot;</span>,</span>
+<span id="cb15-7"><a href="item-analyse.html#cb15-7"></a>          <span class="dt">axis.items =</span> <span class="st">&quot;Aufgabenverteilung&quot;</span>)</span></code></pre></div>
+<p><img src="c2_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre><code>##              [,1]
+##  [1,] -1.95901708
+##  [2,] -1.85702665
+##  [3,] -1.74443543
+##  [4,] -1.64074652
+##  [5,] -1.54480023
+##  [6,] -1.53436162
+##  [7,] -1.34662700
+##  [8,] -1.34987110
+##  [9,] -1.26034689
+## [10,] -1.04688427
+## [11,] -1.02329441
+## [12,] -0.85632426
+## [13,] -0.80020663
+## [14,] -0.74473359
+## [15,] -0.52021484
+## [16,] -0.39622299
+## [17,] -0.37267520
+## [18,] -0.22981140
+## [19,] -0.10615527
+## [20,] -0.05221976
+## [21,]  0.03760166
+## [22,]  0.10436417
+## [23,]  0.33428538
+## [24,]  0.42316815
+## [25,]  0.52089569
+## [26,]  0.64154518
+## [27,]  0.64425227
+## [28,]  0.84842093
+## [29,]  0.93949280
+## [30,]  1.01792547
+## [31,]  1.11604992
+## [32,]  1.13721663
+## [33,]  1.31166540
+## [34,]  1.31487135
+## [35,]  1.55588652
+## [36,]  1.61976438
+## [37,]  1.70391234
+## [38,]  1.74904684
+## [39,]  1.93524957
+## [40,]  2.05021754</code></pre>
+
+</div>
+<div id="icc-item-characteristic-curve" class="section level2">
+<h2><span class="header-section-number">3.4</span> ICC (Item Characteristic Curve)</h2>
+<p><br></br></p>
+<div id="input" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Input</h3>
+<p>Item Characterisitc Curves geben die Lösungswahrscheinlichkeit als Funktion der Fähigkeit der Probanden an. Dabei stellt die y-Achse die Lösungswahrscheinlichkeit und x-Achse die Probandenfähigkeit dar.</p>
+<p><br></br></p>
+</div>
+<div id="r-befehl-für-generierung-icc-in-tam" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> R-Befehl für Generierung ICC in TAM</h3>
+<p>Erstellung der ICC für Item 20 mit Gruppierung der Personenfähigkeiten in 6 Gruppen im Rasch-Modell:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="item-analyse.html#cb17-1"></a><span class="kw">plot</span>(mod1, <span class="dt">items =</span> <span class="dv">20</span>, <span class="dt">ngroups =</span> <span class="dv">6</span>, <span class="dt">export =</span> <span class="ot">FALSE</span>) <span class="co"># export = FALSE verhindert separates Abspeichern der .png-Datei</span></span></code></pre></div>
+<pre><code>## Iteration in WLE/MLE estimation  1   | Maximal change  0.8281 
+## Iteration in WLE/MLE estimation  2   | Maximal change  0.4335 
+## Iteration in WLE/MLE estimation  3   | Maximal change  0.0883 
+## Iteration in WLE/MLE estimation  4   | Maximal change  7e-04 
+## Iteration in WLE/MLE estimation  5   | Maximal change  0 
+## ----
+##  WLE Reliability= 0.894</code></pre>
+<p><img src="c3_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><br></br></p>
+</div>
+<div id="interpretation-icc-im-rasch-modell-s.-wu-et-al.-2016" class="section level3">
+<h3><span class="header-section-number">3.4.3</span> Interpretation ICC im Rasch-Modell (s. Wu et al. 2016)</h3>
+<p>Ausführungen beziehen sich auf Item 20, s. obigen Plot</p>
+<p><b>blaue Kurve</b>: Modellkurve (vom Modell vorhergesagter Zusammenhang zw. Fähigkeit und Lösungswahrscheinlichkeit) –&gt; Probanden mit einer Fähigkeitsausprägung von 1, lösen das Item mit 75%iger Wahrscheinlichkeit richtig</p>
+<p><b>gepunktete schwarze Kurve</b>: empirische Kurve (beobachtete Lösungswahrscheinlichkeit bzw. Lösungsquote) –&gt; etwa 76 % der Probanden mit der Fähigkeitsausprägung (ability) = 1 lösten das Item richtig</p>
+<p>–&gt; Bei diesem Beispiel (Item 20) liegt eine gute Passung beider Kurven vor, d.h. das Modell beschreibt das Item sehr gut.</p>
+<p><br></br></p>
+<div id="misfits" class="section level4">
+<h4><span class="header-section-number">3.4.3.1</span> Misfits</h4>
+<p>Für die Beurteilung von Items, kann die Passung der empirischen Kurve zur Modellkurve herangezogen werden. Dabei muss nicht immer die empirische Kurve gut zur Modellkurve passen –&gt; misfits</p>
+<p>Es wird dabei zw. overfit und underift unterschieden.</p>
+<p><b>Overfit</b>: wMNSQ-Wert (Infit) &lt; 1; empirische Kurve steiler als Modellkurve; entspricht hoher discrimination –&gt; item unterscheidet Probanden verschiedener Fähigkeitsausprägungen besser als andere Items im Test</p>
+<p><b>Underfit</b>: wMNSQ-Wert (Infit) &gt; 1; empirische Kurve steiler als Modellkurve; entspricht geringerer discrimination</p>
+<p>Es wird empfohlen, Items mit einem Overfit zu behalten und Items mit einem Underfit aus dem Test zu entfernen. Dieses Vorgehen zeigt einen Einfluss auf die EAP-Reliabilität (s. Wu et al. 2016 p. 153)</p>
+<p><br></br></p>
+</div>
+</div>
+<div id="gegenüberstellung-leichtes---schweres-item" class="section level3">
+<h3><span class="header-section-number">3.4.4</span> Gegenüberstellung leichtes - schweres Item</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="item-analyse.html#cb19-1"></a>mod1<span class="op">$</span>xsi <span class="co"># Itemschwierigkeiten xsi aller Items</span></span></code></pre></div>
+<pre><code>##             xsi     se.xsi
+## I1  -1.95901708 0.06465854
+## I2  -1.85702665 0.06311470
+## I3  -1.74443543 0.06153710
+## I4  -1.64074652 0.06019663
+## I5  -1.54480023 0.05904820
+## I6  -1.53436162 0.05892844
+## I7  -1.34662700 0.05694173
+## I8  -1.34987110 0.05697344
+## I9  -1.26034689 0.05613124
+## I10 -1.04688427 0.05438831
+## I11 -1.02329441 0.05421784
+## I12 -0.85632426 0.05313222
+## I13 -0.80020663 0.05281391
+## I14 -0.74473359 0.05252176
+## I15 -0.52021484 0.05156219
+## I16 -0.39622299 0.05118169
+## I17 -0.37267520 0.05112121
+## I18 -0.22981140 0.05083401
+## I19 -0.10615527 0.05069507
+## I20 -0.05221976 0.05066614
+## I21  0.03760166 0.05066059
+## I22  0.10436417 0.05069098
+## I23  0.33428538 0.05102212
+## I24  0.42316815 0.05124518
+## I25  0.52089569 0.05155264
+## I26  0.64154518 0.05202355
+## I27  0.64425227 0.05203529
+## I28  0.84842093 0.05307253
+## I29  0.93949280 0.05363422
+## I30  1.01792547 0.05416852
+## I31  1.11604992 0.05490459
+## I32  1.13721663 0.05507343
+## I33  1.31166540 0.05660515
+## I34  1.31487135 0.05663570
+## I35  1.55588652 0.05919171
+## I36  1.61976438 0.05995850
+## I37  1.70391234 0.06102867
+## I38  1.74904684 0.06163154
+## I39  1.93524957 0.06434122
+## I40  2.05021754 0.06620206</code></pre>
+<p><b>Item 1</b></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="item-analyse.html#cb21-1"></a><span class="kw">plot</span>(mod1, <span class="dt">items =</span> <span class="dv">1</span>, <span class="dt">ngroups =</span> <span class="dv">6</span>, <span class="dt">export =</span> <span class="ot">FALSE</span>) <span class="co"># xsi = -1.96</span></span></code></pre></div>
+<pre><code>## Iteration in WLE/MLE estimation  1   | Maximal change  0.8281 
+## Iteration in WLE/MLE estimation  2   | Maximal change  0.4335 
+## Iteration in WLE/MLE estimation  3   | Maximal change  0.0883 
+## Iteration in WLE/MLE estimation  4   | Maximal change  7e-04 
+## Iteration in WLE/MLE estimation  5   | Maximal change  0 
+## ----
+##  WLE Reliability= 0.894</code></pre>
+<p><img src="c3_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><b>Item 40</b></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="item-analyse.html#cb23-1"></a><span class="kw">plot</span>(mod1, <span class="dt">items =</span> <span class="dv">40</span>, <span class="dt">ngroups =</span> <span class="dv">6</span>, <span class="dt">export =</span> <span class="ot">FALSE</span>) <span class="co"># xsi = 2.05</span></span></code></pre></div>
+<pre><code>## Iteration in WLE/MLE estimation  1   | Maximal change  0.8281 
+## Iteration in WLE/MLE estimation  2   | Maximal change  0.4335 
+## Iteration in WLE/MLE estimation  3   | Maximal change  0.0883 
+## Iteration in WLE/MLE estimation  4   | Maximal change  7e-04 
+## Iteration in WLE/MLE estimation  5   | Maximal change  0 
+## ----
+##  WLE Reliability= 0.894</code></pre>
+<p><img src="c3_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div id="interpretation" class="section level4">
+<h4><span class="header-section-number">3.4.4.1</span> Interpretation</h4>
+<p>Probanden mit einer geschätzten Fähigkeit von 0 lösen diese beiden Items mit unterschiedlichen Lösungswahrscheinlichkeiten. Während Probanden mit einer Fähigkeitsausprägung von 0 das Item 1 mit etwa 90%iger Wahrscheinlichkeit richtig lösen, lösen diese das Item 40 mit einer etwa 15%igen Lösungswahrscheinlichkeit.</p>
+<p><br></br></p>
+</div>
+</div>
+<div id="gegenüberstellung-icc-rasch---2pl" class="section level3">
+<h3><span class="header-section-number">3.4.5</span> Gegenüberstellung ICC Rasch - 2PL</h3>
+<p><b>Item 40 Rasch</b></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="item-analyse.html#cb25-1"></a><span class="kw">plot</span>(mod1, <span class="dt">items =</span> <span class="dv">40</span>, <span class="dt">ngroups =</span> <span class="dv">6</span>, <span class="dt">export =</span> <span class="ot">FALSE</span>) <span class="co"># Steigungsparameter = 1</span></span></code></pre></div>
+<pre><code>## Iteration in WLE/MLE estimation  1   | Maximal change  0.8281 
+## Iteration in WLE/MLE estimation  2   | Maximal change  0.4335 
+## Iteration in WLE/MLE estimation  3   | Maximal change  0.0883 
+## Iteration in WLE/MLE estimation  4   | Maximal change  7e-04 
+## Iteration in WLE/MLE estimation  5   | Maximal change  0 
+## ----
+##  WLE Reliability= 0.894</code></pre>
+<p><img src="c3_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><b>Item 40 2PL</b></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="item-analyse.html#cb27-1"></a><span class="kw">plot</span>(mod2, <span class="dt">items =</span> <span class="dv">40</span>, <span class="dt">ngroups =</span> <span class="dv">6</span>, <span class="dt">export =</span> <span class="ot">FALSE</span>) <span class="co"># Steigungsparameter frei geschätzt</span></span></code></pre></div>
+<pre><code>## Iteration in WLE/MLE estimation  1   | Maximal change  0.3445 
+## Iteration in WLE/MLE estimation  2   | Maximal change  0.0677 
+## Iteration in WLE/MLE estimation  3   | Maximal change  5e-04 
+## Iteration in WLE/MLE estimation  4   | Maximal change  0 
+## ----
+##  WLE Reliability= 0.894</code></pre>
+<p><img src="c3_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div id="deutung" class="section level4">
+<h4><span class="header-section-number">3.4.5.1</span> Deutung</h4>
+<p>Beim 2PL Modell wird der Steigungsparamter für jedes Item frei geschätzt. Das zeigt sich unter anderem in den ICCs. Durch das Vorliegen des simulierten Datensatzes zeigt sich kein merkbarer Unterschied in den ICCs des Rasch und 2PL Modell. Dennoch sei an dieser Stelle angemerkt, dass es beim 2PL Modell durchaus zu ICCs kommen kann, die negative Steigungen aufweisen. Die Interpretation dahinter wäre: Bei steigender Probandenfähigkeit, sinkt die Lösungswahrscheinlichkeit des Items. Dies kann ein Indiz für ein nicht funktionierendes Item sein, aber ebenso ein Hinweis auf eine Mehrdimensionalität des Konstruktes (Bühner, 2011, p.506; Chalmers, 2015, p. 216). Jenes Item könnte demnach in eine andere Dimension fallen.</p>
+<p><br></br></p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="einführung.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="typische-fehlvorstellungen.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
