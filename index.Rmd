@@ -1,0 +1,18 @@
+--- 
+title: Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von
+  Naturwissenschaftsdidaktiker_innen
+author: "Autoren"
+date: "`r Sys.Date()`"
+bibliography: book.bib
+description: Alles was ich hätte wissen wollen
+documentclass: book
+github-repo: dbuschhue/P4-Worflow
+link-citations: yes
+site: bookdown::bookdown_site
+biblio-style: apalike
+url: https://github.com/dbuschhue/P4-Worflow
+---
+
+# Vorwort: DISCLAIMER
+
+ACHTUNG: DIES IST EIN ERSTER DRAFT. WIR ÜBERNEHMEN KEINE VERANTWORTUNG FÜR DIE RICHTIGKEIT DER INFORMATIONEN. ES IST ALS "WORK IN PROGRESS" ZU SEHEN.

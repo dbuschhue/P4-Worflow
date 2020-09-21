@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Einführung | Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von Naturwissenschaftsdidaktiker_innen</title>
+  <meta name="description" content="Alles was ich hätte wissen wollen" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Einführung | Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von Naturwissenschaftsdidaktiker_innen" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://github.com/dbuschhue/P4-Worflow" />
+  
+  <meta property="og:description" content="Alles was ich hätte wissen wollen" />
+  <meta name="github-repo" content="dbuschhue/P4-Worflow" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Einführung | Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von Naturwissenschaftsdidaktiker_innen" />
+  
+  <meta name="twitter:description" content="Alles was ich hätte wissen wollen" />
+  
+
+<meta name="author" content="Autoren" />
+
+
+<meta name="date" content="2020-09-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="item-analyse.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Files</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Vorwort: DISCLAIMER</a></li>
+<li class="chapter" data-level="2" data-path="einführung.html"><a href="einführung.html"><i class="fa fa-check"></i><b>2</b> Einführung</a><ul>
+<li class="chapter" data-level="2.1" data-path="einführung.html"><a href="einführung.html#rasch-modellierung"><i class="fa fa-check"></i><b>2.1</b> Rasch-Modellierung</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="einführung.html"><a href="einführung.html#wie-wird-der-beste-fit-gefunden"><i class="fa fa-check"></i><b>2.1.1</b> Wie wird der beste Fit gefunden?</a></li>
+<li class="chapter" data-level="2.1.2" data-path="einführung.html"><a href="einführung.html#zum-weiterschauen"><i class="fa fa-check"></i><b>2.1.2</b> zum Weiterschauen</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="einführung.html"><a href="einführung.html#der-datensatz"><i class="fa fa-check"></i><b>2.2</b> Der Datensatz</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="item-analyse.html"><a href="item-analyse.html"><i class="fa fa-check"></i><b>3</b> Item Analyse</a><ul>
+<li class="chapter" data-level="3.1" data-path="item-analyse.html"><a href="item-analyse.html#laden-der-benötigten-pakete-und-des-datensatzes"><i class="fa fa-check"></i><b>3.1</b> Laden der benötigten Pakete und des Datensatzes</a></li>
+<li class="chapter" data-level="3.2" data-path="item-analyse.html"><a href="item-analyse.html#modellschätzung"><i class="fa fa-check"></i><b>3.2</b> Modellschätzung</a></li>
+<li class="chapter" data-level="3.3" data-path="item-analyse.html"><a href="item-analyse.html#erzeugen-einer-wright-map"><i class="fa fa-check"></i><b>3.3</b> Erzeugen einer Wright-Map</a></li>
+<li class="chapter" data-level="3.4" data-path="item-analyse.html"><a href="item-analyse.html#icc-item-characteristic-curve"><i class="fa fa-check"></i><b>3.4</b> ICC (Item Characteristic Curve)</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="item-analyse.html"><a href="item-analyse.html#input"><i class="fa fa-check"></i><b>3.4.1</b> Input</a></li>
+<li class="chapter" data-level="3.4.2" data-path="item-analyse.html"><a href="item-analyse.html#r-befehl-für-generierung-icc-in-tam"><i class="fa fa-check"></i><b>3.4.2</b> R-Befehl für Generierung ICC in TAM</a></li>
+<li class="chapter" data-level="3.4.3" data-path="item-analyse.html"><a href="item-analyse.html#interpretation-icc-im-rasch-modell-s.-wu-et-al.-2016"><i class="fa fa-check"></i><b>3.4.3</b> Interpretation ICC im Rasch-Modell (s. Wu et al. 2016)</a></li>
+<li class="chapter" data-level="3.4.4" data-path="item-analyse.html"><a href="item-analyse.html#gegenüberstellung-leichtes---schweres-item"><i class="fa fa-check"></i><b>3.4.4</b> Gegenüberstellung leichtes - schweres Item</a></li>
+<li class="chapter" data-level="3.4.5" data-path="item-analyse.html"><a href="item-analyse.html#gegenüberstellung-icc-rasch---2pl"><i class="fa fa-check"></i><b>3.4.5</b> Gegenüberstellung ICC Rasch - 2PL</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html"><i class="fa fa-check"></i><b>4</b> Typische Fehlvorstellungen</a><ul>
+<li class="chapter" data-level="4.1" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#das-rasch-modell-berücksichtigt-im-gegensatz-zur-klassischen-testheorie-welche-aufgaben-richtig-bearbeitet-werden"><i class="fa fa-check"></i><b>4.1</b> “Das Rasch-Modell berücksichtigt im Gegensatz zur klassischen Testheorie, welche Aufgaben richtig bearbeitet werden”</a></li>
+<li class="chapter" data-level="4.2" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#anwendung-des-eines-t-tests-für-unabhängige-stichproben-auf-verbundene-sample"><i class="fa fa-check"></i><b>4.2</b> Anwendung des eines T-Tests für unabhängige Stichproben auf verbundene Sample</a></li>
+<li class="chapter" data-level="4.3" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#faktoranalyse-ist-klassiche-testtheorie"><i class="fa fa-check"></i><b>4.3</b> “Faktoranalyse ist klassiche Testtheorie”</a></li>
+<li class="chapter" data-level="4.4" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#ich-habe-lokal-stochastische-items-dann-kann-ich-keine-rasch-modell-nutzen-sondern-nur-klassische-testtheorie"><i class="fa fa-check"></i><b>4.4</b> “Ich habe lokal stochastische Items, dann kann ich keine Rasch-Modell nutzen, sondern nur klassische Testtheorie”</a></li>
+<li class="chapter" data-level="4.5" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#weitere"><i class="fa fa-check"></i><b>4.5</b> Weitere</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#pca-ist-dasselbe-wie-faktoranalyse"><i class="fa fa-check"></i><b>4.5.1</b> PCA ist dasselbe wie Faktoranalyse</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von Naturwissenschaftsdidaktiker_innen</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="einführung" class="section level1">
+<h1><span class="header-section-number">2</span> Einführung</h1>
+<div id="rasch-modellierung" class="section level2">
+<h2><span class="header-section-number">2.1</span> Rasch-Modellierung</h2>
+<p>Bei vielen Test geht es um die Frage, ob ein Probant eine bestimmt Fähigkeit besitzt und damit eine Aufgabe richtig lösen kann. Die Wahrscheinlichkeit, dass ein Proband eine Aufgabe aber richtig lösen kann, hängt sowohl von dessen Fähigkeit als auch von der Schwierigkeit der Aufgabe ab. Beide Punkte sind auf den ersten Blick nicht voneinander zu trennen. Die Rasch-Modellierung (benannt nach dem dänischen Statistiker Georg Rasch (1901–1980)) löst dieses Problem. Das Modell beschreibt wie wahrscheinlich es ist, dass ein Probandn <span class="math inline">\(\nu\)</span> ein Item i richtig löst in ab Abhängigkeit</p>
+<ul>
+<li>eines individuellen Personenparameters für jeden Probanden <span class="math inline">\(\xi_\nu\)</span>, welcher das Fähigkeitsausmaß des Probanden <span class="math inline">\(\nu\)</span> beschreibt und</li>
+<li>eines Aufgaben- oder Itemparameters <span class="math inline">\(\sigma_i\)</span>, der ist den Schwierigkeitsgrad der Aufgabe i beschreibt.</li>
+</ul>
+<p>Die Modellannahmen lauten wie folgt:</p>
+<ul>
+<li><p>Das Maß der Fähigkeit jedes Probanden ist durch einen <strong>einzigen</strong> Parameter zu charakterisieren. Das heißt, dass es keine anderen Einflussfaktoren gibt und ein sog. eindimensionales Modell berechnet wird.</p></li>
+<li><p>Die Schwierigkeit der einzelnen Aufgaben ist ebenfalls durch einen einzigen Parameter charakterisiert; die Schwierigkeit stellt also ebenfalls ein eindimensionales Merkmal dar.</p></li>
+<li><p>Beide Parameter werden auf der selben Skala gemessen.</p></li>
+<li><p>Die Leistungen eines Probanden hängt über alle Aufgaben hinweg – abgesehen von Zufall –, einzig von der Fähigkeit des Probanden und der Schwierigkeit der Aufgabe ab, nicht aber davon, welche anderen Aufgaben sie bereits gelöst hat oder noch lösen wird.</p></li>
+</ul>
+<p>Zusammehhänge zwischen dem Personenparameter und der Schwierigkeit der Aufgabe kann man sich jetzt viele vorstellen. Der Zusammehang sollte aber auf jeden Fall so sein, dass die Wahrscheinlichkeit einer richtigen Antwort mit wachsender Fähigkeit steigt. Bei einem perfekten Item und idealen Probanden würde man hoffen, dass die Wahrscheinlichkeit einer richtigen Antwort für Probanden mit einer niedrigen Fähigkeit bei null liegt und ab einer bestimmten Fähigkeit sprunghaft auf eins ansteigt. Ganz so ideal wird es nicht sein und der Übergangsbereich wird etwas weicher verlaufen. Explizit wird angenommen, dass sich die Wahrscheinlichkeit einer richtigen Antwort einer logistischen Funktion folgend entwickelt. Man setzt für die Wahrscheinlichkeit einer richtigen Antwort unter der Bedingung einer Personenfähigkeit <span class="math inline">\(\xi_\nu\)</span> und Schwierigkeit der Aufgabe <span class="math inline">\(\sigma_i\)</span> an:</p>
+<p><span class="math display">\[P(1|\xi_\nu, \sigma_i) = \frac{\exp(\xi_\nu - \sigma_i)}{1-\exp(\xi_\nu - \sigma_i)} \]</span>
+Die Lösungswahrscheinlichkeit für Aufgabe <span class="math inline">\(i\)</span> hängt also von Differenz von Personenfähigkeit und Aufgabengabenschwierigkeit ab. Formt man die Gleichung etwas um, kann man auch schreiben
+<span class="math display">\[\ln\left(\frac{P(1|\xi_\nu, \sigma_i)}{1 - P(1|\xi_\nu, \sigma_i)}\right) = \ln\left(\frac{P(1|\xi_\nu, \sigma_i)}{ P(0|\xi_\nu, \sigma_i)}\right) = \xi_\nu - \sigma_i\]</span>
+Der natürliche Logarithmus der Chance (Wahrscheinlichkeit der richtigen Lösun geteilt durch Wahrscheinlichkeit der falschen Lösung) gleich der Differenz von Personenfähigkeit und Aufgabengabenschwierigkeit. Plottet man Chance gegen diese Differenz erhält man eine Gerade mit Steigung 1.</p>
+<p>Diese Steigung und damit die Steigung des Übergangs von <span class="math inline">\(P\)</span> wird für das Rasch-Modell also als fest angenommen. Die Steigung wird auch als Trennschärfe bezeichnet, weil Sie eine Aussage darüber liefert, wie klar ein Item zwischen den Fähigkeiten zweiter Probanden dicht an der Schwierigkeit des Items trennen kann. Idealisiert würde ein perfektes Item von einer Person mit einer Fähigkeit <span class="math inline">\(\xi_\nu\)</span> nie gelöst werden, während ein Person mit einer leicht höheren Fähigkeit das Item immer löst. Bei höheren Modellen wie dem 2-PL geht die Steigung als zusätzlicher Parameter ein.</p>
+<div id="wie-wird-der-beste-fit-gefunden" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Wie wird der beste Fit gefunden?</h3>
+<p>Der beste Fit zwischen Modell und Daten, also der Satz von <span class="math inline">\(\xi_\nu\)</span> und <span class="math inline">\(\sigma_i\)</span>, der die beste Passung zwischen Modell und Daten lieft, kann über verschiedene Verfahren wie unter anderem das Least-quares- oder aber das Maximum-Likelyhood-Verfahrung gefunden werden. Bei letzterem wird durch ein iteratives Vorgehen, die sog. Likelyhood Funktion
+<span class="math display">\[ L= \prod\limits_{\nu,i}P(1|\xi_\nu, \sigma_i)\]</span>
+berechnet, welche genau dann maximal wird, wenn die Wahrscheinlichkeit genau die gemessene Stichprobe zu erhalten maximal wird.</p>
+</div>
+<div id="zum-weiterschauen" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> zum Weiterschauen</h3>
+<p>Sehr interessante Videos zu diesem Thema, die das Ganze noch einmal wesentlich umfangreicher beschreiben, sind:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=SrdbllMYq8M&amp;list=PLJNUIJnElUzDmrIPunMyF3tTvIHb65wNb">A Conceptual Introduction to Item Response Theory</a></li>
+<li><a href="https://www.youtube.com/watch?v=yIYKR4sgzI8&amp;list=PLblh5JKOoLUKxzEP5HA2d-Li7IJkHfXSe">Logistic Regression</a></li>
+</ul>
+</div>
+</div>
+<div id="der-datensatz" class="section level2">
+<h2><span class="header-section-number">2.2</span> Der Datensatz</h2>
+<p>Der für diese Erklärung verwendete Datensatz stammt aus dem Paket TAM und hat das Format einer einfachen Matrix. Es handelt sich um simulierte Daten von 2000 Probanden (als Zeilen) zu jeweils 40 Items (als Spalten). Die Spalten für die einzelnen Items sind mit I1 bis I40 bezeichnet. Eine Spalte für eine Probanden ID oder ähnliches gibt es nicht. Auch hat der Datensatz keine fehlenden Daten, d.h. zu jedem Probanden gibt es Daten zu jedem Item. Die Items selbst sind alle dichotom (richtig/falsch) und mit 1 und 0 codiert.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="einführung.html#cb1-1"></a><span class="kw">data</span>(data.sim.rasch)</span>
+<span id="cb1-2"><a href="einführung.html#cb1-2"></a><span class="kw">head</span>(data.sim.rasch)</span></code></pre></div>
+<pre><code>##      I1 I2 I3 I4 I5 I6 I7 I8 I9 I10 I11 I12 I13 I14 I15 I16 I17 I18 I19 I20 I21
+## [1,]  1  1  1  1  1  1  0  1  0   1   1   0   0   1   1   1   1   1   1   1   0
+## [2,]  0  1  0  0  0  1  1  1  0   1   1   1   1   1   0   0   1   0   1   0   0
+## [3,]  1  1  1  1  1  1  1  1  1   1   1   1   1   1   1   0   0   1   1   1   1
+## [4,]  1  0  1  1  0  1  1  1  0   0   1   1   1   0   0   1   1   0   0   0   0
+## [5,]  1  1  1  1  1  1  1  1  0   0   1   1   1   1   1   0   0   1   1   1   1
+## [6,]  1  1  1  0  0  1  0  0  0   0   0   0   0   0   0   1   1   1   0   0   0
+##      I22 I23 I24 I25 I26 I27 I28 I29 I30 I31 I32 I33 I34 I35 I36 I37 I38 I39
+## [1,]   1   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+## [2,]   0   0   1   0   0   0   1   0   0   0   0   0   0   0   1   0   0   0
+## [3,]   1   1   1   1   1   1   1   1   1   1   1   0   0   1   1   1   0   1
+## [4,]   0   1   1   0   0   0   0   0   0   0   0   0   1   0   0   0   0   0
+## [5,]   0   1   1   1   1   1   0   1   0   0   0   1   1   1   0   1   0   0
+## [6,]   1   0   0   1   0   1   1   0   0   0   1   0   0   0   0   0   0   0
+##      I40
+## [1,]   0
+## [2,]   0
+## [3,]   1
+## [4,]   0
+## [5,]   0
+## [6,]   0</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="item-analyse.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
