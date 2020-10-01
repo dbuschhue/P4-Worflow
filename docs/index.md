@@ -2,7 +2,7 @@
 title: Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von
   Naturwissenschaftsdidaktiker_innen
 author: "Daniel Buschmüller, Tina Grottke, Philipp Möhrke, Marvin Rost (Hrsg.)"
-date: "2020-09-22"
+date: "2020-10-01"
 bibliography: book.bib
 description: Alles was ich hätte wissen wollen
 documentclass: book
