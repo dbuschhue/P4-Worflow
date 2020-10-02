@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Untitled</title>
+  <title>Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von Naturwissenschaftsdidaktiker_innen</title>
   <meta name="description" content="Alles was ich hätte wissen wollen" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Untitled" />
+  <meta property="og:title" content="Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von Naturwissenschaftsdidaktiker_innen" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://github.com/dbuschhue/P4-Workflow" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dbuschhue/P4-Workflow" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Untitled" />
+  <meta name="twitter:title" content="Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von Naturwissenschaftsdidaktiker_innen" />
   
   <meta name="twitter:description" content="Alles was ich hätte wissen wollen" />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Tina Grottke, Philipp Möhrke, Marvin Rost, David Buschhüter (Hrsg.)" />
 
 
-<meta name="date" content="2020-10-01" />
+<meta name="date" content="2020-10-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,6 @@
   
 
 <link rel="next" href="einführung.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,20 +50,22 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -84,7 +85,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -134,38 +135,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Vorwort: DISCLAIMER</a></li>
-<li class="chapter" data-level="2" data-path="einführung.html"><a href="einführung.html"><i class="fa fa-check"></i><b>2</b> Einführung</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="einführung.html"><a href="einführung.html#rasch-modellierung"><i class="fa fa-check"></i><b>2.1</b> Rasch-Modellierung</a>
-<ul>
+<li class="chapter" data-level="2" data-path="einführung.html"><a href="einführung.html"><i class="fa fa-check"></i><b>2</b> Einführung</a><ul>
+<li class="chapter" data-level="2.1" data-path="einführung.html"><a href="einführung.html#rasch-modellierung"><i class="fa fa-check"></i><b>2.1</b> Rasch-Modellierung</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="einführung.html"><a href="einführung.html#beispiel"><i class="fa fa-check"></i><b>2.1.1</b> Beispiel</a></li>
 <li class="chapter" data-level="2.1.2" data-path="einführung.html"><a href="einführung.html#wie-wird-der-beste-fit-gefunden"><i class="fa fa-check"></i><b>2.1.2</b> Wie wird der beste Fit gefunden?</a></li>
 <li class="chapter" data-level="2.1.3" data-path="einführung.html"><a href="einführung.html#zum-weiterschauen"><i class="fa fa-check"></i><b>2.1.3</b> zum Weiterschauen</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="einführung.html"><a href="einführung.html#der-datensatz"><i class="fa fa-check"></i><b>2.2</b> Der Datensatz</a></li>
+<li class="chapter" data-level="2.3" data-path="einführung.html"><a href="einführung.html#laden-der-benötigten-pakete-und-des-datensatzes"><i class="fa fa-check"></i><b>2.3</b> Laden der benötigten Pakete und des Datensatzes</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="einführung.html"><a href="einführung.html#paketquellen"><i class="fa fa-check"></i><b>2.3.1</b> Paketquellen</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="item-analyse.html"><a href="item-analyse.html"><i class="fa fa-check"></i><b>3</b> Item Analyse</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="item-analyse.html"><a href="item-analyse.html#laden-der-benötigten-pakete-und-des-datensatzes"><i class="fa fa-check"></i><b>3.1</b> Laden der benötigten Pakete und des Datensatzes</a></li>
-<li class="chapter" data-level="3.2" data-path="item-analyse.html"><a href="item-analyse.html#modellschätzung"><i class="fa fa-check"></i><b>3.2</b> Modellschätzung</a></li>
-<li class="chapter" data-level="3.3" data-path="item-analyse.html"><a href="item-analyse.html#erzeugen-einer-wright-map"><i class="fa fa-check"></i><b>3.3</b> Erzeugen einer Wright-Map</a></li>
-<li class="chapter" data-level="3.4" data-path="item-analyse.html"><a href="item-analyse.html#icc-item-characteristic-curve"><i class="fa fa-check"></i><b>3.4</b> ICC (Item Characteristic Curve)</a>
-<ul>
-<li class="chapter" data-level="3.4.1" data-path="item-analyse.html"><a href="item-analyse.html#input"><i class="fa fa-check"></i><b>3.4.1</b> Input</a></li>
-<li class="chapter" data-level="3.4.2" data-path="item-analyse.html"><a href="item-analyse.html#r-befehl-für-generierung-icc-in-tam"><i class="fa fa-check"></i><b>3.4.2</b> R-Befehl für Generierung ICC in TAM</a></li>
-<li class="chapter" data-level="3.4.3" data-path="item-analyse.html"><a href="item-analyse.html#interpretation-icc-im-rasch-modell-s.-wu-et-al.-2016"><i class="fa fa-check"></i><b>3.4.3</b> Interpretation ICC im Rasch-Modell (s. Wu et al. 2016)</a></li>
-<li class="chapter" data-level="3.4.4" data-path="item-analyse.html"><a href="item-analyse.html#gegenüberstellung-leichtes---schweres-item"><i class="fa fa-check"></i><b>3.4.4</b> Gegenüberstellung leichtes - schweres Item</a></li>
-<li class="chapter" data-level="3.4.5" data-path="item-analyse.html"><a href="item-analyse.html#gegenüberstellung-icc-rasch---2pl"><i class="fa fa-check"></i><b>3.4.5</b> Gegenüberstellung ICC Rasch - 2PL</a></li>
+<li class="chapter" data-level="2.4" data-path="einführung.html"><a href="einführung.html#modellschätzung"><i class="fa fa-check"></i><b>2.4</b> Modellschätzung</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="einführung.html"><a href="einführung.html#deutung-der-aufgabenschwierigkeiten"><i class="fa fa-check"></i><b>2.4.1</b> Deutung der Aufgabenschwierigkeiten</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="einführung.html"><a href="einführung.html#erzeugen-einer-wright-map"><i class="fa fa-check"></i><b>2.5</b> Erzeugen einer Wright-Map</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="einführung.html"><a href="einführung.html#deutung-der-wright-maps"><i class="fa fa-check"></i><b>2.5.1</b> Deutung der Wright-Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="einführung.html"><a href="einführung.html#icc-item-characteristic-curve"><i class="fa fa-check"></i><b>2.6</b> ICC (Item Characteristic Curve)</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="einführung.html"><a href="einführung.html#input"><i class="fa fa-check"></i><b>2.6.1</b> Input</a></li>
+<li class="chapter" data-level="2.6.2" data-path="einführung.html"><a href="einführung.html#r-befehl-für-generierung-icc-in-tam"><i class="fa fa-check"></i><b>2.6.2</b> R-Befehl für Generierung ICC in TAM</a></li>
+<li class="chapter" data-level="2.6.3" data-path="einführung.html"><a href="einführung.html#interpretation-icc-im-rasch-modell-s.-wu-et-al.-2016"><i class="fa fa-check"></i><b>2.6.3</b> Interpretation ICC im Rasch-Modell (s. Wu et al. 2016)</a></li>
+<li class="chapter" data-level="2.6.4" data-path="einführung.html"><a href="einführung.html#gegenüberstellung-leichtes---schweres-item"><i class="fa fa-check"></i><b>2.6.4</b> Gegenüberstellung leichtes - schweres Item</a></li>
+<li class="chapter" data-level="2.6.5" data-path="einführung.html"><a href="einführung.html#gegenüberstellung-icc-rasch---2pl"><i class="fa fa-check"></i><b>2.6.5</b> Gegenüberstellung ICC Rasch - 2PL</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html"><i class="fa fa-check"></i><b>4</b> Typische Fehlvorstellungen</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#das-rasch-modell-berücksichtigt-im-gegensatz-zur-klassischen-testtheorie-welche-aufgaben-richtig-bearbeitet-werden"><i class="fa fa-check"></i><b>4.1</b> “Das Rasch-Modell berücksichtigt im Gegensatz zur klassischen Testtheorie, welche Aufgaben richtig bearbeitet werden”</a></li>
-<li class="chapter" data-level="4.2" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#anwendung-eines-t-tests-für-unabhängige-stichproben-auf-abhängige-stichproben"><i class="fa fa-check"></i><b>4.2</b> Anwendung eines t-Tests für unabhängige Stichproben auf abhängige Stichproben</a></li>
-<li class="chapter" data-level="4.3" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#weitere"><i class="fa fa-check"></i><b>4.3</b> Weitere</a>
-<ul>
-<li class="chapter" data-level="4.3.1" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#ist-die-faktoranalyse-ein-teil-der-klassischen-testtheorie"><i class="fa fa-check"></i><b>4.3.1</b> Ist die Faktoranalyse ein Teil der klassischen Testtheorie</a></li>
-<li class="chapter" data-level="4.3.2" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#pca-ist-dasselbe-wie-faktoranalyse"><i class="fa fa-check"></i><b>4.3.2</b> PCA ist dasselbe wie Faktoranalyse</a></li>
+<li class="chapter" data-level="3" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html"><i class="fa fa-check"></i><b>3</b> Typische Fehlvorstellungen</a><ul>
+<li class="chapter" data-level="3.1" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#das-rasch-modell-berücksichtigt-im-gegensatz-zur-klassischen-testtheorie-welche-aufgaben-richtig-bearbeitet-werden"><i class="fa fa-check"></i><b>3.1</b> “Das Rasch-Modell berücksichtigt im Gegensatz zur klassischen Testtheorie, welche Aufgaben richtig bearbeitet werden”</a></li>
+<li class="chapter" data-level="3.2" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#anwendung-eines-t-tests-für-unabhängige-stichproben-auf-abhängige-stichproben"><i class="fa fa-check"></i><b>3.2</b> Anwendung eines t-Tests für unabhängige Stichproben auf abhängige Stichproben</a></li>
+<li class="chapter" data-level="3.3" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#weitere"><i class="fa fa-check"></i><b>3.3</b> Weitere</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#ist-die-faktoranalyse-ein-teil-der-klassischen-testtheorie"><i class="fa fa-check"></i><b>3.3.1</b> Ist die Faktoranalyse ein Teil der klassischen Testtheorie</a></li>
+<li class="chapter" data-level="3.3.2" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#pca-ist-dasselbe-wie-faktoranalyse"><i class="fa fa-check"></i><b>3.3.2</b> PCA ist dasselbe wie Faktoranalyse</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -180,7 +179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Untitled</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von Naturwissenschaftsdidaktiker_innen</a>
           </h1>
         </div>
 
@@ -189,11 +188,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">Untitled</h1>
+<h1 class="title">Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von Naturwissenschaftsdidaktiker_innen</h1>
 <p class="author"><em>Tina Grottke, Philipp Möhrke, Marvin Rost, David Buschhüter (Hrsg.)</em></p>
-<p class="date"><em>2020-10-01</em></p>
+<p class="date"><em>2020-10-02</em></p>
 </div>
-<div id="vorwort-disclaimer" class="section level1" number="1">
+<div id="vorwort-disclaimer" class="section level1">
 <h1><span class="header-section-number">1</span> Vorwort: DISCLAIMER</h1>
 <p>ACHTUNG: DIES IST EIN ERSTER DRAFT. WIR ÜBERNEHMEN KEINE VERANTWORTUNG FÜR DIE RICHTIGKEIT DER INFORMATIONEN. ES IST ALS “WORK IN PROGRESS” ZU SEHEN.</p>
 
