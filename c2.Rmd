@@ -98,3 +98,5 @@ Wäre dieser Datensatz aus einer realen Studie entstanden, wäre die Nachkonstru
 
 Zusammenfassend lässt sich sagen, dass die getesteten Aufgaben ein ausgezeichnetes Profil ansteigender Schwierigkeiten aufweisen. Für eine reale Leistungsüberprüfung und -differenzierung sind in diesem konkreten Fall insgesamt mehr Aufgaben wünschenswert.
 
+## Überschrift
+Das hier ist ein Platzhaltertext, um den Umgang mit Versionskonflikten in GitHub zu testen.
