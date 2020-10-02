@@ -16,7 +16,7 @@ mod2 <- TAM::tam.mml.2pl(resp=data.sim.rasch,irtmodel="2PL")
 ## ICC (Item Characteristic Curve)
 
 ### Input
-
+           
 Item Characterisitc Curves geben die Lösungswahrscheinlichkeit als Funktion der Fähigkeit der Probanden an. Dabei stellt die y-Achse die Lösungswahrscheinlichkeit und x-Achse die Probandenfähigkeit dar.
 
 ### R-Befehl für Generierung ICC in TAM
