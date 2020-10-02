@@ -15,23 +15,20 @@ mod2 <- TAM::tam.mml.2pl(resp=data.sim.rasch,irtmodel="2PL")
 
 ## ICC (Item Characteristic Curve)
 
-<br></br>
-
 ### Input
 
 Item Characterisitc Curves geben die Lösungswahrscheinlichkeit als Funktion der Fähigkeit der Probanden an. Dabei stellt die y-Achse die Lösungswahrscheinlichkeit und x-Achse die Probandenfähigkeit dar.
 
-<br></br>
-
 ### R-Befehl für Generierung ICC in TAM
 
-Erstellung der ICC für Item 20 mit Gruppierung der Personenfähigkeiten in 6 Gruppen im Rasch-Modell:
+Erstellung der ICC für Item 20 mit Gruppierung der Personenfähigkeiten in 6 Gruppen im Rasch-Modell. Das Gruppieren (Binning) der Personenfähigkeiten wird vorgenommen, da für einzelne Personen keine Anteilswerte bestimmbar sind.
 
 ```{r}
 plot(mod1, items = 20, ngroups = 6, export = FALSE) # export = FALSE verhindert separates Abspeichern der .png-Datei
 ```
 
-<br></br>
+Die Angaben MLE (Maximum Likelihood Estimates) und WLE (Weighted Likelihood Estimates) in der Ausgabe stehen für das angewandte Verfahren zur Schätzung der Personenhäfigkeiten. Bei den durch die MLE geschätzten Personenfähigkeiten kommt es jedoch zu Verzerrungen, sodass auf den WLE zurückgegriffen wird, der die erwarteten Verzerrungen berücksicht (Trendtel, Pham, Yanagida, 2016, p. 202).
+
 
 ### Interpretation ICC im Rasch-Modell (s. Wu et al. 2016)
 
@@ -39,25 +36,22 @@ Ausführungen beziehen sich auf Item 20, s. obigen Plot
 
 <b>blaue Kurve</b>: Modellkurve (vom Modell vorhergesagter Zusammenhang zw. Fähigkeit und Lösungswahrscheinlichkeit) --> Probanden mit einer Fähigkeitsausprägung von 1, lösen das Item mit 75%iger Wahrscheinlichkeit richtig
 
-<b>gepunktete schwarze Kurve</b>: empirische Kurve (beobachtete Lösungswahrscheinlichkeit bzw. Lösungsquote) --> etwa 76 % der Probanden mit der Fähigkeitsausprägung (ability) = 1 lösten das Item richtig
+<b>schwarze Kurve</b>: empirische Kurve (beobachtete Lösungswahrscheinlichkeit bzw. Lösungsquote) --> etwa 76 % der Probanden mit der Fähigkeitsausprägung (ability) = 1 lösten das Item richtig
 
 --> Bei diesem Beispiel (Item 20) liegt eine gute Passung beider Kurven vor, d.h. das Modell beschreibt das Item sehr gut.
 
-<br></br>
-
 #### Misfits
 
-Für die Beurteilung von Items, kann die Passung der empirischen Kurve zur Modellkurve herangezogen werden. Dabei muss nicht immer die empirische Kurve gut zur Modellkurve passen --> misfits
+Für die Beurteilung von Items, kann die Passung der empirischen Kurve zur Modellkurve herangezogen werden. Dabei muss nicht immer die empirische Kurve gut zur Modellkurve passen --> Misfits
 
-Es wird dabei zw. overfit und underift unterschieden.
+Es wird dabei zw. Overfit und Underfit unterschieden, wobei der wMNSQ-Wert (= standardized weighted mean square), welcher auch als Infit-Wert geführt wird, bei der Beurteilung eine Orientierung bieten kann "Die Infit-Statistik ist der mit den Varianzen [...] gwichtete Mittelwert, sodass Personen mit einer Fähigkeit näher bei der Itemschwierigkeit des betrachteten Items ein höheres Gewicht bekommen als Personen, deren Fähigkeit weiter weg liegt." (Trendtel, Pham, Yanagida, 2016, p. 209). Dabei sei darauf hingewiesen, dass trotz guter wMNSQ-Werte (Werte um 1), die Passung zw. empirischer Kurve und Modellkurve als schlecht beurteilt werden kann. "Fit mean-square statistic is testing whether the slope of the observed ICC is the same as the theoretical ICC” (Wu et al., 2016, p. 145).
 
 <b>Overfit</b>: wMNSQ-Wert (Infit) < 1; empirische Kurve steiler als Modellkurve; entspricht hoher discrimination --> item unterscheidet Probanden verschiedener Fähigkeitsausprägungen besser als andere Items im Test
 
 <b>Underfit</b>: wMNSQ-Wert (Infit) > 1; empirische Kurve steiler als Modellkurve; entspricht geringerer discrimination
 
-Es wird empfohlen, Items mit einem Overfit zu behalten und Items mit einem Underfit aus dem Test zu entfernen. Dieses Vorgehen zeigt einen Einfluss auf die EAP-Reliabilität (s. Wu et al. 2016 p. 153)
+Es wird empfohlen, Items mit einem Overfit zu behalten und Items mit einem Underfit aus dem Test zu entfernen. Dieses Vorgehen zeigt einen Einfluss auf die EAP-Reliabilität (s. Wu et al. 2016 p. 153).
 
-<br></br>
 
 ### Gegenüberstellung leichtes - schweres Item
 
@@ -81,8 +75,6 @@ plot(mod1, items = 40, ngroups = 6, export = FALSE) # xsi = 2.05
 
 Probanden mit einer geschätzten Fähigkeit von 0 lösen diese beiden Items mit unterschiedlichen Lösungswahrscheinlichkeiten. Während Probanden mit einer Fähigkeitsausprägung von 0 das Item 1 mit etwa 90%iger Wahrscheinlichkeit richtig lösen, lösen diese das Item 40 mit einer etwa 15%igen Lösungswahrscheinlichkeit.
 
-<br></br>
-
 ### Gegenüberstellung ICC Rasch - 2PL
 
 <b>Item 40 Rasch</b>
@@ -99,5 +91,3 @@ plot(mod2, items = 40, ngroups = 6, export = FALSE) # Steigungsparameter frei ge
 #### Deutung
 
 Beim 2PL Modell wird der Steigungsparamter für jedes Item frei geschätzt. Das zeigt sich unter anderem in den ICCs. Durch das Vorliegen des simulierten Datensatzes zeigt sich kein merkbarer Unterschied in den ICCs des Rasch und 2PL Modell. Dennoch sei an dieser Stelle angemerkt, dass es beim 2PL Modell durchaus zu ICCs kommen kann, die negative Steigungen aufweisen. Die Interpretation dahinter wäre: Bei steigender Probandenfähigkeit, sinkt die Lösungswahrscheinlichkeit des Items. Dies kann ein Indiz für ein nicht funktionierendes Item sein, aber ebenso ein Hinweis auf eine Mehrdimensionalität des Konstruktes (Bühner, 2011, p.506; Chalmers, 2015, p. 216). Jenes Item könnte demnach in eine andere Dimension fallen.
-
-<br></br>
