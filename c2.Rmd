@@ -1,54 +1,89 @@
 ---
-title: "Untitled"
-
+title: "Item Parameter Interpretation"
+author: "Marvin Rost"
+date: "Zuletzt gerendert: `r format(Sys.time(), '%F %H:%M')`"
+output: 
+  html_document:
+    code_folding: show
 ---
 
-# Item Analyse
 ## Laden der benötigten Pakete und des Datensatzes
-
-```{r}
-library(TAM) # TAM-Paket
-library(WrightMap) # zur Erzeugung von Wright-Maps
-library(RColorBrewer) # für schönere Farben in den Wright-Maps
-data(data.sim.rasch) # data.sim.rasch: 2000 persons, 40 items
+Da jede Anwendung der Software _R_ die Nutzung von Paketen vorsieht, sind diese hier aufgelistet. Der geladene Datensatz wird mit dem "TAM"-Paket mitgeliefert. Alle Pakete sind freie Software unter der Lizenz GNU *General Public License*.
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# install.package("TAM")
+# install.package("WrightMap")
 ```
 
-Das R-Paket "TAM" (Robitzsch, A., Kiefer, T., & Wu, M. (2019). TAM: Test Analysis Modules. R package version 3.3-10.
-  https://CRAN.R-project.org/package=TAM) ist freie Software unter der Lizenz GNU *General Public License*.
-  
-## Modellschätzung
+```{r packages, results='hide', message=FALSE}
+library(TAM) # TAM-Paket als zentrales Paket
+library(WrightMap) # zur Erzeugung von Wright-Maps
+data(data.sim.rasch) # Lerndatensatz mit 2000 Personen & 40 Items, integriert in das TAM-Paket
+```
 
-```{r Model 1: Rasch model (MML estimation), include=FALSE}
+### Paketquellen
+- "TAM": Robitzsch, A., Kiefer, T., & Wu, M. (2019). TAM: Test Analysis Modules. R package version 3.5-19. https://CRAN.R-project.org/package=TAM
+- Torres Irribarra, D. & Freund, R. (2014). Wright Map: IRT item-person map with ConQuest integration. Available at http://github.com/david-ti/wrightmap
+
+## Modellschätzung
+Der folgende Code initiiert die Schätzung eines Rasch-Modells für den vorliegenden Datensatz. Das Listen-Objekt `mod1PL` mit vielen Einträgen wird erzeugt.
+
+```{r Rasch-Modell, results='hide'}
+# Model 1: Rasch model (MML estimation)
 mod1PL <- TAM::tam.mml(resp=data.sim.rasch)
 ```
 
-Der Befehl erzeugt ein Listen-Objekt mit vielen Einträgen. Folgend wird ein Dataframe-Objekt aus dieser Liste ausgewählt und ausgegeben. Es enthält verschiedene Spalten mit deskriptiven Kennwerten:
+Folgend wird das Dataframe-Objekt `mod1PL$item` aus dem Listen-Objekt `mod1PL` ausgewählt und ausgegeben. Es enthält verschiedene Spalten mit deskriptiven Kennwerten:
 
-```{r Itemkennwerte}
-mod1PL$item
+```{r Itemkennwerte, collapse=TRUE}
+# Ausgabe der ersten 6 von 40 Itemkennwerten
+head(mod1PL$item)
+```
+- `item`: Laufnummer der jeweiligen Items.
+
+- `N`: Anzahl an Personen, die das jeweilige Item bearbeitet haben.
+
+- `M`: Deskriptive Schwierigkeit des Items ($M = \frac{N_{korrekt}}{N_{gelöst}}$).
+
+- `xsi.item`: *xsi* wird ausgesprochen wie geschrieben und bezieht sich auf den griechischen Buchstaben ($\xi$). Der $\xi$-Parameter ist die, mit dem Modell geschätzte, Aufgabenschwierigkeit auf der Skala von $-\infty$ bis $\infty$ mit 0 als Mittelwert. Übliche Werte in der Praxis liegen zwischen -3 bis 3. Eine Aufgabe mit Schwierigkeit $\xi=1$ ist dabei schwerer als eine Aufgabe mit Schwierigkeit $\xi=0$. Oft findet man den Schwierigkeitsparameter auch unter anderen griechischen Buchstaben in der Literatur, z. B. $\delta$ oder $\beta$. TAM übernimmt die Notation mit $\beta$ unter der Bezeichnung *IRT parametrization*. Siehe dazu das folgende Dataframe-Objekt `mod1PL$item_irt`.
+
+```{r IRT_params, collapse=TRUE}
+# Ausgabe der ersten 6 von 40 Itemkennwerten unter IRT-Parametrisierung
+head(mod1PL$item_irt)
 ```
 
-- *N*: Anzahl an Personen, die das jeweilige Item bearbeitet haben.
+- `AXsi_.Cat1`: Schwierigkeit, gegeben, dass das Item verschiedenen Personengruppen und/oder Testheften zugeordnet wurde und unter den jeweiligen Bedingungen unterschiedlich erfolgreich bearbeitet wurde. Da hier nur ein eindimensionales Modell ohne weitere Bedingungen berechnet wurde, entspricht der Wert dem $\xi$-Parameter.
 
-- *M*: Deskriptive Schwierigkeit des Items ($M = \frac{N_{korrekt}}{N_{gelöst}}$).
+- `B.Cat1.Dim1`: Steigungsparameter. Im eindimensionalen 1-PL-Modell wird der B-Parameter nicht berechnet, sondern auf $B=1$ fixiert. Oft findet man den Steigungsparameter auch unter der Bezeichnung $\alpha$ (siehe Output oben zu `xsi.item`).
 
-- *xsi.item*: *xsi* wird ausgesprochen wie geschrieben und bezieht sich auf den griechischen Buchstaben. Der $\xi$-Parameter ist die, mit dem Modell geschätzte, Aufgabenschwierigkeit auf der Skala von $-\infty$ bis $\infty$ mit 0 als Mittelwert. Übliche Werte in der Praxis liegen zwischen -3 bis 3. Eine Aufgabe mit Schwierigkeit $\xi=1$ ist dabei schwerer als eine Aufgabe mit Schwierigkeit $\xi=0$. Oft findet man den Schwierigkeitsparameter auch unter anderen griechischen Buchstaben in der Literatur, z. B. $\delta$ oder $\beta$. TAM übernimmt die Notation mit $\beta$ unter der Bezeichnung *IRT parametrization*. Siehe dazu den folgenden Output.
+### Deutung der Aufgabenschwierigkeiten
+Die erhaltenen Schwierigkeitsparameter stehen unter dem Vorbehalt, dass das Rasch-Modell gültig ist (**VERWEIS**). Sie setzen die Aufgaben modellbasiert miteinander in Beziehung. War eine Schwierigkeitseinschätzung a-priori (bspw. durch ein Expertenrating) noch von einer Reihe subjektiver Annahmen getragen, sind nun die Bearbeitungserfolge durch die Zielgruppe in der quantitativ-empirischen Erhebung integriert. Noch vor weiterführenden Analysen können die qualitativen Urteile durch die quantitativen Befunde abgeglichen werden: 
 
-```{r IRT_params}
-mod1PL$item_irt
-```
-
-
-- *AXsi_.Cat1*: Schwierigkeit, gegeben, dass das Item verschiedenen Personengruppen und/oder Testheften zugeordnet wurde und unter den jeweiligen Bedingungen unterschiedlich erfolgreich bearbeitet wurde. Da hier nur ein eindimensionales Modell ohne weitere Bedingungen berechnet wurde, entspricht der Wert dem $\xi$-Parameter.
-
-- *B.Cat1.Dim1*: Steigungsparameter. Im eindimensionalen 1-PL-Modell wird der B-Parameter nicht berechnet, sondern auf $B=1$ fixiert. Oft findet man den Steigungsparameter auch unter der Bezeichnung $\alpha$ (siehe Output oben zu *xsi.item*).
+- Gibt es Aufgaben, die erwartungsgemäß schwerer/leichter waren als andere?
+- Gibt es Aufgaben, deren Schwierigkeiten *nicht* erwartungskonform sind?
+- War eine Aufgabe vielleicht zu einfach, weil die Distraktoren unpassend gewählt waren?
+- ...
 
 ## Erzeugen einer Wright-Map
+Für Leistungstests ist eine Verteilung von Aufgabenschwierigkeiten wünschenswert. Es soll ein Intervall abgedeckt sein, um möglichst viele Informationen zu gewinnen. Wright-Maps erlauben dies, indem sie die Aufgabenschwierigkeiten und die Personenfähigkeiten grafisch miteinander in Beziehung setzen. Sie erleichtern die Validierung eines Leistungstests, bspw. indem auf einen Blick sichtbar wird, wenn in einem bestimmten Schwierigkeits-/Fähigkeitsintervall zu wenige oder zuviele Aufgaben vorliegen.
 
-```{r}
+Das folgende Code-Beispiel schätzt die Personenfähigkeiten und schreibt sie in das Objekt `thetas_1pl`. Außerdem werden die Aufgabenschwierigkeiten separat als Objekt `item_xsis_1pl` abgespeichert um anschließend mit der Funktion `wrightMap()` eine automatische Visualisierung zu erhalten (**ABBILDUNG**).
+
+```{r wright-map1, fig.cap="Abb. XYZ: Eine Variante für eine Wright-Map.", results='hide'}
 thetas_1pl <- tam.wle(mod1PL) # WLEs berechnen
 item_xsis_1pl <- mod1PL$xsi$xsi # Itemschwierigkeiten separieren
 
+wrightMap(thetas_1pl$theta, item_xsis_1pl,
+          main.title = "Beispiel für Wright-Map",
+          axis.persons = "Fähigkeitsverteilung",
+          axis.items = "Aufgaben")
+```
+
+Gut erkennbar ist die Fähigkeitsverteilung in Dimension 1 (schmaleres Panel links) und die numerische Zuordnung der Aufgaben zu dieser Dimension (breiteres Panel rechts). Im multidimensionalen Fall wären noch weitere Panels mit Fähigkeitsverteilungen, sowie weitere Zahlenzuordnung für die Aufgaben sichtbar. Ebenfalls deutlich wird die Äquivalenz von Personenfähigkeiten und Aufgabenschwierigkeiten, erkennbar an der Logit-Skala auf der rechten Seite.
+
+Ungünstig ist die kategorische Aufgaben-Achse. Da der Datensatz 40 Aufgaben enthält, resultiert ein Overplot der Aufgaben-Namen, dem mit einer Alternativdarstellung begegnet werden kann (**ABBILDUNG**).
+
+```{r wright-map2, fig.cap="Abb. ABC: Eine Alternative Darstellung der Wright-Map.", results='hide'}
 wrightMap(thetas_1pl$theta, item_xsis_1pl, 
           item.side = itemClassic,
           main.title = "Beispiel für Wright-Map",
@@ -56,5 +91,10 @@ wrightMap(thetas_1pl$theta, item_xsis_1pl,
           axis.items = "Aufgabenverteilung")
 ```
 
+In diesem Fall ist gut zu sehen, wie die Aufgaben - markiert durch ihren Laufindex aus dem Datensatz - von unten nach oben schwieriger werden. Außerdem erkennbar: Die Aufgaben sind näherungsweise uniform über das Schwierigkeits-/Fähigkeitsintervall verteilt. Außerdem stehen für sehr leistungsstarke und -schwache Personen (Ränder der Fähigkeitsverteilung) empirisch keine äquivalent schwierigen Aufgaben zur Verfügung. 
 
+### Deutung der Wright-Maps
+Wäre dieser Datensatz aus einer realen Studie entstanden, wäre die Nachkonstruktion von sehr schweren und sehr leichten Aufgaben zu empfehlen. Darüber hinaus halten sich im mittleren Fähigkeitsniveau die meisten Personen auf. Um zwischen diesen besser differenzieren zu können, wären auch dort mehr Aufgaben hilfreich.
+
+Zusammenfassend lässt sich sagen, dass die getesteten Aufgaben ein ausgezeichnetes Profil ansteigender Schwierigkeiten aufweisen. Für eine reale Leistungsüberprüfung und -differenzierung sind in diesem konkreten Fall insgesamt mehr Aufgaben wünschenswert.
 
