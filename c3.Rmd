@@ -27,9 +27,9 @@ Das Ausführen der folgenden Funktion führt zur Erstellung der ICC für Item 20
 plot(mod1, items = 20, ngroups = 6, export = FALSE) # export = FALSE verhindert separates Abspeichern der .png-Datei
 ```
 
-Eine ICC kann alleine unter Kenntnis des Schwierigkeitsparameters der Aufgabe erstellt werden. Sie lässt sich nutzen, um graphisch zu beurteilen, inwiefern das tatsächliche Lösungsverhalten der Probanden von dem Verhalten, welches mithilfe des Rasch-Modells vorhergesagt wird, abweicht.
+Eine ICC kann alleine unter Kenntnis des Schwierigkeitsparameters der Aufgabe erstellt werden. Sie lässt sich nutzen, um grafisch zu beurteilen, inwiefern das tatsächliche Lösungsverhalten der Probanden von dem Verhalten, welches mithilfe des Rasch-Modells vorhergesagt wird, abweicht.
 
-Naiv würde man davon ausgehen, dass man nur die tatsächlichen Lösungswahrscheinlichkeiten in Abhängigkeit von den Fähigkeiten der Probanden eintragen müsste (so macht man es auch bspw. im Physikunterricht, bei der ersten graphischen linearen Regression). Diese Lösungswahrscheinlichkeiten sind aber nicht für einzelne Probanden, sondern nur für Gruppen, direkt beobachtbar. Aufgrunddessen werden die Probanden in Fähigkeitsgruppen eingeteilt (Binning). Der Prozentsatz einer bestimmten Gruppe, der die Aufgabe richtig gelöst hat, entspricht dann der Lösungswahrscheinlichkeit.
+Naiv würde man davon ausgehen, dass man nur die tatsächlichen Lösungswahrscheinlichkeiten in Abhängigkeit von den Fähigkeiten der Probanden eintragen müsste (so macht man es auch bspw. im Physikunterricht, bei der ersten grafischen linearen Regression). Diese Lösungswahrscheinlichkeiten sind aber nicht für einzelne Probanden, sondern nur für Gruppen, direkt beobachtbar. Aufgrunddessen werden die Probanden in Fähigkeitsgruppen eingeteilt (Binning). Der Prozentsatz einer bestimmten Gruppe, der die Aufgabe richtig gelöst hat, entspricht dann der Lösungswahrscheinlichkeit.
 
 Die Angaben MLE (Maximum Likelihood Estimates) und WLE (Weighted Likelihood Estimates) in der Ausgabe stehen für das angewandte Verfahren zur Schätzung der Personenfähigkeiten. Bei den durch die MLE geschätzten Personenfähigkeiten kommt es jedoch zu Verzerrungen, sodass auf den WLE zurückgegriffen wird (Trendtel, Pham, Yanagida, 2016, p. 202).
 
