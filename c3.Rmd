@@ -17,7 +17,9 @@ mod2 <- TAM::tam.mml.2pl(resp=data.sim.rasch,irtmodel="2PL")
 
 ### Input
            
-Item Characteristic Curves (kurz: ICC) geben die Lösungswahrscheinlichkeit als Funktion der Fähigkeit der Testpersonen an. Dabei stellt die y-Achse die Lösungswahrscheinlichkeit und x-Achse die Personenfähigkeit dar.
+Item Characteristic Curves (kurz: ICC) geben die Lösungswahrscheinlichkeit als Funktion der Fähigkeit der Testpersonen an. Dabei stellt die y-Achse die Lösungswahrscheinlichkeit und x-Achse die Personenfähigkeit dar. 
+
+Um Verwirrungen zur Begrifflichkeit Item und Aufgabe zu vermeiden, wird an dieser Stelle darauf hingewiesen, dass Items hier im vereinfachten Sinne einer Aufgabe entsprechen.
 
 ### R-Befehl für Generierung der ICC in TAM
 
@@ -31,7 +33,7 @@ Eine ICC kann alleine unter Kenntnis des Schwierigkeitsparameters der Aufgabe er
 
 Naiv würde man davon ausgehen, dass man nur die tatsächlichen Lösungswahrscheinlichkeiten in Abhängigkeit von den Fähigkeiten der Testpersonen eintragen müsste (so macht man es auch bspw. im Physikunterricht, bei der ersten grafischen linearen Regression). Diese Lösungswahrscheinlichkeiten sind aber nicht für einzelne Testpersonen, sondern nur für Gruppen, direkt beobachtbar. Aufgrunddessen werden die Testpersonen in Fähigkeitsgruppen eingeteilt (Binning). Der Prozentsatz einer bestimmten Gruppe, der die Aufgabe richtig gelöst hat, entspricht dann der Lösungswahrscheinlichkeit.
 
-Die Angaben MLE (Maximum Likelihood Estimates) und WLE (Weighted Likelihood Estimates) in der Ausgabe stehen für das angewandte Verfahren zur Schätzung der Personenfähigkeiten. Bei den durch die MLE geschätzten Personenfähigkeiten kommt es jedoch zu Verzerrungen, sodass auf den WLE zurückgegriffen wird (Trendtel, Pham, Yanagida, 2016, p. 202).
+Die Angaben MLE (Maximum Likelihood Estimates) und WLE (Weighted Likelihood Estimates) in der Ausgabe stehen für das angewandte Verfahren zur Schätzung der Personenfähigkeiten. Bei den durch die MLE geschätzten Personenfähigkeiten kommt es jedoch zu Verzerrungen, sodass auf den WLE zurückgegriffen wird [@Trendtel2016](Trendtel, Pham, Yanagida, 2016, p. 202).
 
 
 ### Interpretation ICC im Rasch-Modell (s. Wu et al. 2016)
