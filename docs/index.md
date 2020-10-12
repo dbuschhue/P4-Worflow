@@ -1,14 +1,13 @@
 --- 
-title: Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von
-  Naturwissenschaftsdidaktiker_innen
+title: "Was ich über IRT mit R gerne vorher gewusst hätte. Ein Tutorial für und von Naturwissenschaftsdidaktiker_innen"
 author: "Tina Grottke, Philipp Möhrke, Marvin Rost, David Buschhüter (Hrsg.)"
-date: "2020-10-08"
+date: "2020-10-12"
 bibliography: book.bib
 description: Alles was ich hätte wissen wollen
 documentclass: book
 github-repo: dbuschhue/P4-Workflow
 link-citations: yes
-site: bookdown::bookdown_site
+site: "bookdown::bookdown_site"
 biblio-style: apalike
 url: https://github.com/dbuschhue/P4-Workflow
 ---
