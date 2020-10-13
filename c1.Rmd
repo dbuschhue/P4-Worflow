@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> 89407411ccb296d63fa0ab754642d4f80a18a8aa
 ```{r setup, include=FALSE}
   library("TAM")
   library("tidyverse")
