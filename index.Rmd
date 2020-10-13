@@ -12,7 +12,11 @@ site: bookdown::bookdown_site
 biblio-style: apalike
 url: https://github.com/dbuschhue/P4-Workflow
 ---
-
+```{css, echo=FALSE}
+iframe {
+  border: none;
+}
+```
 # Vorwort: DISCLAIMER
 
 ACHTUNG: DIES IST EIN ERSTER DRAFT. WIR ÜBERNEHMEN KEINE VERANTWORTUNG FÜR DIE RICHTIGKEIT DER INFORMATIONEN. ES IST ALS "WORK IN PROGRESS" ZU SEHEN.
