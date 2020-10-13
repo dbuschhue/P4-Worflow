@@ -44,16 +44,16 @@ Ein einreichbarer Beitrag...
 *	Es wird erwartet, dass Sie im Fall von wichtigen Verbesserungsvorschlägen, den Artikel anpassen (dies betrifft insbesondere notwendige Korrekturen).
 *	Sollte es zu einem Korrekturvorschlag kommen, werden Sie von den Herausgeber*innen benachrichtigt.
 
-Hinweis: Keine Angst. Wir alle machen Fehler und es geht bei diesem Format auch darum offenzulegen, wie wir arbeiten um so insgesamt weniger solcher Fehler zu machen. Das geht nur, wenn wir eine konstruktive Fehlerkultur umsetzen.
+Hinweis:  Ein Wesensmerkmal des Buchs ist die permanente Revisionsfähigkeit. Wir schreiben kein Lehrbuch für die Umsetzung als universitäre Lehrveranstaltung, sondern lernen gemeinsam in der Auseinandersetzung mit dem Thema und mit den Beitragenden. Das ist neu und ungewohnt. Wir glauben aber, dass das ein bedeutsamer Beitrag für eine zukunftsfähige Wissenschaftscommunity ist.
 
 **Wie kann ich den Beitrag einreichen?**
 
-* Bevorzugt stellen Sie einfach einen Pull-Request an das Repository mit ihrem Beitrag und einer entsprechenden Nachricht.
-*	Wenn dies für Sie nicht möglich ist, treten Sie mit den Herausgeber*innen über die Issues-Funktion auf GitHub in Kontakt.
+* Die technische Umsetzung erfolgt über die Plattform GitHub. Stellen Sie deswegen bevorzugt einen Pull-Request an das Repository mit Ihrem Beitrag und einer entsprechenden Nachricht.
+*	Wenn Ihnen das nicht möglich ist, treten Sie mit den Herausgeber*innen über die Issues-Funktion auf GitHub in Kontakt. Wichtiger als die Nutzung von GitHub ist die inhaltliche Ebene der Beiträge. Bitte halten Sie aber unbedingt die Formatierungsrichtlinien ein (s. u.), um den Revisionsprozess zu beschleunigen und den Fokus auf den Inhalten zu belassen.
 
 **Welche Formatierungsrichtlinien gelten für den Text?**
 
-*	Die Beiträge sind im RMarkdown Format als Rmd-Datei einzureichen und genauer als Buchkapitel zu einem bookdown-Buch.
+*	Die Beiträge sind im RMarkdown Format als Rmd-Datei einzureichen und genauer als Buchkapitel zu einem bookdown-Buch. Sollten Sie noch nie mit RMarkdown gearbeitet haben, empfehlen wir eine einsteigerfreundliche, deutschsprachige Videoreihe, die mit dem folgenden Video beginnt: https://www.youtube.com/watch?v=F-6iU1EHoc0 . 
 * Weitere Informationen finden Sie hier:
     +	Bookdown: https://bookdown.org/; https://bookdown.org/yihui/bookdown/
     + R Markdown: https://rmarkdown.rstudio.com/
