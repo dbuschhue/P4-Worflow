@@ -1,23 +1,20 @@
-
----
-title: "Untitled"
-output: pdf_document
----
-
 # Typische Fehlvorstellungen
 
 Im Laufe unserer Zeit sind wir immer wieder einigen Fehlvorstellungen und Fehlern begegnet. Einigen davon sind wir auch selbst erlegen gewesen bzw. haben wir selbst gemacht. Im Folgenden stellen wir diese Vorstellungen und Fehler kurz vor und stellen sie einer fachlich angemessenen Beschreibung gegenüber.
 
-## "Das Rasch-Modell berücksichtigt im Gegensatz zur klassischen Testtheorie, welche Aufgaben richtig bearbeitet werden"
+## „Das Rasch-Modell berücksichtigt im Gegensatz zur klassischen Testtheorie, welche Aufgaben richtig bearbeitet werden“ 
+
+*Autor: David Buschhüter*
 
 Im Folgenden soll, was sich hinter dieser Vorstellung verbirgt, genauer beschrieben werden:
 Person A und B haben beide 2 Punkte im Test erreicht: 
+
 * Person A
-    * gelöst: Aufgabe 1 (leicht) und 2 (mittelschwer) 
-    * nicht gelöst: Aufgabe 3 (schwer)
+    + gelöst: Aufgabe 1 (leicht) und 2 (mittelschwer) 
+    + nicht gelöst: Aufgabe 3 (schwer)
 * Person B
-    * gelöst: Aufgabe 1 (leicht) und Aufgabe 3 (schwer)
-    * nicht gelöst: Aufgabe 3 (schwer)
+    + gelöst: Aufgabe 1 (leicht) und Aufgabe 3 (schwer)
+    + nicht gelöst: Aufgabe 3 (schwer)
 
 Eine typische Fehlvorstellung ist, anzunehmen, dass die richtige Bearbeitung von Aufgabe 3 im Rasch-Modell zu einer höheren Personenfähigkeit führt und somit für Person A ein niedrigerer Fähigkeitsparameter geschätzt würde als für Person B.
 
@@ -25,18 +22,27 @@ Das stimmt aber so nicht: Es wird von der Punktesumme direkt auf den Fähigkeits
 
 Es ist dennoch so, dass sich Person B nicht Rasch-Modell konform verhält: Wenn nur eine Art von Fähigkeit (z.B. die Fähigkeit zwei normale Zahlen zu addieren) verantwortlich ist für das Lösungsverhalten auf den Aufgaben, warum kann eine Person dann Aufgabe 3 richtig bearbeiten aber nicht Aufgabe 2, wobei Aufgabe 2 doch leichter sein sollte? Das Verhalten der Person B geht insofern in die Rasch-Analyse ein, als sich das Verhalten von Person B als Residuum bemerkbar macht und so z.B. in die MNSQ von Aufgabe 2 zwei und drei einfließt. 
 
+## „Das 1PL-Modell ist das Rasch-Modell“ 
+
+*Autor: David Buschhüter*
+
+Sowohl im Rasch-Modell als auch im 1PL-Modell werden nur ein Itemparameter (die Schwierigkeit) und ein Personenparameter (die Fähigkeit) geschätzt. Alle Items haben denselben Diskriminationsparameter. 
+
+Der Unterschied ist aber Folgender: Im Rasch-Modell ist der Diskriminationsparameter 1. Im 1PL-Modell kann er auch andere Werte annehmen. 
 
 ## Anwendung eines t-Tests für unabhängige Stichproben auf abhängige Stichproben
 
+*Autor: David Buschhüter*
+
 Eine typische Analyse in der Lehr-Lern-Forschung ist die Überprüfung des Lernzuwachses einer Lerngruppe. Häufig sieht man, dass hier ein t-Test für unabhängige Stichproben verwendet wird, wobei es doch um den individuellen Lernzuwachs geht.
  
-Besser wäre es deshalb hier einen Test für abhängige Stichproben zu verwenden. Dabei werden Paare von einzelnen Fähigkeitsparametern nach Personen gebildet (was auch einem t-Test der Differenzen der Fähigkeitsparameter (nach der Lerneinheit minus vor der Lerneinheit) gegen den theoretischen Wert 0 entspricht. 
+Besser wäre es deshalb, hier einen Test für abhängige Stichproben zu verwenden. Dabei werden Paare von einzelnen Fähigkeitsparametern nach Personen gebildet (was auch einem t-Test der Differenzen der Fähigkeitsparameter (nach der Lerneinheit minus vor der Lerneinheit) gegen den theoretischen Wert 0 entspricht. 
 
-## Weitere 
+## Weitere Ideen?
 
-### Ist die Faktoranalyse ein Teil der klassischen Testtheorie
-### PCA ist dasselbe wie Faktoranalyse
+### Ist die Faktoranalyse ein Teil der klassischen Testtheorie?
+### Ist PCA dasselbe wie Faktoranalyse?
 
-
+# Referenzen
 
 

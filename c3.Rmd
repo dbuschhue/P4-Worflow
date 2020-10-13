@@ -1,8 +1,3 @@
----
-title: "Hackathon_P4_IRT"
-output: html_document
----
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(TAM)
@@ -17,7 +12,9 @@ mod2 <- TAM::tam.mml.2pl(resp=data.sim.rasch,irtmodel="2PL")
 
 ### Input
            
-Item Characteristic Curves (kurz: ICC) geben die Lösungswahrscheinlichkeit als Funktion der Fähigkeit der Probanden an. Dabei stellt die y-Achse die Lösungswahrscheinlichkeit und x-Achse die Probandenfähigkeit dar.
+Item Characteristic Curves (kurz: ICC) geben die Lösungswahrscheinlichkeit als Funktion der Fähigkeit der Testpersonen an. Dabei stellt die y-Achse die Lösungswahrscheinlichkeit und x-Achse die Personenfähigkeit dar. 
+
+Um Verwirrungen zur Begrifflichkeit Item und Aufgabe zu vermeiden, wird an dieser Stelle darauf hingewiesen, dass Items hier im vereinfachten Sinne einer Aufgabe entsprechen.
 
 ### R-Befehl für Generierung der ICC in TAM
 
@@ -27,20 +24,20 @@ Das Ausführen der folgenden Funktion führt zur Erstellung der ICC für Item 20
 plot(mod1, items = 20, ngroups = 6, export = FALSE) # export = FALSE verhindert separates Abspeichern der .png-Datei
 ```
 
-Eine ICC kann alleine unter Kenntnis des Schwierigkeitsparameters der Aufgabe erstellt werden. Sie lässt sich nutzen, um grafisch zu beurteilen, inwiefern das tatsächliche Lösungsverhalten der Probanden von dem Verhalten, welches mithilfe des Rasch-Modells vorhergesagt wird, abweicht.
+Eine ICC kann alleine unter Kenntnis des Schwierigkeitsparameters der Aufgabe erstellt werden. Sie lässt sich nutzen, um grafisch zu beurteilen, inwiefern das tatsächliche Lösungsverhalten der Testpersonen von dem Verhalten, welches mithilfe des Rasch-Modells vorhergesagt wird, abweicht.
 
-Naiv würde man davon ausgehen, dass man nur die tatsächlichen Lösungswahrscheinlichkeiten in Abhängigkeit von den Fähigkeiten der Probanden eintragen müsste (so macht man es auch bspw. im Physikunterricht, bei der ersten grafischen linearen Regression). Diese Lösungswahrscheinlichkeiten sind aber nicht für einzelne Probanden, sondern nur für Gruppen, direkt beobachtbar. Aufgrunddessen werden die Probanden in Fähigkeitsgruppen eingeteilt (Binning). Der Prozentsatz einer bestimmten Gruppe, der die Aufgabe richtig gelöst hat, entspricht dann der Lösungswahrscheinlichkeit.
+Naiv würde man davon ausgehen, dass man nur die tatsächlichen Lösungswahrscheinlichkeiten in Abhängigkeit von den Fähigkeiten der Testpersonen eintragen müsste (so macht man es auch bspw. im Physikunterricht, bei der ersten grafischen linearen Regression). Diese Lösungswahrscheinlichkeiten sind aber nicht für einzelne Testpersonen, sondern nur für Gruppen, direkt beobachtbar. Aufgrunddessen werden die Testpersonen in Fähigkeitsgruppen eingeteilt (Binning). Der Prozentsatz einer bestimmten Gruppe, der die Aufgabe richtig gelöst hat, entspricht dann der Lösungswahrscheinlichkeit.
 
-Die Angaben MLE (Maximum Likelihood Estimates) und WLE (Weighted Likelihood Estimates) in der Ausgabe stehen für das angewandte Verfahren zur Schätzung der Personenfähigkeiten. Bei den durch die MLE geschätzten Personenfähigkeiten kommt es jedoch zu Verzerrungen, sodass auf den WLE zurückgegriffen wird (Trendtel, Pham, Yanagida, 2016, p. 202).
+Die Angaben MLE (Maximum Likelihood Estimates) und WLE (Weighted Likelihood Estimates) in der Ausgabe stehen für das angewandte Verfahren zur Schätzung der Personenfähigkeiten. Bei den durch die MLE geschätzten Personenfähigkeiten kommt es jedoch zu Verzerrungen, sodass auf den WLE zurückgegriffen wird [@Trendtel2016] (Trendtel, Pham, Yanagida, 2016, p. 202).
 
 
-### Interpretation ICC im Rasch-Modell (s. Wu et al. 2016)
+### Interpretation ICC im Rasch-Modell [@Wu2016] (s. Wu et al. 2016)
 
 Ausführungen beziehen sich auf Item 20, s. obigen Plot
 
-<b>blaue Kurve</b>: Modellkurve (vom Modell vorhergesagter Zusammenhang zw. Fähigkeit und Lösungswahrscheinlichkeit) --> Probanden mit einer Fähigkeitsausprägung von 1, lösen das Item mit 75%iger Wahrscheinlichkeit richtig
+<b>blaue Kurve</b>: Modellkurve (vom Modell vorhergesagter Zusammenhang zw. Fähigkeit und Lösungswahrscheinlichkeit) --> Testpersonen mit einer Fähigkeitsausprägung von 1, lösen das Item mit 75%iger Wahrscheinlichkeit richtig
 
-<b>schwarze Kurve</b>: empirische Kurve (beobachtete Lösungswahrscheinlichkeit bzw. Lösungsquote) --> etwa 76 % der Probanden mit der Fähigkeitsausprägung (ability) = 1 lösten das Item richtig
+<b>schwarze Kurve</b>: empirische Kurve (beobachtete Lösungswahrscheinlichkeit bzw. Lösungsquote) --> etwa 76 % der Testpersonen mit der Fähigkeitsausprägung (ability) = 1 lösten das Item richtig
 
 --> Bei diesem Beispiel (Item 20) liegt eine gute Passung beider Kurven vor, d.h. das Modell beschreibt das Lösungsverhalten bei diesem Item sehr gut.
 
@@ -48,13 +45,13 @@ Ausführungen beziehen sich auf Item 20, s. obigen Plot
 
 Für die Beurteilung von Items, kann die Passung der empirischen Kurve zur Modellkurve herangezogen werden. Dabei muss nicht immer die empirische Kurve gut zur Modellkurve passen --> Misfits
 
-Es wird dabei zw. Overfit und Underfit unterschieden, wobei der wMNSQ-Wert (= standardized weighted mean square), welcher auch als Infit-Wert geführt wird, bei der Beurteilung eine Orientierung bieten kann "Die Infit-Statistik ist der mit den Varianzen [...] gewichtete Mittelwert, sodass Personen mit einer Fähigkeit näher bei der Itemschwierigkeit des betrachteten Items ein höheres Gewicht bekommen als Personen, deren Fähigkeit weiter weg liegt." (Trendtel, Pham, Yanagida, 2016, p. 209). Dabei sei darauf hingewiesen, dass trotz guter wMNSQ-Werte (Werte um 1), die Passung zwischen empirischer Kurve und Modellkurve als schlecht beurteilt werden kann. "Fit mean-square statistic is testing whether the slope of the observed ICC is the same as the theoretical ICC” (Wu et al., 2016, p. 145).
+Es wird dabei zw. Overfit und Underfit unterschieden, wobei der wMNSQ-Wert (= standardized weighted mean square), welcher auch als Infit-Wert geführt wird, bei der Beurteilung eine Orientierung bieten kann "Die Infit-Statistik ist der mit den Varianzen [...] gewichtete Mittelwert, sodass Personen mit einer Fähigkeit näher bei der Itemschwierigkeit des betrachteten Items ein höheres Gewicht bekommen als Personen, deren Fähigkeit weiter weg liegt." [@Trendtel2016] (Trendtel, Pham, Yanagida, 2016, p. 209). Dabei sei darauf hingewiesen, dass trotz guter wMNSQ-Werte (Werte um 1), die Passung zwischen empirischer Kurve und Modellkurve als schlecht beurteilt werden kann. "Fit mean-square statistic is testing whether the slope of the observed ICC is the same as the theoretical ICC” [@Wu2016] (Wu et al., 2016, p. 145). Die Outfit-Statistik, zu der der unweighted mean square (MNSQ-Outfit) gehört, wird in Large-Scale-Assessments kaum Bedeutung zugetragen, sodass sich auf die Infit-Statistik fokussiert wird [@Trendtel2016] (Trendtel, Pham, Yanagida, 2016, p. 209).
 
-<b>Overfit</b>: wMNSQ-Wert (Infit) < 1; empirische Kurve steiler als Modellkurve; entspricht hoher discrimination --> item unterscheidet Probanden verschiedener Fähigkeitsausprägungen besser als andere Items im Test
+<b>Overfit</b>: wMNSQ-Wert (Infit) < 1; empirische Kurve steiler als Modellkurve; entspricht hoher discrimination --> Item unterscheidet Testpersonen verschiedener Fähigkeitsausprägungen besser als andere Items im Test
 
 <b>Underfit</b>: wMNSQ-Wert (Infit) > 1; empirische Kurve steiler als Modellkurve; entspricht geringerer discrimination
 
-Es wird empfohlen, Items mit einem Overfit zu behalten und Items mit einem Underfit aus dem Test zu entfernen (s. Wu et al. 2016 p. 153).
+Es wird empfohlen, Items mit einem Overfit zu behalten und Items mit einem Underfit aus dem Test zu entfernen [@Wu2016] (s. Wu et al. 2016 p. 153).
 
 
 ### Gegenüberstellung leichtes - schweres Item
@@ -77,7 +74,7 @@ plot(mod1, items = 40, ngroups = 6, export = FALSE) # xsi = 2.05
 
 #### Interpretation
 
-Probanden mit einer geschätzten Fähigkeit von 0 lösen diese beiden Items mit unterschiedlichen Lösungswahrscheinlichkeiten. Während Probanden mit einer Fähigkeitsausprägung von 0 das Item 1 mit etwa 90%iger Wahrscheinlichkeit richtig lösen, lösen diese das Item 40 mit einer etwa 15%igen Lösungswahrscheinlichkeit.
+Testpersonen mit einer geschätzten Fähigkeit von 0 lösen diese beiden Items mit unterschiedlichen Lösungswahrscheinlichkeiten. Während Testpersonen mit einer Fähigkeitsausprägung von 0 das Item 1 mit etwa 90%iger Wahrscheinlichkeit richtig lösen, lösen diese das Item 40 mit einer etwa 15%igen Lösungswahrscheinlichkeit.
 
 ### Gegenüberstellung ICC Rasch - 2PL
 
@@ -94,4 +91,4 @@ plot(mod2, items = 40, ngroups = 6, export = FALSE) # Steigungsparameter frei ge
 
 #### Deutung
 
-Beim 2PL Modell wird der Steigungsparameter für jedes Item frei geschätzt. Das zeigt sich unter anderem in den ICCs. Durch das Vorliegen des simulierten Datensatzes zeigt sich kein merkbarer Unterschied in den ICCs des Rasch und 2PL Modells. Dennoch sei an dieser Stelle angemerkt, dass es beim 2PL Modell durchaus zu ICCs kommen kann, die negative Steigungsparameter aufweisen. Die Interpretation dahinter wäre: Bei steigender Probandenfähigkeit, sinkt die Lösungswahrscheinlichkeit des Items. Dies kann ein Indiz für ein nicht funktionierendes Item sein, aber ebenso ein Hinweis auf eine Mehrdimensionalität des Konstruktes (Bühner, 2011, p.506; Chalmers, 2015, p. 216). Jenes Item könnte demnach in eine andere Dimension fallen.
+Beim 2PL Modell wird der Steigungsparameter für jedes Item frei geschätzt. Das zeigt sich unter anderem in den ICCs. Durch das Vorliegen des simulierten Datensatzes zeigt sich kein merkbarer Unterschied in den ICCs des Rasch und 2PL Modells. Dennoch sei an dieser Stelle angemerkt, dass es beim 2PL Modell durchaus zu ICCs kommen kann, die negative Steigungsparameter aufweisen. Die Interpretation dahinter wäre: Bei steigender Personenfähigkeit, sinkt die Lösungswahrscheinlichkeit des Items. Dies kann ein Indiz für ein nicht funktionierendes Item sein, aber ebenso ein Hinweis auf eine Mehrdimensionalität des Konstruktes [@Bühner2011; @Chalmers2015] (Bühner, 2011, p.506; Chalmers, 2015, p. 216). Jenes Item könnte demnach in eine andere Dimension fallen.
