@@ -1,7 +1,7 @@
 --- 
 title: "Was ich über IRT mit R gerne vorher gewusst hätte. Eine Tutorialsammlung"
 author: "Tina Grottke, Philipp Möhrke, Marvin Rost, David Buschhüter (Hrsg.)"
-date: "2020-10-12"
+date: "2020-10-13"
 bibliography: book.bib
 description: Alles was ich hätte wissen wollen
 documentclass: book
@@ -11,7 +11,11 @@ site: "bookdown::bookdown_site"
 biblio-style: apalike
 url: https://github.com/dbuschhue/P4-Workflow
 ---
-
+<style type="text/css">
+iframe {
+  border: none;
+}
+</style>
 # Vorwort: DISCLAIMER
 
 ACHTUNG: DIES IST EIN ERSTER DRAFT. WIR ÜBERNEHMEN KEINE VERANTWORTUNG FÜR DIE RICHTIGKEIT DER INFORMATIONEN. ES IST ALS "WORK IN PROGRESS" ZU SEHEN.

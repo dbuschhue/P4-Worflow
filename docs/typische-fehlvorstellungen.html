@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Typische Fehlvorstellungen | Was ich über IRT mit R gerne vorher gewusst hätte. Eine Tutorialsammlung</title>
+  <title>5 Typische Fehlvorstellungen | Was ich über IRT mit R gerne vorher gewusst hätte. Eine Tutorialsammlung</title>
   <meta name="description" content="Alles was ich hätte wissen wollen" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Typische Fehlvorstellungen | Was ich über IRT mit R gerne vorher gewusst hätte. Eine Tutorialsammlung" />
+  <meta property="og:title" content="5 Typische Fehlvorstellungen | Was ich über IRT mit R gerne vorher gewusst hätte. Eine Tutorialsammlung" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://github.com/dbuschhue/P4-Workflow" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dbuschhue/P4-Workflow" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Typische Fehlvorstellungen | Was ich über IRT mit R gerne vorher gewusst hätte. Eine Tutorialsammlung" />
+  <meta name="twitter:title" content="5 Typische Fehlvorstellungen | Was ich über IRT mit R gerne vorher gewusst hätte. Eine Tutorialsammlung" />
   
   <meta name="twitter:description" content="Alles was ich hätte wissen wollen" />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Tina Grottke, Philipp Möhrke, Marvin Rost, David Buschhüter (Hrsg.)" />
 
 
-<meta name="date" content="2020-10-12" />
+<meta name="date" content="2020-10-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,6 @@
   
 <link rel="prev" href="einführung.html"/>
 <link rel="next" href="referenzen.html"/>
-<script src="libs/header-attrs-2.4/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,20 +50,22 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -84,7 +85,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -135,49 +136,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Vorwort: DISCLAIMER</a></li>
 <li class="chapter" data-level="2" data-path="wie-kann-ich-zu-diesem-sammelband-beitragen.html"><a href="wie-kann-ich-zu-diesem-sammelband-beitragen.html"><i class="fa fa-check"></i><b>2</b> Wie kann ich zu diesem Sammelband beitragen?</a></li>
-<li class="chapter" data-level="3" data-path="einführung.html"><a href="einführung.html"><i class="fa fa-check"></i><b>3</b> Einführung</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="einführung.html"><a href="einführung.html#rasch-modellierung"><i class="fa fa-check"></i><b>3.1</b> Rasch-Modellierung</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="einführung.html"><a href="einführung.html#beispiel"><i class="fa fa-check"></i><b>3.1.1</b> Beispiel</a></li>
-<li class="chapter" data-level="3.1.2" data-path="einführung.html"><a href="einführung.html#wie-wird-der-beste-fit-gefunden"><i class="fa fa-check"></i><b>3.1.2</b> Wie wird der beste Fit gefunden?</a></li>
-<li class="chapter" data-level="3.1.3" data-path="einführung.html"><a href="einführung.html#zum-weiterlesen"><i class="fa fa-check"></i><b>3.1.3</b> zum Weiterlesen</a></li>
+<li class="chapter" data-level="3" data-path="head.html"><a href="head.html"><i class="fa fa-check"></i><b>3</b> &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
+<li class="chapter" data-level="4" data-path="einführung.html"><a href="einführung.html"><i class="fa fa-check"></i><b>4</b> Einführung</a><ul>
+<li class="chapter" data-level="4.1" data-path="einführung.html"><a href="einführung.html#rasch-modellierung"><i class="fa fa-check"></i><b>4.1</b> Rasch-Modellierung</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="einführung.html"><a href="einführung.html#beispiel"><i class="fa fa-check"></i><b>4.1.1</b> Beispiel</a></li>
+<li class="chapter" data-level="4.1.2" data-path="einführung.html"><a href="einführung.html#wie-wird-der-beste-fit-gefunden"><i class="fa fa-check"></i><b>4.1.2</b> Wie wird der beste Fit gefunden?</a></li>
+<li class="chapter" data-level="4.1.3" data-path="einführung.html"><a href="einführung.html#zum-weiterlesen"><i class="fa fa-check"></i><b>4.1.3</b> zum Weiterlesen</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="einführung.html"><a href="einführung.html#der-datensatz"><i class="fa fa-check"></i><b>3.2</b> Der Datensatz</a></li>
-<li class="chapter" data-level="3.3" data-path="einführung.html"><a href="einführung.html#laden-der-benötigten-pakete-und-des-datensatzes"><i class="fa fa-check"></i><b>3.3</b> Laden der benötigten Pakete und des Datensatzes</a>
-<ul>
-<li class="chapter" data-level="3.3.1" data-path="einführung.html"><a href="einführung.html#paketquellen"><i class="fa fa-check"></i><b>3.3.1</b> Paketquellen</a></li>
+<li class="chapter" data-level="4.2" data-path="einführung.html"><a href="einführung.html#der-datensatz"><i class="fa fa-check"></i><b>4.2</b> Der Datensatz</a></li>
+<li class="chapter" data-level="4.3" data-path="einführung.html"><a href="einführung.html#laden-der-benötigten-pakete-und-des-datensatzes"><i class="fa fa-check"></i><b>4.3</b> Laden der benötigten Pakete und des Datensatzes</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="einführung.html"><a href="einführung.html#paketquellen"><i class="fa fa-check"></i><b>4.3.1</b> Paketquellen</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="einführung.html"><a href="einführung.html#modellschätzung"><i class="fa fa-check"></i><b>3.4</b> Modellschätzung</a>
-<ul>
-<li class="chapter" data-level="3.4.1" data-path="einführung.html"><a href="einführung.html#deutung-der-aufgabenschwierigkeiten"><i class="fa fa-check"></i><b>3.4.1</b> Deutung der Aufgabenschwierigkeiten</a></li>
+<li class="chapter" data-level="4.4" data-path="einführung.html"><a href="einführung.html#modellschätzung"><i class="fa fa-check"></i><b>4.4</b> Modellschätzung</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="einführung.html"><a href="einführung.html#deutung-der-aufgabenschwierigkeiten"><i class="fa fa-check"></i><b>4.4.1</b> Deutung der Aufgabenschwierigkeiten</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="einführung.html"><a href="einführung.html#erzeugen-einer-wright-map"><i class="fa fa-check"></i><b>3.5</b> Erzeugen einer Wright-Map</a>
-<ul>
-<li class="chapter" data-level="3.5.1" data-path="einführung.html"><a href="einführung.html#deutung-der-wright-maps"><i class="fa fa-check"></i><b>3.5.1</b> Deutung der Wright-Maps</a></li>
+<li class="chapter" data-level="4.5" data-path="einführung.html"><a href="einführung.html#erzeugen-einer-wright-map"><i class="fa fa-check"></i><b>4.5</b> Erzeugen einer Wright-Map</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="einführung.html"><a href="einführung.html#deutung-der-wright-maps"><i class="fa fa-check"></i><b>4.5.1</b> Deutung der Wright-Maps</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="einführung.html"><a href="einführung.html#überschrift"><i class="fa fa-check"></i><b>3.6</b> Überschrift</a></li>
-<li class="chapter" data-level="3.7" data-path="einführung.html"><a href="einführung.html#icc-item-characteristic-curve"><i class="fa fa-check"></i><b>3.7</b> ICC (Item Characteristic Curve)</a>
-<ul>
-<li class="chapter" data-level="3.7.1" data-path="einführung.html"><a href="einführung.html#input"><i class="fa fa-check"></i><b>3.7.1</b> Input</a></li>
-<li class="chapter" data-level="3.7.2" data-path="einführung.html"><a href="einführung.html#r-befehl-für-generierung-der-icc-in-tam"><i class="fa fa-check"></i><b>3.7.2</b> R-Befehl für Generierung der ICC in TAM</a></li>
-<li class="chapter" data-level="3.7.3" data-path="einführung.html"><a href="einführung.html#interpretation-icc-im-rasch-modell-wu2016-s.-wu-et-al.-2016"><i class="fa fa-check"></i><b>3.7.3</b> Interpretation ICC im Rasch-Modell <span class="citation">(Wu, Tam, and Jen <span>2016</span>)</span> (s. Wu et al. 2016)</a></li>
-<li class="chapter" data-level="3.7.4" data-path="einführung.html"><a href="einführung.html#gegenüberstellung-leichtes---schweres-item"><i class="fa fa-check"></i><b>3.7.4</b> Gegenüberstellung leichtes - schweres Item</a></li>
-<li class="chapter" data-level="3.7.5" data-path="einführung.html"><a href="einführung.html#gegenüberstellung-icc-rasch---2pl"><i class="fa fa-check"></i><b>3.7.5</b> Gegenüberstellung ICC Rasch - 2PL</a></li>
+<li class="chapter" data-level="4.6" data-path="einführung.html"><a href="einführung.html#überschrift"><i class="fa fa-check"></i><b>4.6</b> Überschrift</a></li>
+<li class="chapter" data-level="4.7" data-path="einführung.html"><a href="einführung.html#icc-item-characteristic-curve"><i class="fa fa-check"></i><b>4.7</b> ICC (Item Characteristic Curve)</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="einführung.html"><a href="einführung.html#input"><i class="fa fa-check"></i><b>4.7.1</b> Input</a></li>
+<li class="chapter" data-level="4.7.2" data-path="einführung.html"><a href="einführung.html#r-befehl-für-generierung-der-icc-in-tam"><i class="fa fa-check"></i><b>4.7.2</b> R-Befehl für Generierung der ICC in TAM</a></li>
+<li class="chapter" data-level="4.7.3" data-path="einführung.html"><a href="einführung.html#interpretation-icc-im-rasch-modell-wu2016-s.-wu-et-al.-2016"><i class="fa fa-check"></i><b>4.7.3</b> Interpretation ICC im Rasch-Modell <span class="citation">(Wu, Tam, and Jen <span>2016</span>)</span> (s. Wu et al. 2016)</a></li>
+<li class="chapter" data-level="4.7.4" data-path="einführung.html"><a href="einführung.html#gegenüberstellung-leichtes---schweres-item"><i class="fa fa-check"></i><b>4.7.4</b> Gegenüberstellung leichtes - schweres Item</a></li>
+<li class="chapter" data-level="4.7.5" data-path="einführung.html"><a href="einführung.html#gegenüberstellung-icc-rasch---2pl"><i class="fa fa-check"></i><b>4.7.5</b> Gegenüberstellung ICC Rasch - 2PL</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html"><i class="fa fa-check"></i><b>4</b> Typische Fehlvorstellungen</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#das-rasch-modell-berücksichtigt-im-gegensatz-zur-klassischen-testtheorie-welche-aufgaben-richtig-bearbeitet-werden"><i class="fa fa-check"></i><b>4.1</b> „Das Rasch-Modell berücksichtigt im Gegensatz zur klassischen Testtheorie, welche Aufgaben richtig bearbeitet werden“</a></li>
-<li class="chapter" data-level="4.2" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#das-1pl-modell-ist-das-rasch-modell"><i class="fa fa-check"></i><b>4.2</b> „Das 1PL-Modell ist das Rasch-Modell“</a></li>
-<li class="chapter" data-level="4.3" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#anwendung-eines-t-tests-für-unabhängige-stichproben-auf-abhängige-stichproben"><i class="fa fa-check"></i><b>4.3</b> Anwendung eines t-Tests für unabhängige Stichproben auf abhängige Stichproben</a></li>
-<li class="chapter" data-level="4.4" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#weitere-ideen"><i class="fa fa-check"></i><b>4.4</b> Weitere Ideen?</a>
-<ul>
-<li class="chapter" data-level="4.4.1" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#ist-die-faktoranalyse-ein-teil-der-klassischen-testtheorie"><i class="fa fa-check"></i><b>4.4.1</b> Ist die Faktoranalyse ein Teil der klassischen Testtheorie?</a></li>
-<li class="chapter" data-level="4.4.2" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#ist-pca-dasselbe-wie-faktoranalyse"><i class="fa fa-check"></i><b>4.4.2</b> Ist PCA dasselbe wie Faktoranalyse?</a></li>
+<li class="chapter" data-level="5" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html"><i class="fa fa-check"></i><b>5</b> Typische Fehlvorstellungen</a><ul>
+<li class="chapter" data-level="5.1" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#das-rasch-modell-berücksichtigt-im-gegensatz-zur-klassischen-testtheorie-welche-aufgaben-richtig-bearbeitet-werden"><i class="fa fa-check"></i><b>5.1</b> „Das Rasch-Modell berücksichtigt im Gegensatz zur klassischen Testtheorie, welche Aufgaben richtig bearbeitet werden“</a></li>
+<li class="chapter" data-level="5.2" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#das-1pl-modell-ist-das-rasch-modell"><i class="fa fa-check"></i><b>5.2</b> „Das 1PL-Modell ist das Rasch-Modell“</a></li>
+<li class="chapter" data-level="5.3" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#anwendung-eines-t-tests-für-unabhängige-stichproben-auf-abhängige-stichproben"><i class="fa fa-check"></i><b>5.3</b> Anwendung eines t-Tests für unabhängige Stichproben auf abhängige Stichproben</a></li>
+<li class="chapter" data-level="5.4" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#weitere-ideen"><i class="fa fa-check"></i><b>5.4</b> Weitere Ideen?</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#ist-die-faktoranalyse-ein-teil-der-klassischen-testtheorie"><i class="fa fa-check"></i><b>5.4.1</b> Ist die Faktoranalyse ein Teil der klassischen Testtheorie?</a></li>
+<li class="chapter" data-level="5.4.2" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#ist-pca-dasselbe-wie-faktoranalyse"><i class="fa fa-check"></i><b>5.4.2</b> Ist PCA dasselbe wie Faktoranalyse?</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="referenzen.html"><a href="referenzen.html"><i class="fa fa-check"></i><b>5</b> Referenzen</a></li>
+<li class="chapter" data-level="6" data-path="referenzen.html"><a href="referenzen.html"><i class="fa fa-check"></i><b>6</b> Referenzen</a></li>
+<li class="chapter" data-level="7" data-path="glossar.html"><a href="glossar.html"><i class="fa fa-check"></i><b>7</b> Glossar</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -198,11 +193,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="typische-fehlvorstellungen" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Typische Fehlvorstellungen</h1>
+<div id="typische-fehlvorstellungen" class="section level1">
+<h1><span class="header-section-number">5</span> Typische Fehlvorstellungen</h1>
 <p>Im Laufe unserer Zeit sind wir immer wieder einigen Fehlvorstellungen und Fehlern begegnet. Einigen davon sind wir auch selbst erlegen gewesen bzw. haben wir selbst gemacht. Im Folgenden stellen wir diese Vorstellungen und Fehler kurz vor und stellen sie einer fachlich angemessenen Beschreibung gegenüber.</p>
-<div id="das-rasch-modell-berücksichtigt-im-gegensatz-zur-klassischen-testtheorie-welche-aufgaben-richtig-bearbeitet-werden" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> „Das Rasch-Modell berücksichtigt im Gegensatz zur klassischen Testtheorie, welche Aufgaben richtig bearbeitet werden“</h2>
+<div id="das-rasch-modell-berücksichtigt-im-gegensatz-zur-klassischen-testtheorie-welche-aufgaben-richtig-bearbeitet-werden" class="section level2">
+<h2><span class="header-section-number">5.1</span> „Das Rasch-Modell berücksichtigt im Gegensatz zur klassischen Testtheorie, welche Aufgaben richtig bearbeitet werden“</h2>
 <p><em>Autor: David Buschhüter</em></p>
 <p>Im Folgenden soll, was sich hinter dieser Vorstellung verbirgt, genauer beschrieben werden:
 Person A und B haben beide 2 Punkte im Test erreicht:</p>
@@ -222,25 +217,25 @@ Person A und B haben beide 2 Punkte im Test erreicht:</p>
 <p>Das stimmt aber so nicht: Es wird von der Punktesumme direkt auf den Fähigkeitsparameter geschlossen (wenn alle Teilnehmenden, die gleichen Aufgaben bearbeitet haben).</p>
 <p>Es ist dennoch so, dass sich Person B nicht Rasch-Modell konform verhält: Wenn nur eine Art von Fähigkeit (z.B. die Fähigkeit zwei normale Zahlen zu addieren) verantwortlich ist für das Lösungsverhalten auf den Aufgaben, warum kann eine Person dann Aufgabe 3 richtig bearbeiten aber nicht Aufgabe 2, wobei Aufgabe 2 doch leichter sein sollte? Das Verhalten der Person B geht insofern in die Rasch-Analyse ein, als sich das Verhalten von Person B als Residuum bemerkbar macht und so z.B. in die MNSQ von Aufgabe 2 zwei und drei einfließt.</p>
 </div>
-<div id="das-1pl-modell-ist-das-rasch-modell" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> „Das 1PL-Modell ist das Rasch-Modell“</h2>
+<div id="das-1pl-modell-ist-das-rasch-modell" class="section level2">
+<h2><span class="header-section-number">5.2</span> „Das 1PL-Modell ist das Rasch-Modell“</h2>
 <p><em>Autor: David Buschhüter</em></p>
 <p>Sowohl im Rasch-Modell als auch im 1PL-Modell werden nur ein Itemparameter (die Schwierigkeit) und ein Personenparameter (die Fähigkeit) geschätzt. Alle Items haben denselben Diskriminationsparameter.</p>
 <p>Der Unterschied ist aber Folgender: Im Rasch-Modell ist der Diskriminationsparameter 1. Im 1PL-Modell kann er auch andere Werte annehmen.</p>
 </div>
-<div id="anwendung-eines-t-tests-für-unabhängige-stichproben-auf-abhängige-stichproben" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Anwendung eines t-Tests für unabhängige Stichproben auf abhängige Stichproben</h2>
+<div id="anwendung-eines-t-tests-für-unabhängige-stichproben-auf-abhängige-stichproben" class="section level2">
+<h2><span class="header-section-number">5.3</span> Anwendung eines t-Tests für unabhängige Stichproben auf abhängige Stichproben</h2>
 <p><em>Autor: David Buschhüter</em></p>
 <p>Eine typische Analyse in der Lehr-Lern-Forschung ist die Überprüfung des Lernzuwachses einer Lerngruppe. Häufig sieht man, dass hier ein t-Test für unabhängige Stichproben verwendet wird, wobei es doch um den individuellen Lernzuwachs geht.</p>
 <p>Besser wäre es deshalb, hier einen Test für abhängige Stichproben zu verwenden. Dabei werden Paare von einzelnen Fähigkeitsparametern nach Personen gebildet (was auch einem t-Test der Differenzen der Fähigkeitsparameter (nach der Lerneinheit minus vor der Lerneinheit) gegen den theoretischen Wert 0 entspricht.</p>
 </div>
-<div id="weitere-ideen" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Weitere Ideen?</h2>
-<div id="ist-die-faktoranalyse-ein-teil-der-klassischen-testtheorie" class="section level3" number="4.4.1">
-<h3><span class="header-section-number">4.4.1</span> Ist die Faktoranalyse ein Teil der klassischen Testtheorie?</h3>
+<div id="weitere-ideen" class="section level2">
+<h2><span class="header-section-number">5.4</span> Weitere Ideen?</h2>
+<div id="ist-die-faktoranalyse-ein-teil-der-klassischen-testtheorie" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Ist die Faktoranalyse ein Teil der klassischen Testtheorie?</h3>
 </div>
-<div id="ist-pca-dasselbe-wie-faktoranalyse" class="section level3" number="4.4.2">
-<h3><span class="header-section-number">4.4.2</span> Ist PCA dasselbe wie Faktoranalyse?</h3>
+<div id="ist-pca-dasselbe-wie-faktoranalyse" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> Ist PCA dasselbe wie Faktoranalyse?</h3>
 </div>
 </div>
 </div>
