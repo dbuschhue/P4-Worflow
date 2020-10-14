@@ -1,3 +1,8 @@
+---
+title: "Hackathon_P4_IRT"
+output: html_document
+---
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(TAM)
@@ -49,7 +54,7 @@ Es wird dabei zw. Overfit und Underfit unterschieden, wobei der wMNSQ-Wert (= st
 
 <b>Overfit</b>: wMNSQ-Wert (Infit) < 1; empirische Kurve steiler als Modellkurve; entspricht hoher discrimination --> Item unterscheidet Testpersonen verschiedener Fähigkeitsausprägungen besser als andere Items im Test
 
-<b>Underfit</b>: wMNSQ-Wert (Infit) > 1; empirische Kurve steiler als Modellkurve; entspricht geringerer discrimination
+<b>Underfit</b>: wMNSQ-Wert (Infit) > 1; empirische Kurve flacher als Modellkurve; entspricht geringerer discrimination
 
 Es wird empfohlen, Items mit einem Overfit zu behalten und Items mit einem Underfit aus dem Test zu entfernen [@Wu2016] (s. Wu et al. 2016 p. 153).
 
