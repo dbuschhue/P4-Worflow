@@ -24,7 +24,7 @@ ACHTUNG: DIES IST EIN ERSTER DRAFT. WIR ÜBERNEHMEN KEINE VERANTWORTUNG FÜR DIE
 
 **Wer kann einen Beitrag einreichen?**
 
-Theoretisch kann jeder einen Beitrag einreichen, der mit dem Thema seines*ihres Beitrags hinreichend vertraut ist. In erster Linie ist dieses Buch aber an Autor*innen und Leser*innen aus dem Bereich (Science/Math) Education und Psychologie gerichtet.
+Theoretisch kann jeder einen Beitrag einreichen, der mit dem Thema seines\*ihres Beitrags hinreichend vertraut ist. In erster Linie ist dieses Buch aber an Autor\*innen und Leser*innen aus dem Bereich (Science/Math) Education und Psychologie gerichtet.
 
 **Welche Arten von Beiträgen können eingereicht werden?**
 
