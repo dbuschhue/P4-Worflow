@@ -93,5 +93,6 @@ wrightMap(thetas_1pl$theta, item_xsis_1pl,
 ```
 
 In diesem Fall ist gut zu sehen, wie die Aufgaben - markiert durch ihren Laufindex aus dem Datensatz - von unten nach oben schwieriger werden. Außerdem erkennbar: Die Aufgaben sind näherungsweise uniform über das Schwierigkeits-/Fähigkeitsintervall verteilt. Außerdem stehen für sehr leistungsstarke und -schwache Personen (Ränder der Fähigkeitsverteilung) empirisch keine äquivalent schwierigen Aufgaben zur Verfügung. 
+
 ### Deutung der Wright-Maps
 Wäre dieser Datensatz aus einer realen Studie entstanden, wäre die Nachkonstruktion von sehr schweren und sehr leichten Aufgaben zu empfehlen. Darüber hinaus halten sich im mittleren Fähigkeitsniveau die meisten Personen auf. Um zwischen diesen besser differenzieren zu können, wären auch dort mehr Aufgaben hilfreich.
