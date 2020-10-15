@@ -8,7 +8,7 @@ output:
 ---
 
 ## Laden der benötigten Pakete und des Datensatzes
-Da jede Anwendung der Software _R_ die Nutzung von Paketen vorsieht, sind diese hier aufgelistet. Der geladene Datensatz wird mit dem "TAM"-Paket mitgeliefert. Alle Pakete sind freie Software unter der Lizenz GNU *General Public License*.
+Da jede Anwendung der Software _R_ die Nutzung von Paketen vorsieht, sind diese hier aufgelistet. Der geladene Datensatz wird mit dem "TAM"-Paket mitgeliefert.
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # install.package("TAM")
@@ -52,20 +52,24 @@ head(mod1PL$item)
 head(mod1PL$item_irt)
 ```
 
-- `AXsi_.Cat1`: Schwierigkeit, gegeben, dass das Item verschiedenen Personengruppen und/oder Testheften zugeordnet wurde und unter den jeweiligen Bedingungen unterschiedlich erfolgreich bearbeitet wurde. Da hier nur ein eindimensionales Modell ohne weitere Bedingungen berechnet wurde, entspricht der Wert dem $\xi$-Parameter.
+- `AXsi_.Cat1`: Da im gezeigten Beispiel nur ein eindimensionales Modell ohne weitere Bedingungen berechnet wurde, entspricht der Wert dem $\xi$-Parameter, d. h. der Schwierigkeit. Unter anderen Bedingungen (beispielsweise Mehrdimensionalität, oder verschiedenen Testheftpositionen der Aufgabe), können verschiedende, bedingte Schwierigkeiten auftreten. Dazu ein fiktives, vereinfachtes Beispiel: Eine Aufgabe ist in zwei verschiedenen Testheften zu finden. In Testheft Nr. 1 ist sie immer die erste Aufgabe, in Testheft Nr. 2 ist sie immer die letzte Aufgabe. Die Testheftposition kann im statistischen Modell berücksichtigt werden und es würden dann zwei testheftabhängige Schwierigkeitsparameter berechnet, die sich als `AXsi_.Cat1` und `AXsi_.Cat2` im Output wiederfinden würden.
 
 - `B.Cat1.Dim1`: Steigungsparameter. Im eindimensionalen 1-PL-Modell wird der B-Parameter nicht berechnet, sondern auf $B=1$ fixiert. Oft findet man den Steigungsparameter auch unter der Bezeichnung $\alpha$ (siehe Output oben zu `xsi.item`).
 
 ### Deutung der Aufgabenschwierigkeiten
-Die erhaltenen Schwierigkeitsparameter stehen unter dem Vorbehalt, dass das Rasch-Modell gültig ist (**VERWEIS**). Sie setzen die Aufgaben modellbasiert miteinander in Beziehung. War eine Schwierigkeitseinschätzung a-priori (bspw. durch ein Expertenrating) noch von einer Reihe subjektiver Annahmen getragen, sind nun die Bearbeitungserfolge durch die Zielgruppe in der quantitativ-empirischen Erhebung integriert. Noch vor weiterführenden Analysen können die qualitativen Urteile durch die quantitativen Befunde abgeglichen werden: 
+Die erhaltenen Schwierigkeitsparameter stehen unter dem Vorbehalt, dass das Rasch-Modell gültig ist (**VERWEIS**). Sie setzen die Aufgaben nun jenseits von subjektiven Einflüssen miteinander in Beziehung. War eine Schwierigkeitseinschätzung a-priori (bspw. durch ein Expertenrating) noch von zahlreichen, personenabhängigen Einflüssen getragen, sind nun die Bearbeitungserfolge durch die Zielgruppe in der quantitativ-empirischen Erhebung integriert: Die Schwierigkeiten wurden gemessen und nicht über den Daumen gepeilt. Noch vor weiterführenden Analysen können die so erhaltenen, quantitativen Befunde wiederum durch qualitative Urteile abgeglichen werden: 
 
 - Gibt es Aufgaben, die erwartungsgemäß schwerer/leichter waren als andere?
 - Gibt es Aufgaben, deren Schwierigkeiten *nicht* erwartungskonform sind?
 - War eine Aufgabe vielleicht zu einfach, weil die Distraktoren unpassend gewählt waren?
 - ...
 
+Die Aufgabenentwicklung führt so in einem Zusammenspiel aus objektiven Kriterien und subjektiver Synthese (bspw. Erfahrung von PraktikerInnen, Literaturrecherche, curriculare Anforderungen) zu validen und reliablen Testinstrumenten.
+
 ## Erzeugen einer Wright-Map
-Für Leistungstests ist eine Verteilung von Aufgabenschwierigkeiten wünschenswert. Es soll ein Intervall abgedeckt sein, um möglichst viele Informationen zu gewinnen. Wright-Maps erlauben dies, indem sie die Aufgabenschwierigkeiten und die Personenfähigkeiten grafisch miteinander in Beziehung setzen. Sie erleichtern die Validierung eines Leistungstests, bspw. indem auf einen Blick sichtbar wird, wenn in einem bestimmten Schwierigkeits-/Fähigkeitsintervall zu wenige oder zuviele Aufgaben vorliegen.
+Mit einem Mathematiktest für GrundschülerInnen wird es kaum möglich sein, verschiedene Studierende der Mathematik und ihrer Fähigkeit zu rechnen zu unterscheiden. Analoges gilt für einen zu schweren Test für die GrundschülerInnen.
+
+Für Leistungstests ist also eine breite Verteilung von Aufgabenschwierigkeiten über die Personenfähigkeiten wünschenswert. Wright-Maps erlauben eine Prüfung der Abdeckung, indem sie die Aufgabenschwierigkeiten und die Personenfähigkeiten grafisch miteinander in Beziehung setzen. Es wird dabei auf einen Blick deutlich, wenn in einem bestimmten Schwierigkeits-/Fähigkeitsintervall zu wenige oder zuviele Aufgaben vorliegen. Dies ist insbesondere in der Pilotierungsphase eines Tests hilfreich.
 
 Das folgende Code-Beispiel schätzt die Personenfähigkeiten und schreibt sie in das Objekt `thetas_1pl`. Außerdem werden die Aufgabenschwierigkeiten separat als Objekt `item_xsis_1pl` abgespeichert um anschließend mit der Funktion `wrightMap()` eine automatische Visualisierung zu erhalten (**ABBILDUNG**).
 
@@ -79,7 +83,7 @@ wrightMap(thetas_1pl$theta, item_xsis_1pl,
           axis.items = "Aufgaben")
 ```
 
-Gut erkennbar ist die Fähigkeitsverteilung in Dimension 1 (schmaleres Panel links) und die numerische Zuordnung der Aufgaben zu dieser Dimension (breiteres Panel rechts). Im multidimensionalen Fall wären noch weitere Panels mit Fähigkeitsverteilungen, sowie weitere Zahlenzuordnung für die Aufgaben sichtbar. Ebenfalls deutlich wird die Äquivalenz von Personenfähigkeiten und Aufgabenschwierigkeiten, erkennbar an der Logit-Skala auf der rechten Seite.
+Gut erkennbar ist die Fähigkeitsverteilung in Dimension 1 (schmaleres Panel links) und die numerische Zuordnung der Aufgaben zu dieser Dimension (breiteres Panel rechts). Ebenfalls deutlich wird die Äquivalenz von Personenfähigkeiten und Aufgabenschwierigkeiten, erkennbar an der Logit-Skala auf der rechten Seite.
 
 Ungünstig ist die kategorische Aufgaben-Achse. Da der Datensatz 40 Aufgaben enthält, resultiert ein Overplot der Aufgaben-Namen, dem mit einer Alternativdarstellung begegnet werden kann (**ABBILDUNG**).
 
@@ -92,11 +96,5 @@ wrightMap(thetas_1pl$theta, item_xsis_1pl,
 ```
 
 In diesem Fall ist gut zu sehen, wie die Aufgaben - markiert durch ihren Laufindex aus dem Datensatz - von unten nach oben schwieriger werden. Außerdem erkennbar: Die Aufgaben sind näherungsweise uniform über das Schwierigkeits-/Fähigkeitsintervall verteilt. Außerdem stehen für sehr leistungsstarke und -schwache Personen (Ränder der Fähigkeitsverteilung) empirisch keine äquivalent schwierigen Aufgaben zur Verfügung. 
-
 ### Deutung der Wright-Maps
 Wäre dieser Datensatz aus einer realen Studie entstanden, wäre die Nachkonstruktion von sehr schweren und sehr leichten Aufgaben zu empfehlen. Darüber hinaus halten sich im mittleren Fähigkeitsniveau die meisten Personen auf. Um zwischen diesen besser differenzieren zu können, wären auch dort mehr Aufgaben hilfreich.
-
-Zusammenfassend lässt sich sagen, dass die getesteten Aufgaben ein ausgezeichnetes Profil ansteigender Schwierigkeiten aufweisen. Für eine reale Leistungsüberprüfung und -differenzierung sind in diesem konkreten Fall insgesamt mehr Aufgaben wünschenswert.
-
-## Überschrift
-Das hier ist ein Platzhaltertext, um den Umgang mit Versionskonflikten in GitHub zu testen.
