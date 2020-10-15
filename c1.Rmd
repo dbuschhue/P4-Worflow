@@ -1,35 +1,33 @@
----
-title: "Untitled"
-
----
 ```{r setup, include=FALSE}
-library("TAM")
-library("tidyverse")
+  library("TAM")
+  library("tidyverse")
 ```
 
 # Einführung
 
 ## Rasch-Modellierung
-Bei vielen Test geht es um die Frage, ob ein Probant eine bestimmte Fähigkeit besitzt und damit eine Aufgabe richtig lösen kann. Diese Fähigkeit, die man messen möchte, ist aber meist nicht direkt zugänglich. Sie ist latent. Der Zugang zu dieser Fähigkeit kann also nur über Aufgaben oder Fragen erfolgen, die der Probant beantwortet und in deren Beantwortung sich die latente Fähigkeit zeigt. 
+Bei vielen Tests geht es um die Frage, ob eine Testperson eine bestimmte Fähigkeit besitzt und damit eine Aufgabe richtig lösen kann. Diese Fähigkeit, die man messen möchte, ist aber meist nicht direkt zugänglich. Man spricht auch von einer latenten Fähigkeit. Der Zugang zu dieser Fähigkeit kann also nur über Aufgaben oder Fragen erfolgen, die die Testperson beantwortet und in deren Beantwortung sich die latente Fähigkeit zeigt. 
 
-Die Wahrscheinlichkeit, dass ein Proband eine Aufgabe richtig lösen kann, hängt sowohl von dessen Fähigkeit als auch von der Schwierigkeit der Aufgabe ab. Eine Aufgabe, die sehr oft richtig gelöst wird, könnte z.B. sehr einfach sein. Die Probanden könnten aber auch alle eine sehr hohe Fähigkeit haben, die ihnen erlaubt, die Aufgabe erfolgreich zu bearbeiten. Beide Punkte sind also auf den ersten Blick nicht voneinander zu trennen. Die Rasch-Modellierung (benannt nach dem dänischen Statistiker Georg Rasch (1901–1980)) löst dieses Problem. Das Modell beschreibt wie wahrscheinlich es ist, dass ein Proband $n$ ein Item $i$ richtig löst in Abhängigkeit
+Die Wahrscheinlichkeit, dass eine Person eine Aufgabe richtig lösen kann, hängt sowohl von der Fähigkeit der Person als auch von der Schwierigkeit der Aufgabe ab. Eine Aufgabe, die sehr oft richtig gelöst wird, könnte z.B. sehr einfach sein. Die Probanden könnten aber auch alle eine sehr hohe Fähigkeit haben, die ihnen erlaubt, die Aufgabe erfolgreich zu bearbeiten. Beide Punkte sind also auf den ersten Blick nicht voneinander zu trennen. Die Rasch-Modellierung (benannt nach dem dänischen Statistiker Georg Rasch (1901–1980)) löst dieses Problem. Das Rasch-Modell beschreibt wie wahrscheinlich es ist, dass ein Proband $n$ ein Item $i$ richtig löst in Abhängigkeit
 
-* eines individuellen Personen- oder **Personenfähigkeitsparameters $\theta_n$** für jeden Probanden, welcher das Fähigkeitsausmaß des Probanden $n$ beschreibt und
-* eines Aufgaben- oder **Aufgabenschwierigkeitsparameters $\delta_i$**, der ist den Schwierigkeitsgrad der Aufgabe $i$ beschreibt.
+* eines individuellen Personen- oder **Personenfähigkeitsparameters $\theta_n$** für jede Person, welche das Fähigkeitsausmaß der Person $n$ beschreibt und
+* eines Aufgaben- oder **Aufgabenschwierigkeitsparameters $\delta_i$**, der den Schwierigkeitsgrad der Aufgabe $i$ beschreibt.
 
-Man erhält also aus einem Datensatz von richtigen oder falschen Antworten (ordinale Daten) der Pronden zu verschiednen Aufgaben ein kontinuierliches metrisches Maß in Form der Personenfähigkeitsparameter $\theta_n$ und der Aufgabenschwierigkeitsparameter $\delta_i$. Prinzipiell ist dieses Modell nicht auf dichotom zu bewertenden Aufgaben beschränkt. Auch likert-skalierte Items sind z.B. möglich, sollen aber nicht Gegenstand dieses Buches sein.
+Man erhält also aus einem Datensatz von richtigen oder falschen Antworten (ordinale Daten) der Personen zu verschiedenen Aufgaben ein kontinuierliches intervallskaliertes Maß in Form der Personenfähigkeitsparameter $\theta_n$ und der Aufgabenschwierigkeitsparameter $\delta_i$. Prinzipiell ist dieses Modell nicht auf dichotom zu bewertende Aufgaben beschränkt. Auch likert-skalierte Items sind z.B. möglich, sollen aber nicht Gegenstand dieses Beitrages sein.
 
 Die Modellannahmen lauten wie folgt:
 
-* Das Maß der Fähigkeit jedes Probanden ist **ausschließlich** durch den Personenfähigkeitsparameter charakterisiert. Das heißt, dass es keine anderen Einflussfaktoren gibt und ein sog. eindimensionales Modell berechnet wird.
+* Das Maß der Fähigkeit jedes Probanden ist **ausschließlich** durch den Personenfähigkeitsparameter charakterisiert. Das heißt, dass es keine anderen Einflussfaktoren auf Seiten der Person gibt und ein sog. eindimensionales Modell berechnet wird.
 
 * Die Schwierigkeit der einzelnen Aufgaben ist **ausschließlich** durch den Aufgabenschwierigkeitsparameter charakterisiert. Die Schwierigkeit stellt also ebenfalls ein eindimensionales Merkmal dar.
 
-* Beide Parameter werden auf der selben Skala gemessen.
+* Beide Parameter werden auf derselben Skala gemessen.
 
-* Die Leistungen eines Probanden hängt über alle Aufgaben hinweg – abgesehen von Zufall –, einzig von der Fähigkeit des Probanden und der Schwierigkeit der Aufgabe ab, nicht aber davon, welche anderen Aufgaben er oder sie bereits gelöst hat oder noch lösen wird. 
+* Die Leistungen einer Person hängt über alle Aufgaben hinweg – abgesehen von Zufall –, einzig von der Fähigkeit des Probanden und der Schwierigkeit der Aufgabe ab, nicht aber davon, welche anderen Aufgaben er oder sie bereits gelöst hat oder noch lösen wird. 
 
-Zusammehhänge zwischen dem Fähigkeitsparameter und der Schwierigkeitsparameter der Aufgabe sind viele vorstellbar. Der Zusammehang sollte aber auf jeden Fall so sein, dass die Wahrscheinlichkeit einer richtigen Antwort mit wachsender Fähigkeit steigt. Bei einem perfekten Item und idealen Probanden würde man hoffen, dass die Wahrscheinlichkeit einer richtigen Antwort für Probanden mit einer niedrigen Fähigkeit bei null liegt und ab einer bestimmten Fähigkeit sprunghaft auf eins ansteigt. Ganz so ideal wird es nicht sein und der Übergangsbereich wird etwas weicher verlaufen. Explizit wird angenommen, dass sich die Wahrscheinlichkeit einer richtigen Antwort einer logistischen Funktion folgend entwickelt. Man setzt für die Wahrscheinlichkeit einer richtigen Antwort unter der Bedingung einer Personenfähigkeit $\theta_n$ und Schwierigkeit der Aufgabe $\delta_i$ an:
+Wie modelliert das Rasch-Modell nun aber genau das Antwortverhalten?
+
+Der Zusammenhang zwischen der Lösungswahrscheinlichkeit einer Aufgabe, deren Schwierigkeit und der Fähigkeit der Person sollte jeden Fall derart sein, dass die Wahrscheinlichkeit einer richtigen Antwort mit wachsender Fähigkeit steigt. Im Idealfall könnte man annehmen, dass die Wahrscheinlichkeit einer richtigen Antwort für Personen mit einer niedrigen Fähigkeit bei null liegt und ab einer bestimmten Fähigkeit sprunghaft auf eins ansteigt. Ganz so ideal wird es aber nicht sein und der Übergangsbereich wird etwas weicher verlaufen. Explizit wird angenommen, dass sich die Wahrscheinlichkeit einer richtigen Antwort einer logistischen Funktion folgend entwickelt. Man setzt für die Wahrscheinlichkeit einer richtigen Antwort (mit 1 codiert) unter der Bedingung einer Personenfähigkeit $\theta_n$ und Schwierigkeit der Aufgabe $\delta_i$ an:
 
 $$P(1|\theta_n, \delta_i) = \frac{\exp(\theta_n - \delta_i)}{1+\exp(\theta_n - \delta_i)} $$
 Für eine Aufgabe mit dem Schwierigkeitsparameter 0 erhält man so folgenden Verlauf der Lösungswahrscheinlichkeit über den Fähigkeitsparameter.
@@ -40,11 +38,15 @@ Für eine Aufgabe mit dem Schwierigkeitsparameter 0 erhält man so folgenden Ver
     xlab(expression(theta)) +
     ylab(expression("P(1|"*theta*", "*delta*"=0)"))
 ```
-Personen mit einem Fähigkeitsparameter von -5.0 lösen die Aufgabe also fast nie, während Personen mit einem Fähigkeitsparameter von +5.0 die Aufgabe fast immer lösen. Personen, deren Fähigkeitsparameter gerade so groß ist wie der Parameter der Aufgabenschwierigkeit lösen die Aufgabe in genau 50% der Fälle.
+Personen mit einem Fähigkeitsparameter von -5.0 lösen diese Aufgabe also mit einer Wahrscheinlichkeit von etwa 0 (also wahrscheinlich nie), während Personen mit einem Fähigkeitsparameter von +5.0 die Aufgabe mit einer Wahrscheinlichkeit von etwa 1 (also wohl immer) lösen. Personen, deren Fähigkeitsparameter gerade so groß ist wie der Parameter der Aufgabenschwierigkeit, lösen die Aufgabe mit einer Wahrscheinlichkeit von 0.5 (also in etwa 50% der Fälle).
 
-Für zwei verschieden schwierige Items erhält man so zwei gegeneinander in x-Richtung verschobene Kurven mit. Dies ist im folgenden Plot Beispiel haft für eine Aufgabe mit einem Itemschwierigkeitsparameter von -0.5 (blau) und eine mit 1.7 (rot) gezeigt.
+Im folgenden Plot ist die Lösungswahrscheinlichkeit einer Aufgabe in Abhängigkeit der Personenfähigkeit aufgetragen. Die Schwierigkeit der Aufgabe kann über den Schieberegler verändert werden. So kann z.B. verfolgt werden, wie sich die Lösungswahrscheinlichkeit einer Person mit Fähigkeitsparameter 0 ändert, wenn die Aufgabenschwierigkeit variiert wird.
 
-```{r schwierigkeiten, echo = FALSE}
+```{r shiny-app, eval=TRUE, include=TRUE, echo=FALSE}
+  knitr::include_app("https://moehrke.shinyapps.io/Modellfunktion/", height = "510px")
+```
+
+```{r schwierigkeiten, eval=FALSE, include=FALSE, echo = FALSE}
   P_demo <- tibble(theta = seq(-5,5,by=0.01), P_1 = (exp( theta + 0.5))/(1+exp(theta + 0.5)), P_2 = (exp(theta-1.7))/(1+exp(theta - 1.7)))
   ggplot(P_demo) + 
     geom_path(aes(theta, P_1), colour="blue", size=1) +
@@ -52,39 +54,41 @@ Für zwei verschieden schwierige Items erhält man so zwei gegeneinander in x-Ri
     xlab(expression(theta)) + 
     ylab(expression("P(1|"*theta*", "*delta*"=0)"))
 ```
-Bei einer Personen mit einem Personenfähigkeitsparmeter von 0 würden also die erste Aufgabe (blau) in gut 60 % der Fälle lösen, während die zweite Aufgabe (rot) nur von ca. 15 % der Personen gelöst werden würde.
+Personen mit einem Personenfähigkeitsparameter von 0 würden also eine Aufgabe mit $\delta = -0.5$ mit einer Wahrscheinlichkeit von 0.6 lösen, während sie eine Aufgabe mit $\delta = 1.7$ nur mit einer Wahrscheinlichkeit von 0.15 lösen würde.
 
-Schau man sich Formel für die Lösungswahrscheinlichkeit noch einmal an, sieht man, dass die Lösungswahrscheinlichkeit für Aufgabe $i$ einzig von der Differenz von den Parametern für Personenfähigkeit und Aufgabengabenschwierigkeit ab. Formt man die Gleichung etwas um, kann man auch schreiben
+Schaut man sich die Formel für die Lösungswahrscheinlichkeit noch einmal an, sieht man, dass die Lösungswahrscheinlichkeit für Aufgabe $i$ einzig von der Differenz der Parameter für Personenfähigkeit und Aufgabengabenschwierigkeit abhängt. Formt man die Gleichung etwas um, kann man auch schreiben
 $$\ln\left(\frac{P(1|\theta_n, \delta_i)}{1 - P(1|\theta_n, \delta_i)}\right) = \ln\left(\frac{P(1|\theta_n, \delta_i)}{ P(0|\theta_n, \delta_i)}\right) = \theta_n - \delta_i$$
 
-Der natürliche Logarithmus der Chance (Wahrscheinlichkeit der richtigen Lösung geteilt durch Wahrscheinlichkeit der falschen Lösung) gleich der Differenz von Personenfähigkeitsparameter und Aufgabengabenschwierigkeitsparameter. Plottet man die Chance gegen diese Differenz erhält man eine Gerade mit Steigung 1.
+Der natürliche Logarithmus der Chance (Wahrscheinlichkeit der richtigen Lösung geteilt durch Wahrscheinlichkeit der falschen Lösung) ist gleich der Differenz von Personenfähigkeits- und Aufgabenschwierigkeitsparameter. Plottet man die Chance gegen diese Differenz erhält man eine Gerade mit Steigung 1.
 
-Diese Steigung und damit die Steigung des Übergangs von $P$ wird für das Rasch-Modell also als fest angenommen. Die Steigung wird auch als Trennschärfe bezeichnet, weil Sie eine Aussage darüber liefert, wie klar ein Item zwischen den Fähigkeiten zweier Probanden dicht an der Schwierigkeit des Items trennen kann. Idealisiert würde ein perfektes Item von einer Person mit einer Fähigkeit $\theta_n$ nie gelöst werden, während ein Person mit einer leicht höheren Fähigkeit das Item immer löst. Bei höheren Modellen wie dem 2-PL geht die Steigung als zusätzlicher Parameter ein.
+Diese Steigung und damit die Steigung des Übergangs von $P$ wird für das Rasch-Modell also als fest angenommen. Die Steigung wird auch als Trennschärfe bezeichnet, weil Sie eine Aussage darüber liefert, wie klar ein Item zwischen den Fähigkeiten zweier Personen trennen kann.
+
+Bei höheren Modellen wie dem 2-PL geht die Steigung als zusätzlicher Parameter ein.
 
 ### Beispiel
-Stellt man sich für ein Beispiel vor, dass die Kochkompetenz von Probanden gemessen werden soll. Dies stellt eine latente Fähigkeit dar, die nur über Testaufgaben auf diesem Gebiet erforscht werden kann. Ein entsprechender Test sollte aus verschiedenen schweren Aufgaben bestehen, wie etwa
+Stellt man sich für ein Beispiel vor, dass die Kochkompetenz von Probanden gemessen werden soll. Dies stellt eine latente Fähigkeit dar, die nur über Testaufgaben auf diesem Gebiet erforscht werden kann. Ein entsprechender Test sollte aus verschieden schweren Aufgaben bestehen, wie etwa
 
 1. Zubereiten einer Tütensuppe (einfach) 
 2. Kochen einer Tomatensoße nach Rezept (mittel)
 3. Kochen von Milchreis (mittel)
 4. Zubereitung eines mehrgängigen Menüs ohne Rezept für 4 Personen (schwer)
 
-Welchen Aufgabenschwierigkeitsparamter man diesen drei Aufgaben zuweisen genau zuweisen würden, wie schwierig die Aufgaben also in relation zueinander sind, ist nicht bekannt. Ob zum Beispiel Aufgabe 2. oder 3. schwieriger ist, ist am Anfang schwer zu beurteilen. In realen Studien kann das bei der Erstellung der Aufgaben noch schlechter zu beurteilen sein.
+Welche Aufgabenschwierigkeitsparameter man diesen drei Aufgaben zuweisen würden, wie schwierig die Aufgaben also in Relation zueinander sind, ist nicht bekannt. Ob zum Beispiel Aufgabe 2 oder 3 schwieriger ist, ist schwer zu beurteilen. In realen Studien kann das bei der Erstellung der Aufgaben noch schwieriger sein.
 
 Lässt man nun eine Zahl von Probanden alle vier Aufgaben in beliebiger Reihenfolge bearbeiten und vermerkt Erfolg (Ergebnis genießbar) oder Misserfolg (nicht genießbar), so erhält man eine Liste mit den Ergebnissen der Personen als Zeilen und den Aufgaben als Spalten. Diese Form wird auch als tidy Data (aufgeräumte/ordentliche Daten) bezeichnet und ist die bevorzugte Form, in der Daten vorliegen sollten [@wickham2014] oder * [Tidy data](https://tidyr.tidyverse.org/articles/tidy-data.html).
 
-Mit diesen Daten kann eine Rasch Analyse gemacht werden, mit welcher man ein metrisches Maß für sowohl die Kochfähigkeit jedes einzelnen Probanden erhält (die Personenfähigkeitsparameter $\theta_n$) als auch für die Schwierigkeit der einzelnen Aufgaben (die Aufgabenschwierigkeitsparameter $\delta_i$) erhält.
+Mit diesen Daten kann eine Rasch Analyse gemacht werden, mit welcher man ein intervallskaliertes Maß für sowohl die Kochfähigkeit jedes einzelnen Probanden erhält (die Personenfähigkeitsparameter $\theta_n$) als auch für die Schwierigkeit der einzelnen Aufgaben (die Aufgabenschwierigkeitsparameter $\delta_i$) erhält.
 
 ### Wie wird der beste Fit gefunden?
 Der beste Fit zwischen Modell und Daten, also der Satz von $\theta_n$ und $\delta_i$, der die beste Passung zwischen Modell und Daten liefert, kann über verschiedene Verfahren wie unter anderem das Least-quares- oder aber das Maximum-Likelihood-Verfahren gefunden werden [@linacre1999]. 
 
 Bei letzterem wird durch ein iteratives Vorgehen, die sog. Likelihood-Funktion
 $$ L_n= \prod\limits_{i}P(1/0|\theta_n, \delta_i)$$
-für jede Personen $n$ berechnet. Diese wird genau für den Personenfähigkeitsparameter maximal, für den die Wahrscheinlichkeit maximal wird, genau dieses Antwortverhalten auf die einzelnen Items zu bekommen. Es werden also die $\theta_n$ gesucht, für die die $L_n$ maximal werden.
+für jede Personen $n$ berechnet. Diese wird genau für den Personenfähigkeitsparameter maximal, für den die Wahrscheinlichkeit maximal wird, genau dieses Antwortverhalten auf die einzelnen Items zu erhalten. Es werden also die $\theta_n$ gesucht, für die die $L_n$ maximal werden.
 
 Die Berechnung startet mit einer Schätzung der Itemschwierigkeit über den Anteil der Personen, die eine Aufgabe richtig bearbeitet haben
 $$ \delta_i = \log\left(\frac{p}{1-p}\right) $$
-und sucht den Satz von Personenfähigkeitsparametern $\theta_n$, für den die Likelihood-Funktion maximal wird. Im nächsten Schritt wird mit diesen Satz von Personenfähigkeitsparametern $\theta_n$, die Likelihood-Funktion bezüglich der Itemschwierigkeitsparameter $\delta_i$ maximiert. So wird die Likelihood-Funktion immer weiter abwechseln bezüglich der $\theta_n$ und der $\delta_i$ maximiert. Dieser Vorgang sollte nach einer Zahl von Schritten konvergieren - sprich die Änderung der $theta_n$ und $\delta_i$ wird immer kleiner und unterschreiter irgendwann einen festgelegten Wert. Dann wird die Iteration abgebrochen. 
+und sucht den Satz von Personenfähigkeitsparametern $\theta_n$, für den die Likelihood-Funktion maximal wird. Im nächsten Schritt wird mit diesen Satz von Personenfähigkeitsparametern $\theta_n$, die Likelihood-Funktion bezüglich der Itemschwierigkeitsparameter $\delta_i$ maximiert. So wird die Likelihood-Funktion immer weiter abwechseln bezüglich der $\theta_n$ und der $\delta_i$ maximiert. Dieser Vorgang sollte nach einer Zahl von Schritten konvergieren - sprich die Änderung der $\theta_n$ und $\delta_i$ wird immer kleiner und unterschreitet irgendwann einen festgelegten Wert. Dann wird der Prozess abgebrochen. 
 
 Für einen Test mit zwei Items mit den Schwierigkeitsparametern ($\delta_1 = -1$, $\delta_1 = 0.5$) wäre die Likelihood-Funktion eines Probanden mit einer richtigen Antwort im ersten Item und einer falschen im zweiten Item:
 
@@ -95,14 +99,14 @@ Für diese muss nun das Maximum bezüglich $\theta$ gefunden werden.
 
 An dieser Stelle gibt es verschiedene Schätzmethoden für die Itemschwierigkeits- und Personenfähigkeitsparameter wie die Joint-Maximum-Likelihood-Schätzung (JML) und die Weighted Likelihood Schätzung (WLE), welche ein Bias in der Schätzung mit JML verringert. Die genauen Details dieser verschiedenen Verfahren sollen an dieser Stelle aber nicht weiter behandelt werden.
 
-### zum Weiterschauen
+### zum Weiterlesen
 Sehr interessante Videos zu diesem Thema, die das Ganze noch einmal wesentlich umfangreicher beschreiben, sind:
 
 * [A Conceptual Introduction to Item Response Theory](https://www.youtube.com/watch?v=SrdbllMYq8M&list=PLJNUIJnElUzDmrIPunMyF3tTvIHb65wNb)
 * [Logistic Regression](https://www.youtube.com/watch?v=yIYKR4sgzI8&list=PLblh5JKOoLUKxzEP5HA2d-Li7IJkHfXSe)
 
 ## Der Datensatz
-Der für diese Erklärung verwendete Datensatz stammt aus dem Paket TAM und hat das Format einer einfachen Matrix. Es handelt sich um simulierte Daten von 2000 Probanden (als Zeilen) zu jeweils 40 Items (als Spalten). Die Spalten für die einzelnen Items sind mit I1 bis I40 bezeichnet. Eine Spalte für eine Probanden ID oder ähnliches gibt es nicht. Auch hat der Datensatz keine fehlenden Daten, d.h. zu jedem Probanden gibt es Daten zu jedem Item. Die Items selbst sind alle dichotom (richtig/falsch) und mit 1 und 0 codiert. 
+Der für diese Erklärung verwendete Datensatz stammt aus dem Paket TAM und hat das Format einer einfachen Matrix. Es handelt sich um simulierte Daten von 2000 Personen (als Zeilen) zu jeweils 40 Items (als Spalten). Die Spalten für die einzelnen Items sind mit I1 bis I40 bezeichnet. Eine Spalte für eine Personen-ID oder ähnliches gibt es nicht. Auch hat der Datensatz keine fehlenden Daten, d.h. zu jedem Probanden gibt es Daten zu jedem Item. Die Items selbst sind alle dichotom (richtig/falsch) und mit 1 und 0 codiert. 
 
 ```{r data}
 data(data.sim.rasch)

@@ -1,7 +1,4 @@
 ---
-title: "Item Parameter Interpretation"
-author: "Marvin Rost"
-date: "Zuletzt gerendert: `r format(Sys.time(), '%F %H:%M')`"
 output: 
   html_document:
     code_folding: show
