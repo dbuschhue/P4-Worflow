@@ -1,7 +1,7 @@
 --- 
 title: "Was ich über IRT mit R gerne vorher gewusst hätte. Eine Tutorialsammlung"
 author: "Tina Grottke, Philipp Möhrke, Marvin Rost, David Buschhüter (Hrsg.)"
-date: "2020-10-13"
+date: "2020-10-15"
 bibliography: book.bib
 description: Alles was ich hätte wissen wollen
 documentclass: book
