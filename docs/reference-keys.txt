@@ -2,8 +2,8 @@ fig:wright-map1
 fig:wright-map2
 vorwort-disclaimer
 wie-kann-ich-zu-diesem-sammelband-beitragen
-einführung
-rasch-modellierung
+praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell
+motivation-und-konzeptuelle-herleitung
 beispiel
 wie-wird-der-beste-fit-gefunden
 zum-weiterlesen
