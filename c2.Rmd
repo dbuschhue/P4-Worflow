@@ -23,9 +23,9 @@ data(data.sim.rasch) # Lerndatensatz mit 2000 Personen & 40 Items, integriert in
 - Torres Irribarra, D. & Freund, R. (2014). Wright Map: IRT item-person map with ConQuest integration. Available at http://github.com/david-ti/wrightmap
 
 ## Modellschätzung
-Der folgende Code initiiert die Schätzung eines Rasch-Modells für den vorliegenden Datensatz. Das Listen-Objekt `mod1PL` mit vielen Einträgen wird erzeugt.
+Der folgende Code initiiert die Schätzung eines Rasch-Modells für den vorliegenden Datensatz. Das Listen-Objekt `mod1PL` mit vielen Einträgen wird erzeugt. Der angezeigte Output wird im Folgenden erläutert.
 
-```{r Rasch-Modell, results='hide'}
+```{r Rasch-Modell, results='asis'}
 # Model 1: Rasch model (MML estimation)
 mod1PL <- TAM::tam.mml(resp=data.sim.rasch)
 ```
