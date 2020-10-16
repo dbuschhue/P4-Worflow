@@ -23,17 +23,27 @@ data(data.sim.rasch) # Lerndatensatz mit 2000 Personen & 40 Items, integriert in
 - Torres Irribarra, D. & Freund, R. (2014). Wright Map: IRT item-person map with ConQuest integration. Available at http://github.com/david-ti/wrightmap
 
 ## Modellschätzung
-Der folgende Code initiiert die Schätzung eines Rasch-Modells für den vorliegenden Datensatz. Das Listen-Objekt `mod1PL` mit vielen Einträgen wird erzeugt. Der angezeigte Output wird im Folgenden erläutert.
+Der folgende Code initiiert die Schätzung eines Rasch-Modells für den vorliegenden Datensatz. Das Listen-Objekt `mod1PL` mit 57 Sublisten wird erzeugt. Außerdem wird ein umfänglicher Konsolen-Output sichtbar. Dieser wird im Folgenden erläutert, es wird sich auf die mit Punkten getrennten Teilabschnitte bezogen.
 
-```{r Rasch-Modell, results='asis'}
-# Model 1: Rasch model (MML estimation)
+- `## Processing Data`: Mit Uhrzeit und Datum versehener Diagnoseabschnitt. `Calculated Sufficient Statistics` bestätigt für das Raschmodell, dass ausreichend viele Personen ausreichend viele Aufgaben bearbeitet haben. Weitere Details werden an dieser Stelle nicht ausgeführt, es sei lediglich darauf hingewiesen, dass die Berechnung bereits an dieser Stelle abgebrochen werden kann. Dies geschieht bspw. wenn ein fehlerhafter Datensatz vorliegt, der von der Funktion nicht lesbar ist.
+
+- `Iteration 1` bis `Iteration 10`: Hier werden iterativ die Modellparameter geschätzt (vgl. Abschnitt 3.1.2). Weil im Raschmodell nur die Schwierigkeit (`item intercept parameter`) und keine Steigung (`item slope parameter`) und kein Einfluss von Hintergrundvariablen (`regression parameter`) in das Modell eingebaut wurden, sind diese konstant 0. Gut erkennbar ist das kontinuierliche Absinken der `Deviance`-Änderung (`Absolute change` & `Relative change`): Die Berechnung konvergiert. Die `Deviance` selbst kann als Transformation der Likelihood (vgl. Abschnitt 3.1.2) verstanden werden. Sie ist also ein Maß für die Passung des Modells zu den Daten, die von Iteration zu Iteration besser wird, bis ein willkürlicher Grenzwert für die Änderung (Default bei `tam.mml()`: $0.0001$) erreicht wurde.
+
+- `Item Parameters`: Äquivalent zum Output `head(mod1PL$item_irt)`, s. u. bei der Erklärung der Kennwerte aus dem Objekt `mod1PL$item`.
+
+- `Regression Coefficients`: Es wurden keine weiteren Hintergrundvariablen (z. B. Alter oder Gender) in das Modell eingefügt. Daher ist der Wert in diesem Fall $0$.
+
+- `Variance`: Varianz des berechneten Parameters.
+
+- `EAP Reliability`: **E**xpected-**A**-**P**osteriori-Reliabilität. Über ein statistisches Verfahren berechnetes Maß für die Reliabilität des Testinstruments. Kann in erster Näherung analog zu Cronbachs-$\alpha$ aus der klassischen Testtheorie interpretiert werden. Wichtiger Hinweis: Die EAP-Reliabilität ist ein zuverlässiger Schätzer für Populationen, nicht jedoch für Einzelpersonen!
+
+```{r Rasch-Modell}
 mod1PL <- TAM::tam.mml(resp=data.sim.rasch)
 ```
 
-Folgend wird das Dataframe-Objekt `mod1PL$item` aus dem Listen-Objekt `mod1PL` ausgewählt und ausgegeben. Es enthält verschiedene Spalten mit deskriptiven Kennwerten:
+Folgend wird das Dataframe-Objekt `mod1PL$item` aus dem Listen-Objekt `mod1PL` ausgewählt und mit der Funktion `head()` die ersten 6 von insgesamt 40 Einträgen ausgegeben. Es enthält verschiedene Spalten mit deskriptiven Kennwerten:
 
 ```{r Itemkennwerte, collapse=TRUE}
-# Ausgabe der ersten 6 von 40 Itemkennwerten
 head(mod1PL$item)
 ```
 - `item`: Laufnummer der jeweiligen Items.
@@ -42,16 +52,17 @@ head(mod1PL$item)
 
 - `M`: Deskriptive Schwierigkeit des Items ($M = \frac{N_{korrekt}}{N_{gelöst}}$).
 
-- `xsi.item`: *xsi* wird ausgesprochen wie geschrieben und bezieht sich auf den griechischen Buchstaben ($\xi$). Der $\xi$-Parameter ist die, mit dem Modell geschätzte, Aufgabenschwierigkeit auf der Skala von $-\infty$ bis $\infty$ mit 0 als Mittelwert. Übliche Werte in der Praxis liegen zwischen -3 bis 3. Eine Aufgabe mit Schwierigkeit $\xi=1$ ist dabei schwerer als eine Aufgabe mit Schwierigkeit $\xi=0$. Oft findet man den Schwierigkeitsparameter auch unter anderen griechischen Buchstaben in der Literatur, z. B. $\delta$ oder $\beta$. TAM übernimmt die Notation mit $\beta$ unter der Bezeichnung *IRT parametrization*. Siehe dazu das folgende Dataframe-Objekt `mod1PL$item_irt`.
+- `xsi.item`: *xsi* wird ausgesprochen wie geschrieben und bezieht sich auf den griechischen Buchstaben ($\xi$). Der $\xi$-Parameter ist die, mit dem Modell geschätzte, Aufgabenschwierigkeit auf der Skala von $-\infty$ bis $\infty$ mit 0 als Mittelwert. Übliche Werte in der Praxis liegen zwischen -3 bis 3. Eine Aufgabe mit Schwierigkeit $\xi=1$ ist dabei schwerer als eine Aufgabe mit Schwierigkeit $\xi=0$. Oft findet man den Schwierigkeitsparameter auch unter anderen griechischen Buchstaben in der Literatur, z. B. $\delta$ oder $\beta$. TAM übernimmt die Notation mit $\beta$ unter der Bezeichnung *IRT parametrization*. Siehe dazu die ersten 6 von 40 Einträgen im folgenden Dataframe-Objekt `mod1PL$item_irt`.
 
 ```{r IRT_params, collapse=TRUE}
-# Ausgabe der ersten 6 von 40 Itemkennwerten unter IRT-Parametrisierung
 head(mod1PL$item_irt)
 ```
 
 - `AXsi_.Cat1`: Da im gezeigten Beispiel nur ein eindimensionales Modell ohne weitere Bedingungen berechnet wurde, entspricht der Wert dem $\xi$-Parameter, d. h. der Schwierigkeit. Unter anderen Bedingungen (beispielsweise Mehrdimensionalität, oder verschiedenen Testheftpositionen der Aufgabe), können verschiedende, bedingte Schwierigkeiten auftreten. Dazu ein fiktives, vereinfachtes Beispiel: Eine Aufgabe ist in zwei verschiedenen Testheften zu finden. In Testheft Nr. 1 ist sie immer die erste Aufgabe, in Testheft Nr. 2 ist sie immer die letzte Aufgabe. Die Testheftposition kann im statistischen Modell berücksichtigt werden und es würden dann zwei testheftabhängige Schwierigkeitsparameter berechnet, die sich als `AXsi_.Cat1` und `AXsi_.Cat2` im Output wiederfinden würden.
 
 - `B.Cat1.Dim1`: Steigungsparameter. Im eindimensionalen 1-PL-Modell wird der B-Parameter nicht berechnet, sondern auf $B=1$ fixiert. Oft findet man den Steigungsparameter auch unter der Bezeichnung $\alpha$ (siehe Output oben zu `xsi.item`).
+
+Eine Zusammenfassung des Modellobjekts mit allen oben ausgeführten Kennwerten kann über den Befehl `summary(mod1PL)` erhalten werden.
 
 ### Deutung der Aufgabenschwierigkeiten
 Die erhaltenen Schwierigkeitsparameter stehen unter dem Vorbehalt, dass das Rasch-Modell gültig ist (**VERWEIS**). Sie setzen die Aufgaben nun jenseits von subjektiven Einflüssen miteinander in Beziehung. War eine Schwierigkeitseinschätzung a-priori (bspw. durch ein Expertenrating) noch von zahlreichen, personenabhängigen Einflüssen getragen, sind nun die Bearbeitungserfolge durch die Zielgruppe in der quantitativ-empirischen Erhebung integriert: Die Schwierigkeiten wurden gemessen und nicht über den Daumen gepeilt. Noch vor weiterführenden Analysen können die so erhaltenen, quantitativen Befunde wiederum durch qualitative Urteile abgeglichen werden: 
@@ -68,11 +79,11 @@ Mit einem Mathematiktest für GrundschülerInnen wird es kaum möglich sein, ver
 
 Für Leistungstests ist also eine breite Verteilung von Aufgabenschwierigkeiten über die Personenfähigkeiten wünschenswert. Wright-Maps erlauben eine Prüfung der Abdeckung, indem sie die Aufgabenschwierigkeiten und die Personenfähigkeiten grafisch miteinander in Beziehung setzen. Es wird dabei auf einen Blick deutlich, wenn in einem bestimmten Schwierigkeits-/Fähigkeitsintervall zu wenige oder zuviele Aufgaben vorliegen. Dies ist insbesondere in der Pilotierungsphase eines Tests hilfreich.
 
-Das folgende Code-Beispiel schätzt die Personenfähigkeiten und schreibt sie in das Objekt `thetas_1pl`. Außerdem werden die Aufgabenschwierigkeiten separat als Objekt `item_xsis_1pl` abgespeichert um anschließend mit der Funktion `wrightMap()` eine automatische Visualisierung zu erhalten (**ABBILDUNG**).
+Das folgende Code-Beispiel schätzt die Personenfähigkeiten und schreibt sie über die Funktion `tam.wle` in das Objekt `thetas_1pl`. Außerdem werden die Aufgabenschwierigkeiten separat als Objekt `item_xsis_1pl` abgespeichert um anschließend mit der Funktion `wrightMap()` eine automatische Visualisierung zu erhalten (**ABBILDUNG**).
 
 ```{r wright-map1, fig.cap="Abb. XYZ: Eine Variante für eine Wright-Map.", results='hide'}
-thetas_1pl <- tam.wle(mod1PL) # WLEs berechnen
-item_xsis_1pl <- mod1PL$xsi$xsi # Itemschwierigkeiten separieren
+thetas_1pl <- tam.wle(mod1PL)
+item_xsis_1pl <- mod1PL$xsi$xsi
 
 wrightMap(thetas_1pl$theta, item_xsis_1pl,
           main.title = "Beispiel für Wright-Map",
