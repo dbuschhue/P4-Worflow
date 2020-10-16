@@ -25,6 +25,10 @@ data(data.sim.rasch) # Lerndatensatz mit 2000 Personen & 40 Items, integriert in
 ## Modellschätzung
 Der folgende Code initiiert die Schätzung eines Rasch-Modells für den vorliegenden Datensatz. Das Listen-Objekt `mod1PL` mit 57 Sublisten wird erzeugt. Außerdem wird ein umfänglicher Konsolen-Output sichtbar. Dieser wird im Folgenden erläutert, es wird sich auf die mit Punkten getrennten Teilabschnitte bezogen.
 
+```{r Rasch-Modell}
+mod1PL <- TAM::tam.mml(resp=data.sim.rasch)
+```
+
 - `## Processing Data`: Mit Uhrzeit und Datum versehener Diagnoseabschnitt. `Calculated Sufficient Statistics` bestätigt für das Raschmodell, dass ausreichend viele Personen ausreichend viele Aufgaben bearbeitet haben. Weitere Details werden an dieser Stelle nicht ausgeführt, es sei lediglich darauf hingewiesen, dass die Berechnung bereits an dieser Stelle abgebrochen werden kann. Dies geschieht bspw. wenn ein fehlerhafter Datensatz vorliegt, der von der Funktion nicht lesbar ist.
 
 - `Iteration 1` bis `Iteration 10`: Hier werden iterativ die Modellparameter geschätzt (vgl. Abschnitt 3.1.2). Weil im Raschmodell nur die Schwierigkeit (`item intercept parameter`) und keine Steigung (`item slope parameter`) und kein Einfluss von Hintergrundvariablen (`regression parameter`) in das Modell eingebaut wurden, sind diese konstant 0. Gut erkennbar ist das kontinuierliche Absinken der `Deviance`-Änderung (`Absolute change` & `Relative change`): Die Berechnung konvergiert. Die `Deviance` selbst kann als Transformation der Likelihood (vgl. Abschnitt 3.1.2) verstanden werden. Sie ist also ein Maß für die Passung des Modells zu den Daten, die von Iteration zu Iteration besser wird, bis ein willkürlicher Grenzwert für die Änderung (Default bei `tam.mml()`: $0.0001$) erreicht wurde.
@@ -36,10 +40,6 @@ Der folgende Code initiiert die Schätzung eines Rasch-Modells für den vorliege
 - `Variance`: Varianz des berechneten Parameters.
 
 - `EAP Reliability`: **E**xpected-**A**-**P**osteriori-Reliabilität. Über ein statistisches Verfahren berechnetes Maß für die Reliabilität des Testinstruments. Kann in erster Näherung analog zu Cronbachs-$\alpha$ aus der klassischen Testtheorie interpretiert werden. Wichtiger Hinweis: Die EAP-Reliabilität ist ein zuverlässiger Schätzer für Populationen, nicht jedoch für Einzelpersonen!
-
-```{r Rasch-Modell}
-mod1PL <- TAM::tam.mml(resp=data.sim.rasch)
-```
 
 Folgend wird das Dataframe-Objekt `mod1PL$item` aus dem Listen-Objekt `mod1PL` ausgewählt und mit der Funktion `head()` die ersten 6 von insgesamt 40 Einträgen ausgegeben. Es enthält verschiedene Spalten mit deskriptiven Kennwerten:
 
