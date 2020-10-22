@@ -1,5 +1,7 @@
 --- 
-title: "Was ich über IRT mit R gerne vorher gewusst hätte. Eine Tutorialsammlung"
+title:  |
+        | Statistische Analysen mit R in den MINT-Didaktiken 
+        | Eine Tutorial-Sammlung
 author: "Tina Grottke, Philipp Möhrke, Marvin Rost, David Buschhüter (Hrsg.)"
 date: "`r Sys.Date()`"
 bibliography: book.bib
@@ -20,7 +22,7 @@ iframe {
 
 ACHTUNG: DIES IST EIN ERSTER DRAFT. WIR ÜBERNEHMEN KEINE VERANTWORTUNG FÜR DIE RICHTIGKEIT DER INFORMATIONEN. ES IST ALS "WORK IN PROGRESS" ZU SEHEN.
 
-# Wie kann ich zu diesem Sammelband beitragen?
+# Wie kann ich zu diesem Sammelband einen Beitrag leisten?
 
 **Wer kann einen Beitrag einreichen?**
 
@@ -33,6 +35,14 @@ Ein einreichbarer Beitrag...
 *	... ist interessant für die oben genannte Community .
 *	... hat eine „Tutorialfunktion“ (Ziel sollte es sein, dass die Person im Anschluss eine entsprechende Analyse umsetzen kann und Parameter sowie den Output interpretieren kann).
 *	... betrifft die Nutzung von R-Paketen, die für die oben genannte Community von Interesse sind (insbesondere zur Psychometrie).
+
+Es gibt dabei zwei Arten von Beiträgen: 
+
+1. Essentiell für das Buch ist der Gedanke der Kollaboration. Sie können also insbesondere beitragen, indem Sie die Beiträge anderer Autor*innen kommentieren. (Öffnen Sie Sie dazu einfach eine GitHub-Issue: https://github.com/dbuschhue/P4-Worflow/issues)
+2. Kapitelbeitrag
+3. Beiträge zum Kapitel Fehlvorstellungen
+    * Aufgrund ihrer Kürze setzen wir voraus, dass diese Beiträge entsprechend in etwaigen Listen zur Darstellung der Publikationsleistung als *Kurzbeitrag* kenntlich gemacht werden.
+ 
 
 **Inwiefern wird der Beitrag begutachtet?**
 

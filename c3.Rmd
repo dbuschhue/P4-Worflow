@@ -1,7 +1,3 @@
----
-title: "Hackathon_P4_IRT"
-output: html_document
----
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
