@@ -3,14 +3,14 @@ title:  |
         | Statistische Analysen mit R in den MINT-Didaktiken 
         | Eine Tutorial-Sammlung
 author: "Tina Grottke, Philipp Möhrke, Marvin Rost, David Buschhüter (Hrsg.)"
-date: "2020-10-22"
+date: "2020-10-23"
 bibliography: book.bib
 description: Alles was ich hätte wissen wollen
 documentclass: book
 github-repo: dbuschhue/P4-Workflow
 link-citations: yes
 site: "bookdown::bookdown_site"
-biblio-style: apalike
+
 url: https://github.com/dbuschhue/P4-Workflow
 ---
 <style type="text/css">
@@ -18,9 +18,9 @@ iframe {
   border: none;
 }
 </style>
-# Vorwort: DISCLAIMER
+# DISCLAIMER
 
-ACHTUNG: DIES IST EIN ERSTER DRAFT. WIR ÜBERNEHMEN KEINE VERANTWORTUNG FÜR DIE RICHTIGKEIT DER INFORMATIONEN. ES IST ALS "WORK IN PROGRESS" ZU SEHEN.
+DIE HERAUSGEBER*INNEN ÜBERNEHMEN KEINE VERANTWORTUNG FÜR DIE RICHTIGKEIT DER INFORMATIONEN. DARÜBER HINAUS IST DER GRUNDGEDANKE DES BUCHS, DIE QUALITÄT DURCH REVISION STÄNDIG ZU ERHÖHEN.
 
 # Wie kann ich zu diesem Sammelband einen Beitrag leisten?
 

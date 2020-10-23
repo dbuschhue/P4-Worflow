@@ -4,10 +4,9 @@
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
-#write.csv2(x = kapitel, file = "kapitel.csv", row.names = FALSE)
-#kapitel = kapitel[,-5]
-#fehl_vorst[4] <- "-"
-kapitel = read.csv2(file = "kapitel.csv")
+
+kapitel <- read.csv2(file = "kapitel.csv")
+colnames(kapitel) <- c("Autor*innen","Datum","Titel","Weitere Beitragende")
 
 knitr::kable(kapitel)
 ```
@@ -16,10 +15,10 @@ knitr::kable(kapitel)
 ## Beiträge zu Fehlvorstellungen
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-fehl_vorst = read.csv2(file = "fehl_vorst.csv", )
-#fehl_vorst = fehl_vorst[-5]
-#write.csv2(x = fehl_vorst, file = "fehl_vorst.csv", row.names = FALSE)
+fehl_vorst <- read.csv2(file = "fehl_vorst.csv")
+colnames(fehl_vorst) <- c("Autor*innen","Datum","Titel","Weitere Beitragende")
 
 knitr::kable(fehl_vorst)
-
 ```
+
+# Gesamte Bibliographie
