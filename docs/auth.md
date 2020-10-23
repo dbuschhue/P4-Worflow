@@ -17,4 +17,3 @@
 |David Buschhüter |  2020|„Das 1PL-Modell ist das Rasch-Modell“                                                                                 |-                   |
 |David Buschhüter |  2020|Anwendung eines t-Tests für unabhängige Stichproben auf abhängige Stichproben                                         |-                   |
 
-# Gesamte Bibliographie
