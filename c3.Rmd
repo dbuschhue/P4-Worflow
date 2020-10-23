@@ -92,3 +92,4 @@ plot(mod2, items = 40, ngroups = 6, export = FALSE) # Steigungsparameter frei ge
 #### Deutung
 
 Beim 2PL Modell wird der Steigungsparameter für jedes Item frei geschätzt. Das zeigt sich unter anderem in den ICCs. Durch das Vorliegen des simulierten Datensatzes zeigt sich kein merkbarer Unterschied in den ICCs des Rasch und 2PL Modells. Dennoch sei an dieser Stelle angemerkt, dass es beim 2PL Modell durchaus zu ICCs kommen kann, die negative Steigungsparameter aufweisen. Die Interpretation dahinter wäre: Bei steigender Personenfähigkeit, sinkt die Lösungswahrscheinlichkeit des Items. Dies kann ein Indiz für ein nicht funktionierendes Item sein, aber ebenso ein Hinweis auf eine Mehrdimensionalität des Konstruktes [@Bühner2011, 506; @Chalmers2015, 216]. Jenes Item könnte demnach in eine andere Dimension fallen.
+
