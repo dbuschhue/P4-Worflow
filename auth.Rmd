@@ -21,3 +21,5 @@ colnames(fehl_vorst) <- c("Autor*innen","Datum","Titel","Weitere Beitragende")
 knitr::kable(fehl_vorst)
 ```
 
+# Bibliographie
+
