@@ -22,6 +22,12 @@ iframe {
 
 DIE HERAUSGEBER*INNEN ÜBERNEHMEN KEINE VERANTWORTUNG FÜR DIE RICHTIGKEIT DER INFORMATIONEN. DARÜBER HINAUS IST DER GRUNDGEDANKE DES BUCHS, DIE QUALITÄT DURCH REVISION STÄNDIG ZU ERHÖHEN.
 
+# Ziel dieses Buches
+
+Statistische Analysen in den MINT-Didaktiken sollten noch transparenter kommuniziert werden. Durch eine größere Transparenz würde eine verbesserte Diskussionsgrundlage für Common-Practices in der Datenanalyse geschaffen. In der Folge können auch Best-Practice-Beispiele entstehen, die vor allem Anfänger*innen Sicherheit geben.
+
+Damit ist das Ziel dieses Buches in einem Buttom-Up-Ansatz Beiträge zu sammeln, die erprobte Kenntnisse und Beispiele zu statistischen Datenanalysen als Orientierungshilfe für Early-Career-Researchers bereitstellen.
+
 # Wie kann ich zu diesem Sammelband einen Beitrag leisten?
 
 **Wer kann einen Beitrag einreichen?**

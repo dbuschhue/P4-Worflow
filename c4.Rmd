@@ -80,17 +80,6 @@ table(pers_wle$theta, pers_wle$PersonScores)
 ```
 
 
-## „Das 1PL-Modell ist das Rasch-Modell“ 
-
-*Autor: David Buschhüter*
-
-Die beiden Begriffe werden üblicherweise synonym verwendet (so auch im TAM Paket.)
-
-Sowohl im Rasch-Modell als auch im 1PL-Modell werden nur ein Itemparameter (die Schwierigkeit) und ein Personenparameter (die Fähigkeit) geschätzt. Alle Items haben denselben Diskriminationsparameter. 
-
-Der Unterschied ist aber Folgender: Im Rasch-Modell ist der Diskriminationsparameter 1. Im 1PL-Modell kann er auch andere Werte annehmen. 
-
-
 ## Anwendung eines t-Tests für unabhängige Stichproben auf abhängige Stichproben
 
 *Autor: David Buschhüter*
