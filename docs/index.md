@@ -3,7 +3,7 @@ title:  |
         | Statistische Analysen mit R in den MINT-Didaktiken 
         | Eine Tutorial-Sammlung
 author: "Tina Grottke, Philipp Möhrke, Marvin Rost, David Buschhüter (Hrsg.)"
-date: "2020-10-22"
+date: "2020-10-23"
 bibliography: book.bib
 description: Alles was ich hätte wissen wollen
 documentclass: book
