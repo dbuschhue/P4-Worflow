@@ -1,0 +1,24 @@
+# Verzeichnis der Beiträge und Autoren
+
+## Kapitel
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+
+kapitel <- read.csv2(file = "kapitel.csv")
+colnames(kapitel) <- c("Autor*innen","Datum","Titel","Weitere Beitragende")
+
+knitr::kable(kapitel)
+```
+
+
+## Beiträge zu Fehlvorstellungen
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+fehl_vorst <- read.csv2(file = "fehl_vorst.csv")
+colnames(fehl_vorst) <- c("Autor*innen","Datum","Titel","Weitere Beitragende")
+
+knitr::kable(fehl_vorst)
+```
+
+# Bibliographie

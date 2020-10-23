@@ -101,11 +101,5 @@ Besser wäre es deshalb, hier einen Test für abhängige Stichproben zu verwende
 
 https://www.r-bloggers.com/2009/07/paired-students-t-test/
 
-## Weitere Ideen
-
-### Ist die Faktoranalyse ein Teil der klassischen Testtheorie?
-### Ist PCA dasselbe wie Faktoranalyse?
-
-# Referenzen
 
 

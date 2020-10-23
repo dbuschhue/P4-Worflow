@@ -60,7 +60,7 @@ head(mod1PL$item_irt)
 
 - `AXsi_.Cat1`: Da im gezeigten Beispiel nur ein eindimensionales Modell ohne weitere Bedingungen berechnet wurde, entspricht der Wert dem $\xi$-Parameter, d. h. der Schwierigkeit. Unter anderen Bedingungen (beispielsweise Mehrdimensionalität, oder verschiedenen Testheftpositionen der Aufgabe), können verschiedende, bedingte Schwierigkeiten auftreten. Dazu ein fiktives, vereinfachtes Beispiel: Eine Aufgabe ist in zwei verschiedenen Testheften zu finden. In Testheft Nr. 1 ist sie immer die erste Aufgabe, in Testheft Nr. 2 ist sie immer die letzte Aufgabe. Die Testheftposition kann im statistischen Modell berücksichtigt werden und es würden dann zwei testheftabhängige Schwierigkeitsparameter berechnet, die sich als `AXsi_.Cat1` und `AXsi_.Cat2` im Output wiederfinden würden.
 
-- `B.Cat1.Dim1`: Steigungsparameter. Im eindimensionalen 1-PL-Modell wird der B-Parameter nicht berechnet, sondern auf $B=1$ fixiert. Oft findet man den Steigungsparameter auch unter der Bezeichnung $\alpha$ (siehe Output oben zu `xsi.item`).
+- `B.Cat1.Dim1`: Steigungsparameter. Im eindimensionalen 1PL-Modell wird der B-Parameter nicht berechnet, sondern auf $B=1$ fixiert. Oft findet man den Steigungsparameter auch unter der Bezeichnung $\alpha$ (siehe Output oben zu `xsi.item`).
 
 Eine Zusammenfassung des Modellobjekts mit allen oben ausgeführten Kennwerten kann über den Befehl `summary(mod1PL)` erhalten werden.
 

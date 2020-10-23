@@ -1,6 +1,8 @@
 bookdown::gitbook:
   css: style.css
+  pandoc_args: [ "--csl", "deutsche-gesellschaft-fur-psychologie.csl" ]
   split_by: chapter
+  split_bib: yes
   config:
     toc:
       collapse: subsection

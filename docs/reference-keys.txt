@@ -1,7 +1,7 @@
 fig:wright-map1
 fig:wright-map2
 vorwort-disclaimer
-wie-kann-ich-zu-diesem-sammelband-beitragen
+wie-kann-ich-zu-diesem-sammelband-einen-beitrag-leisten
 praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell
 motivation-und-konzeptuelle-herleitung
 beispiel
@@ -27,8 +27,7 @@ typische-fehlvorstellungen
 das-rasch-modell-berücksichtigt-im-gegensatz-zur-klassischen-testtheorie-welche-aufgaben-richtig-bearbeitet-werden
 das-1pl-modell-ist-das-rasch-modell
 anwendung-eines-t-tests-für-unabhängige-stichproben-auf-abhängige-stichproben
-weitere-ideen
-ist-die-faktoranalyse-ein-teil-der-klassischen-testtheorie
-ist-pca-dasselbe-wie-faktoranalyse
-referenzen
 glossar
+verzeichnis-der-beiträge-und-autoren
+kapitel
+beiträge-zu-fehlvorstellungen
