@@ -79,7 +79,7 @@ Mit einem Mathematiktest für GrundschülerInnen wird es kaum möglich sein, ver
 
 Für Leistungstests ist also eine breite Verteilung von Aufgabenschwierigkeiten über die Personenfähigkeiten wünschenswert. Wright-Maps erlauben eine Prüfung der Abdeckung, indem sie die Aufgabenschwierigkeiten und die Personenfähigkeiten grafisch miteinander in Beziehung setzen. Es wird dabei auf einen Blick deutlich, wenn in einem bestimmten Schwierigkeits-/Fähigkeitsintervall zu wenige oder zuviele Aufgaben vorliegen. Dies ist insbesondere in der Pilotierungsphase eines Tests hilfreich.
 
-Das folgende Code-Beispiel schätzt die Personenfähigkeiten und schreibt sie über die Funktion `tam.wle` in das Objekt `thetas_1pl`. Außerdem werden die Aufgabenschwierigkeiten separat als Objekt `item_xsis_1pl` abgespeichert um anschließend mit der Funktion `wrightMap()` eine automatische Visualisierung zu erhalten \@ref(fig:wright-map1).
+Das folgende Code-Beispiel schätzt die Personenfähigkeiten und schreibt sie über die Funktion `tam.wle` in das Objekt `thetas_1pl`. Außerdem werden die Aufgabenschwierigkeiten separat als Objekt `item_xsis_1pl` abgespeichert um anschließend mit der Funktion `wrightMap()` eine automatische Visualisierung zu erhalten (Abb. \@ref(fig:wright-map1)).
 
 ```{r wright-map1, fig.cap="Eine Variante für eine Wright-Map.", results='hide'}
 thetas_1pl <- tam.wle(mod1PL)
@@ -93,7 +93,7 @@ wrightMap(thetas_1pl$theta, item_xsis_1pl,
 
 Gut erkennbar ist die Fähigkeitsverteilung in Dimension 1 (schmaleres Panel links) und die numerische Zuordnung der Aufgaben zu dieser Dimension (breiteres Panel rechts). Ebenfalls deutlich wird die Äquivalenz von Personenfähigkeiten und Aufgabenschwierigkeiten, erkennbar an der Logit-Skala auf der rechten Seite.
 
-Ungünstig ist die kategorische Aufgaben-Achse. Da der Datensatz 40 Aufgaben enthält, resultiert ein Overplot der Aufgaben-Namen, dem mit einer Alternativdarstellung begegnet werden kann \@ref(fig:wright-map2).
+Ungünstig ist die kategorische Aufgaben-Achse. Da der Datensatz 40 Aufgaben enthält, resultiert ein Overplot der Aufgaben-Namen, dem mit einer Alternativdarstellung begegnet werden kann (Abb. \@ref(fig:wright-map2)).
 
 ```{r wright-map2, fig.cap="Eine Alternative Darstellung der Wright-Map.", results='hide'}
 wrightMap(thetas_1pl$theta, item_xsis_1pl, 
