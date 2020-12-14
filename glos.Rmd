@@ -6,7 +6,7 @@ Aufgabenschwierigkeit
 
 ICC
 
-:   Die Item-Characteristic-Curve kann zur Überprüfung der Modellannahme des Modell verwendet werden. Sie zeigt sowohl die Lösungswahrscheinlichkeit einer Aufgabe ermittelt aus dem Modell als auch den Anteil der Personen, die diese Aufgabe tatsächlich richtig beantwortet haben, in Abhängigkeit der Personenfähigkeit. 
+:   Die _Item CharacteristicCurve_ kann zur Überprüfung der Modellpassung verwendet werden. Sie zeigt die modellierten Lösungswahrscheinlichkeiten der jeweiligen Aufgaben in Abhängigkeit der modellierten Personenfähigkeiten. Im R-Paket "TAM" werden darüber hinaus die in (willkürlich bestimmbaren) Personenfähigkeitsgruppen gemittelten, empirischen Lösungsanteile über der Modellkurve abgetragen. So kann manuell geprüft werden, wie gut die Vorhersage des Modells über alle Aufgaben und Personen und die empirisch gefundenen Lösungsanteile für einzelne Aufgaben zusammenpassen. Im Idealfall liegen beide Kurven eng übereinander, in realen Studiendatensätzen sind entdeckte Diskrepanzen ein gut erkennbarer Indikator zur Überprüfung der Aufgaben. Die Abkürzung _ICC_ ist auch in so genannten Mehrebenenmodellen zu finden, steht dort für _Intraclass Correlation Coefficient_ und sollte nicht mit den _Item Characteristic Curves_ aus der Item Response Theorie verwechselt werden.
 
 Lösungswahrscheinlichkeit
 
