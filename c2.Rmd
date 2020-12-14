@@ -31,7 +31,7 @@ mod1PL <- TAM::tam.mml(resp=data.sim.rasch)
 
 - `## Processing Data`: Mit Uhrzeit und Datum versehener Diagnoseabschnitt. `Calculated Sufficient Statistics` bestätigt für das Raschmodell, dass ausreichend viele Personen ausreichend viele Aufgaben bearbeitet haben. Weitere Details werden an dieser Stelle nicht ausgeführt, es sei lediglich darauf hingewiesen, dass die Berechnung bereits an dieser Stelle abgebrochen werden kann. Dies geschieht bspw. wenn ein fehlerhafter Datensatz vorliegt, der von der Funktion nicht lesbar ist.
 
-- `Iteration 1` bis `Iteration 10`: Hier werden iterativ die Modellparameter geschätzt (vgl. Abschnitt 3.1.2). Weil im Raschmodell nur die Schwierigkeit (`item intercept parameter`) und keine Steigung (`item slope parameter`) und kein Einfluss von Hintergrundvariablen (`regression parameter`) in das Modell eingebaut wurden, sind diese konstant $0$. Gut erkennbar ist das kontinuierliche Absinken der `Deviance`-Änderung (`Absolute change` & `Relative change`): Die Berechnung konvergiert. Die `Deviance` selbst kann als Transformation der Likelihood (vgl. Abschnitt 3.1.2) verstanden werden. Sie ist also ein Maß für die Passung des Modells zu den Daten, die von Iteration zu Iteration besser wird, bis ein willkürlicher Grenzwert für die Änderung (Default bei `tam.mml()`: $0.0001$) erreicht wurde.
+- `Iteration 1` bis `Iteration 10`: Hier werden iterativ die Modellparameter geschätzt (vgl. Abschnitt [4.1.2][Wie wird der beste Fit gefunden?]). Weil im Raschmodell nur die Schwierigkeit (`item intercept parameter`) und keine Steigung (`item slope parameter`) und kein Einfluss von Hintergrundvariablen (`regression parameter`) in das Modell eingebaut wurden, sind diese konstant $0$. Gut erkennbar ist das kontinuierliche Absinken der `Deviance`-Änderung (`Absolute change` & `Relative change`): Die Berechnung konvergiert. Die `Deviance` selbst kann als Transformation der Likelihood (vgl. Abschnitt 3.1.2) verstanden werden. Sie ist also ein Maß für die Passung des Modells zu den Daten, die von Iteration zu Iteration besser wird, bis ein willkürlicher Grenzwert für die Änderung (Default bei `tam.mml()`: $0.0001$) erreicht wurde.
 
 - `Item Parameters`: Äquivalent zum Output `head(mod1PL$item_irt)`, s. u. bei der Erklärung der Kennwerte aus dem Objekt `mod1PL$item`.
 
@@ -65,7 +65,7 @@ head(mod1PL$item_irt)
 Eine Zusammenfassung des Modellobjekts mit allen oben ausgeführten Kennwerten kann über den Befehl `summary(mod1PL)` erhalten werden.
 
 ### Deutung der Aufgabenschwierigkeiten
-Die erhaltenen Schwierigkeitsparameter stehen unter dem Vorbehalt, dass das Rasch-Modell gültig ist (**VERWEIS**). Sie setzen die Aufgaben nun jenseits von subjektiven Einflüssen miteinander in Beziehung. War eine Schwierigkeitseinschätzung a-priori (bspw. durch ein Expertenrating) noch von zahlreichen, personenabhängigen Einflüssen getragen, sind nun die Bearbeitungserfolge durch die Zielgruppe in der quantitativ-empirischen Erhebung integriert: Die Schwierigkeiten wurden gemessen und nicht über den Daumen gepeilt. Noch vor weiterführenden Analysen können die so erhaltenen, quantitativen Befunde wiederum durch qualitative Urteile abgeglichen werden: 
+Die erhaltenen Schwierigkeitsparameter stehen unter dem Vorbehalt, dass das Rasch-Modell gültig ist [@Wu2016, 139ff.]. Sie setzen die Aufgaben nun jenseits von subjektiven Einflüssen miteinander in Beziehung. War eine Schwierigkeitseinschätzung a-priori (bspw. durch ein Expertenrating) noch von zahlreichen, personenabhängigen Einflüssen getragen, sind nun die Bearbeitungserfolge durch die Zielgruppe in der quantitativ-empirischen Erhebung integriert: Die Schwierigkeiten wurden gemessen und nicht über den Daumen gepeilt. Noch vor weiterführenden Analysen können die so erhaltenen, quantitativen Befunde wiederum durch qualitative Urteile abgeglichen werden: 
 
 - Gibt es Aufgaben, die erwartungsgemäß schwerer/leichter waren als andere?
 - Gibt es Aufgaben, deren Schwierigkeiten *nicht* erwartungskonform sind?
@@ -79,9 +79,9 @@ Mit einem Mathematiktest für GrundschülerInnen wird es kaum möglich sein, ver
 
 Für Leistungstests ist also eine breite Verteilung von Aufgabenschwierigkeiten über die Personenfähigkeiten wünschenswert. Wright-Maps erlauben eine Prüfung der Abdeckung, indem sie die Aufgabenschwierigkeiten und die Personenfähigkeiten grafisch miteinander in Beziehung setzen. Es wird dabei auf einen Blick deutlich, wenn in einem bestimmten Schwierigkeits-/Fähigkeitsintervall zu wenige oder zuviele Aufgaben vorliegen. Dies ist insbesondere in der Pilotierungsphase eines Tests hilfreich.
 
-Das folgende Code-Beispiel schätzt die Personenfähigkeiten und schreibt sie über die Funktion `tam.wle` in das Objekt `thetas_1pl`. Außerdem werden die Aufgabenschwierigkeiten separat als Objekt `item_xsis_1pl` abgespeichert um anschließend mit der Funktion `wrightMap()` eine automatische Visualisierung zu erhalten (**ABBILDUNG**).
+Das folgende Code-Beispiel schätzt die Personenfähigkeiten und schreibt sie über die Funktion `tam.wle` in das Objekt `thetas_1pl`. Außerdem werden die Aufgabenschwierigkeiten separat als Objekt `item_xsis_1pl` abgespeichert um anschließend mit der Funktion `wrightMap()` eine automatische Visualisierung zu erhalten (\ref{fig:wright-map1}).
 
-```{r wright-map1, fig.cap="Abb. XYZ: Eine Variante für eine Wright-Map.", results='hide'}
+```{r wright-map1, fig.cap="Eine Variante für eine Wright-Map.", results='hide'}
 thetas_1pl <- tam.wle(mod1PL)
 item_xsis_1pl <- mod1PL$xsi$xsi
 
@@ -93,9 +93,9 @@ wrightMap(thetas_1pl$theta, item_xsis_1pl,
 
 Gut erkennbar ist die Fähigkeitsverteilung in Dimension 1 (schmaleres Panel links) und die numerische Zuordnung der Aufgaben zu dieser Dimension (breiteres Panel rechts). Ebenfalls deutlich wird die Äquivalenz von Personenfähigkeiten und Aufgabenschwierigkeiten, erkennbar an der Logit-Skala auf der rechten Seite.
 
-Ungünstig ist die kategorische Aufgaben-Achse. Da der Datensatz 40 Aufgaben enthält, resultiert ein Overplot der Aufgaben-Namen, dem mit einer Alternativdarstellung begegnet werden kann (**ABBILDUNG**).
+Ungünstig ist die kategorische Aufgaben-Achse. Da der Datensatz 40 Aufgaben enthält, resultiert ein Overplot der Aufgaben-Namen, dem mit einer Alternativdarstellung begegnet werden kann (\ref{fig:wright-map2}).
 
-```{r wright-map2, fig.cap="Abb. ABC: Eine Alternative Darstellung der Wright-Map.", results='hide'}
+```{r wright-map2, fig.cap="Eine Alternative Darstellung der Wright-Map.", results='hide'}
 wrightMap(thetas_1pl$theta, item_xsis_1pl, 
           item.side = itemClassic,
           main.title = "Beispiel für Wright-Map",
