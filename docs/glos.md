@@ -2,11 +2,11 @@
 
 Aufgabenschwierigkeit
 
-:   Die Aufgabenschwierigkeit ist ein latentes also nicht direkt sichtbares Maß für die Schwierigkeit einer Aufgabe. Sie wird über den Aufgabenschwierigkeitsparameter $\delta$ (teilweise in der Literatur sowie Softwareanwendungen auch $\xi$ oder $\beta$) geschätzt, welcher Werte zwischen $-\infty$ und $\infty$ annehmen kann.
+:   Die Aufgabenschwierigkeit ist ein latentes also nicht direkt sichtbares Maß für die Schwierigkeit einer Aufgabe. Sie wird bei Modellen aus der Item-Response-Theorie über den Aufgabenschwierigkeitsparameter $\delta$ (teilweise in der Literatur sowie Softwareanwendungen auch $\xi$ oder $\beta$) geschätzt, welcher Werte zwischen $-\infty$ und $\infty$ annehmen kann. Achtung! Man unterscheidet diesen Parameter von der Aufgabenschwierigkeit $M$ aus der klassischen Testtheorie ("KTT"), die als Verhältnis von erfolgreichen Lösungen $N_{gelöst}$ zu erfolgten Bearbeitungen $N_{bearbeitet}$ formuliert wird und in Prozent ausgedrückt werden kann: $M=\frac{N_{gelöst}}{N_{bearbeitet}}*100$. In der Folge gilt für die IRT: Je größer die Zahl, desto schwerer die Aufgabe. In der KTT ist eine Aufgabe umso schwerer, je kleiner der Zahlwert ist und dieser kann außerdem nur Werte zwischen $0$ und $1$, bzw. $0\%$ und $100\%$ annehmen.
 
 ICC
 
-:   Die Item-Characteristic-Curve kann zur Überprüfung der Modellannahme des Modell verwendet werden. Sie zeigt sowohl die Lösungswahrscheinlichkeit einer Aufgabe ermittelt aus dem Modell als auch den Anteil der Personen, die diese Aufgabe tatsächlich richtig beantwortet haben, in Abhängigkeit der Personenfähigkeit. 
+:   Die _Item CharacteristicCurve_ kann zur Überprüfung der Modellpassung verwendet werden. Sie zeigt die modellierten Lösungswahrscheinlichkeiten der jeweiligen Aufgaben in Abhängigkeit der modellierten Personenfähigkeiten. Im R-Paket "TAM" werden darüber hinaus die in (willkürlich bestimmbaren) Personenfähigkeitsgruppen gemittelten, empirischen Lösungsanteile über der Modellkurve abgetragen. So kann manuell geprüft werden, wie gut die Vorhersage des Modells über alle Aufgaben und Personen und die empirisch gefundenen Lösungsanteile für einzelne Aufgaben zusammenpassen. Im Idealfall liegen beide Kurven eng übereinander, in realen Studiendatensätzen sind entdeckte Diskrepanzen ein gut erkennbarer Indikator zur Überprüfung der Aufgaben. Die Abkürzung _ICC_ ist auch in so genannten Mehrebenenmodellen zu finden, steht dort für _Intraclass Correlation Coefficient_ und sollte nicht mit den _Item Characteristic Curves_ aus der Item Response Theorie verwechselt werden.
 
 Lösungswahrscheinlichkeit
 
