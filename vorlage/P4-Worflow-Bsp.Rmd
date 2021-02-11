@@ -1,0 +1,90 @@
+---
+title: "Mein Kapitel"
+author: "Autorenname"
+date: "14.12.2020"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+bibliography: book.bib
+---
+
+
+# Überschrift 
+Hinweis: Falls Sie Nummerierungen für Überschriften nutzen, werden diese bei der Übernahme in das gemeinsame Buch gelöscht.
+
+## Unterüberschrift
+
+**Dieser Text ist fett**
+
+*Dieser Text ist kursiv*
+
+* Bulletpoint 1
+* Bulletpoint 2
+* Bulletpoint 3
+
+Viele weitere Informationen finden sich auf diesem [Cheat-Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown-2.0.pdf)
+
+### Formeln
+So kann man eine Inline-Formel schreiben $F = m \cdot a$.
+
+$$ 0 = \int_0^{2\pi} \sin x~dx$$
+
+
+Falls Informationen benötigt werden zum schreiben von Formeln in Latex, [hier noch ein Link](https://www.grund-wissen.de/informatik/latex/mathematischer-formelsatz.html).
+
+### Bilder
+So lässt sich ein Bild einfügen: 
+
+![Abbildung 1: Ein schönes Bild](logo.png){width=20%}
+
+### Tabellen
+So kann man Tabellen einfügen:
+
+Spalte 1      | Spalte 2
+--------------| ---------
+Text 1        | Text 2
+Text 3        | Text 3
+
+Es gibt noch andere Methoden Tabellen zu importieren, die mehr Anpassungen ermöglichen
+(https://bookdown.org/yihui/rmarkdown-cookbook/kable.html). Hier ein Beispiel:
+
+```{r, message=FALSE}
+library(knitr) # Für Tabellen-Funktion kable
+library(kableExtra) # Für erweiterte Tabellen-Format-Optionen
+library(dplyr) # Für den %>% Operator
+
+# Lade Tabelle
+x = read.csv2("table.csv", header = TRUE)
+
+# Erstelle Tabelle
+knitr::kable(x)%>%
+    kable_styling(bootstrap_options=c("striped","hover","responsive"),
+                full_width=F,position="left")%>%
+    column_spec(1,width="3cm") #Verändere Einzelne Spalten
+
+```
+
+
+### Integration von Code im Allgemeinen
+
+Unter Nutzung von R kann sehr einfach z.B. einen quadratischen Zusammenhang plotten:
+
+```{r rcode}
+ library(ggplot2)
+
+# Plotte quadratischen Zusammenhang
+X = c(-100:100) # Erzeuge Zahlen von -100 bis 100
+Y = X^2 # Erzeuge y-Werte dazu
+df =data.frame(X,Y)
+
+ggplot(data = df, aes(x = X, y = Y))+
+    geom_smooth()
+
+```
+
+## Zitieren
+Man kann wie folgt zitieren [@linacre1999].
+
+Der entsprechende Eintrag muss aber in der Datei book.bib enthalten sein.
+

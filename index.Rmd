@@ -25,7 +25,7 @@ iframe {
 
 # DISCLAIMER
 
-DIE HERAUSGEBER:INNEN ÜBERNEHMEN KEINE VERANTWORTUNG FÜR DIE RICHTIGKEIT DER INFORMATIONEN. DARÜBER HINAUS IST DER GRUNDGEDANKE DES BUCHS, DIE QUALITÄT DURCH REVISION STÄNDIG ZU ERHÖHEN. DIE HERAUSGEBER:INNEN ÜBERNEHMEN ZUDEM KEINE VERWANTWORTUNG FÜR INHALTE AUF VERLINKTEN WEBSEITEN.
+DIE HERAUSGEBER:INNEN ÜBERNEHMEN KEINE VERANTWORTUNG FÜR DIE RICHTIGKEIT DER INFORMATIONEN. DARÜBER HINAUS IST DER GRUNDGEDANKE DES BUCHS, DIE QUALITÄT DURCH REVISION STÄNDIG ZU ERHÖHEN. DIE HERAUSGEBER:INNEN ÜBERNEHMEN ZUDEM KEINE VERANTWORTUNG FÜR INHALTE AUF VERLINKTEN WEBSEITEN.
 
 # Ziel dieses Buches
 
@@ -81,6 +81,9 @@ Hinweis:  Ein Wesensmerkmal des Buchs ist die permanente Revisionsfähigkeit. Wi
 *	Der Beitrag ist in genderneutraler Sprache geschrieben.
 *	Achten Sie auf eine angemessene Länge und Lesbarkeit.
 *	Orientieren Sie sich an bisherigen Einreichungen.
+* Wir haben ein Vorlage-Kapitel erstellt: Das Sie [hier](https://cryptpad.fr/file/#/2/file/HS9dXhUkzlPQ0PsdzLWG0zzC/) herunterladen können
+
+
 
 
 **Welche Regeln gelten für den Code?**
