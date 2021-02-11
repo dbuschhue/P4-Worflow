@@ -81,7 +81,7 @@ Hinweis:  Ein Wesensmerkmal des Buchs ist die permanente Revisionsfähigkeit. Wi
 *	Der Beitrag ist in genderneutraler Sprache geschrieben.
 *	Achten Sie auf eine angemessene Länge und Lesbarkeit.
 *	Orientieren Sie sich an bisherigen Einreichungen.
-* Wir haben ein Vorlage-Kapitel erstellt: Das Sie [hier](https://cryptpad.fr/file/#/2/file/HS9dXhUkzlPQ0PsdzLWG0zzC/) herunterladen können
+* Wir haben ein Vorlage-Kapitel erstellt, das Sie [hier](https://cryptpad.fr/file/#/2/file/HS9dXhUkzlPQ0PsdzLWG0zzC/) herunterladen können.
 
 
 
