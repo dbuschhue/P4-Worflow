@@ -1,4 +1,4 @@
-# Verzeichnis der Beiträge und Autoren
+# Verzeichnis der Beiträge und Autor*innen
 
 ## Kapitel
 
@@ -11,6 +11,12 @@ colnames(kapitel) <- c("Autor*innen","Datum","Titel","Weitere Beitragende")
 knitr::kable(kapitel)
 ```
 
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+sorting_tasks <- read.csv2(file = "sorting_tasks.csv")
+colnames(sorting_tasks) <- c("Autor*innen","Datum","Titel","Weitere Beitragende")
+
+knitr::kable(sorting_tasks)
+```
 
 ## Beiträge zu Fehlvorstellungen
 
