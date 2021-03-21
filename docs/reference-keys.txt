@@ -28,7 +28,7 @@ typische-fehlvorstellungen
 das-rasch-modell-berücksichtigt-im-gegensatz-zur-klassischen-testtheorie-welche-aufgaben-richtig-bearbeitet-werden
 anwendung-eines-t-tests-für-unabhängige-stichproben-auf-abhängige-stichproben
 glossar
-verzeichnis-der-beiträge-und-autoren
+verzeichnis-der-beiträge-und-autorinnen
 kapitel
 beiträge-zu-fehlvorstellungen
 bibliographie

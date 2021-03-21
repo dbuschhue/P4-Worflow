@@ -1,4 +1,4 @@
-# Verzeichnis der Beiträge und Autoren
+# Verzeichnis der Beiträge und Autor*innen
 
 ## Kapitel
 
@@ -7,6 +7,10 @@
 |:-----------------------------------------|-----:|:--------------------------------------------------------------------------------------------|:-------------------|
 |Tina Grottke, Philipp Möhrke, Marvin Rost |  2020|Praxisorientierte Einführung in die Item-Response-Theorie mit dem Fokus auf das Rasch-Modell |-                   |
 
+
+|Autor*innen      | Datum|Titel                                          |Weitere Beitragende |
+|:----------------|-----:|:----------------------------------------------|:-------------------|
+|Arne Bewersdorff |  2021|„Auswertungsmöglichkeiten für Sortieraufgaben“ |-                   |
 
 ## Beiträge zu Fehlvorstellungen
 
