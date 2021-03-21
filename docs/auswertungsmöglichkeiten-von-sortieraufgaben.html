@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Auswertungsmöglichkeiten von Sortieraufgaben | Statistische Analysen mit R in den MINT-Didaktiken Eine Tutorial-Sammlung</title>
+  <meta name="description" content="Alles was ich hätte wissen wollen" />
+  <meta name="generator" content="bookdown 0.21.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Auswertungsmöglichkeiten von Sortieraufgaben | Statistische Analysen mit R in den MINT-Didaktiken Eine Tutorial-Sammlung" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://github.com/dbuschhue/P4-Worflow" />
+  
+  <meta property="og:description" content="Alles was ich hätte wissen wollen" />
+  <meta name="github-repo" content="dbuschhue/P4-Worflow" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Auswertungsmöglichkeiten von Sortieraufgaben | Statistische Analysen mit R in den MINT-Didaktiken Eine Tutorial-Sammlung" />
+  
+  <meta name="twitter:description" content="Alles was ich hätte wissen wollen" />
+  
+
+<meta name="author" content="Tina Grottke, Philipp Möhrke, Marvin Rost, David Buschhüter (Hrsg.)" />
+
+
+<meta name="date" content="2021-03-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"/>
+<link rel="next" href="typische-fehlvorstellungen.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Files</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> DISCLAIMER</a></li>
+<li class="chapter" data-level="2" data-path="ziel-dieses-buches.html"><a href="ziel-dieses-buches.html"><i class="fa fa-check"></i><b>2</b> Ziel dieses Buches</a></li>
+<li class="chapter" data-level="3" data-path="wie-kann-ich-zu-diesem-sammelband-einen-beitrag-leisten.html"><a href="wie-kann-ich-zu-diesem-sammelband-einen-beitrag-leisten.html"><i class="fa fa-check"></i><b>3</b> Wie kann ich zu diesem Sammelband einen Beitrag leisten?</a></li>
+<li class="chapter" data-level="4" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><i class="fa fa-check"></i><b>4</b> Praxisorientierte Einführung in die Item-Response-Theorie mit dem Fokus auf das Rasch-Modell</a><ul>
+<li class="chapter" data-level="4.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#motivation-und-konzeptuelle-herleitung"><i class="fa fa-check"></i><b>4.1</b> Motivation und konzeptuelle Herleitung</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#beispiel"><i class="fa fa-check"></i><b>4.1.1</b> Beispiel</a></li>
+<li class="chapter" data-level="4.1.2" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#wie-wird-der-beste-fit-gefunden"><i class="fa fa-check"></i><b>4.1.2</b> Wie wird der beste Fit gefunden?</a></li>
+<li class="chapter" data-level="4.1.3" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#zum-weiterlesen"><i class="fa fa-check"></i><b>4.1.3</b> zum Weiterlesen</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#der-datensatz"><i class="fa fa-check"></i><b>4.2</b> Der Datensatz</a></li>
+<li class="chapter" data-level="4.3" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#laden-der-benötigten-pakete-und-des-datensatzes"><i class="fa fa-check"></i><b>4.3</b> Laden der benötigten Pakete und des Datensatzes</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#paketquellen"><i class="fa fa-check"></i><b>4.3.1</b> Paketquellen</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#modellschätzung"><i class="fa fa-check"></i><b>4.4</b> Modellschätzung</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#deutung-der-aufgabenschwierigkeiten"><i class="fa fa-check"></i><b>4.4.1</b> Deutung der Aufgabenschwierigkeiten</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#erzeugen-einer-wright-map"><i class="fa fa-check"></i><b>4.5</b> Erzeugen einer Wright-Map</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#deutung-der-wright-maps"><i class="fa fa-check"></i><b>4.5.1</b> Deutung der Wright-Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#icc-item-characteristic-curve"><i class="fa fa-check"></i><b>4.6</b> ICC (Item Characteristic Curve)</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#input"><i class="fa fa-check"></i><b>4.6.1</b> Input</a></li>
+<li class="chapter" data-level="4.6.2" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#r-befehl-für-generierung-der-icc-in-tam"><i class="fa fa-check"></i><b>4.6.2</b> R-Befehl für Generierung der ICC in TAM</a></li>
+<li class="chapter" data-level="4.6.3" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#interpretation-icc-im-rasch-modell-wu2016"><i class="fa fa-check"></i><b>4.6.3</b> Interpretation ICC im Rasch-Modell <span class="citation">(Wu et al., <span>2016</span>)</span></a></li>
+<li class="chapter" data-level="4.6.4" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#gegenüberstellung-leichtes---schweres-item"><i class="fa fa-check"></i><b>4.6.4</b> Gegenüberstellung leichtes - schweres Item</a></li>
+<li class="chapter" data-level="4.6.5" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#gegenüberstellung-icc-rasch---2pl"><i class="fa fa-check"></i><b>4.6.5</b> Gegenüberstellung ICC Rasch - 2PL</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html"><i class="fa fa-check"></i><b>5</b> Auswertungsmöglichkeiten von Sortieraufgaben</a><ul>
+<li class="chapter" data-level="5.1" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#der-datensatz-1"><i class="fa fa-check"></i><b>5.1</b> Der Datensatz</a></li>
+<li class="chapter" data-level="5.2" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#die-auswertungsmöglichkeiten"><i class="fa fa-check"></i><b>5.2</b> Die Auswertungsmöglichkeiten</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#dichotom-sortierung-ist-richtig-oder-falsch"><i class="fa fa-check"></i><b>5.2.1</b> Dichotom: Sortierung ist richtig oder falsch</a></li>
+<li class="chapter" data-level="5.2.2" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#summe-der-korrekten-oder-falschen-positionen"><i class="fa fa-check"></i><b>5.2.2</b> Summe der korrekten oder falschen Positionen</a></li>
+<li class="chapter" data-level="5.2.3" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#spearman-korrelation"><i class="fa fa-check"></i><b>5.2.3</b> Spearman-Korrelation</a></li>
+<li class="chapter" data-level="5.2.4" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#levenshtein-algorithmus"><i class="fa fa-check"></i><b>5.2.4</b> Levenshtein-Algorithmus</a></li>
+<li class="chapter" data-level="5.2.5" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#der-bubblesort-algorithmus"><i class="fa fa-check"></i><b>5.2.5</b> Der Bubblesort-Algorithmus</a></li>
+<li class="chapter" data-level="5.2.6" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#der-jaro-algorithmus-jaro-distanz"><i class="fa fa-check"></i><b>5.2.6</b> Der Jaro-Algorithmus (Jaro-Distanz)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#vergleich-und-diskussion"><i class="fa fa-check"></i><b>5.3</b> Vergleich und Diskussion</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html"><i class="fa fa-check"></i><b>6</b> Typische Fehlvorstellungen</a><ul>
+<li class="chapter" data-level="6.1" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#das-rasch-modell-berücksichtigt-im-gegensatz-zur-klassischen-testtheorie-welche-aufgaben-richtig-bearbeitet-werden"><i class="fa fa-check"></i><b>6.1</b> „Das Rasch-Modell berücksichtigt im Gegensatz zur klassischen Testtheorie, welche Aufgaben richtig bearbeitet werden“</a></li>
+<li class="chapter" data-level="6.2" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#anwendung-eines-t-tests-für-unabhängige-stichproben-auf-abhängige-stichproben"><i class="fa fa-check"></i><b>6.2</b> Anwendung eines t-Tests für unabhängige Stichproben auf abhängige Stichproben</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="glossar.html"><a href="glossar.html"><i class="fa fa-check"></i><b>7</b> Glossar</a></li>
+<li class="chapter" data-level="8" data-path="verzeichnis-der-beiträge-und-autorinnen.html"><a href="verzeichnis-der-beiträge-und-autorinnen.html"><i class="fa fa-check"></i><b>8</b> Verzeichnis der Beiträge und Autor*innen</a><ul>
+<li class="chapter" data-level="8.1" data-path="verzeichnis-der-beiträge-und-autorinnen.html"><a href="verzeichnis-der-beiträge-und-autorinnen.html#kapitel"><i class="fa fa-check"></i><b>8.1</b> Kapitel</a></li>
+<li class="chapter" data-level="8.2" data-path="verzeichnis-der-beiträge-und-autorinnen.html"><a href="verzeichnis-der-beiträge-und-autorinnen.html#beiträge-zu-fehlvorstellungen"><i class="fa fa-check"></i><b>8.2</b> Beiträge zu Fehlvorstellungen</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="bibliographie.html"><a href="bibliographie.html"><i class="fa fa-check"></i><b>9</b> Bibliographie</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistische Analysen mit R in den MINT-Didaktiken<br />
+Eine Tutorial-Sammlung</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="auswertungsmöglichkeiten-von-sortieraufgaben" class="section level1">
+<h1><span class="header-section-number">5</span> Auswertungsmöglichkeiten von Sortieraufgaben</h1>
+<p><em>Autor: Arne Bewersdorff</em></p>
+<p>Zur Erhebung von Fachwissen von Lernenden existiert eine Reihe von Testinstrumenten für die unterschiedlichen Disziplinen. Im Wesentlichen werden dabei offene oder gebundene Antwortformate eingesetzt: Bei den offenen Antwortformaten ist der Proband aufgefordert mit eigenen Worten, einer Zeichnung o. ä. zu antworten. Gebundene Antwortformate geben Antwortoptionen vor. Bei der gebundenen Beantwortung werden festgelegte Antwortkategorien vorgegeben, es gibt keinen Freiraum für eigene Antworten. Sortieraufgaben (Umordnungsaufgaben) gehören zu den gebundenen Antwortformaten (vgl. <span class="citation">Bühner (<a href="#ref-Buehner" role="doc-biblioref">1998</a>)</span>).</p>
+<p>Beispiele für den Einsatz solcher Sortieraufgaben sind vielfältig: Im Rahmen eines Fachwissenstests können die Probanden etwa aufgefordert werden die einzelnen Prozesse der Mitose in die korrekte Reihenfolge zu bringen. Soll das Prozesswissen zum Experimentieren (didaktisch reduziert) erfasst werden, bietet es sich an, die einzelnen Teilprozesse des deduktiven Experiments in die richtige Reihenfolge bringen zu lassen (vgl. <span class="citation">Backes (<a href="#ref-Backes" role="doc-biblioref">o. J.</a>)</span>). Ähnlich bei <span class="citation">Friege (<a href="#ref-Friege" role="doc-biblioref">2001</a>)</span> wobei Schritte im Problemlöseprozess soriert werden müssen.</p>
+<p>Eine weitere Möglichkeit stellt das Sortieren von Strukturen ihrer Größe nach in einem Fachwissenstest dar.</p>
+<p>Doch wie können die mittels eines solchen Tests gewonnenen Daten ausgewertet werden? Eine dichotome Auswertung nach ,richtig sortiert’/,falsch sortiert’ liegt auf der Hand, jedoch ist diese Methode nicht besonders sensibel bezüglich des Fehlergrades:</p>
+<ol style="list-style-type: decimal">
+<li><p>Bei einer Sortierung, bei welcher der Proband nur zwei benachbarte Teilprozesse vertauscht hat, wird der Fehler als ebenso schwerwiegend gewertet als wenn der Start- und Endprozess vertauscht werden.</p></li>
+<li><p>Eine Sortierung, bei welcher der Proband nur zwei Teilprozesse vertauscht hat wird als ebenso schwerwiegend gewertet, als wenn er mehrere (alle) Teilprozesse falsch zugeordnet hat.</p></li>
+</ol>
+<p>Es gelten bei Sortieraufgaben also im Wesentlichen zwei Faktoren, welche auf den Grad des Fehlers einwirken: Die Anzahl der falsch sortierten Teilprozesse und der Abstand der falsch sortierten Teilprozesse zueinander. Im Folgenden sollen verschiedene Algorithmen zur Bestimmung des Fehlergrades, sowie ihre Implementation in R, vorgestellt werden.</p>
+<p>Anstatt der hier im Folgenden vorgestellten strukturellen (mathematischen) Maße können Sortieraufgaben auch nach inhaltlichen Kriterien ausgewertet werden, siehe hierzu beispielhaft <span class="citation">Binder (<a href="#ref-ZFDN" role="doc-biblioref">2019</a>)</span>.</p>
+<div id="der-datensatz-1" class="section level2">
+<h2><span class="header-section-number">5.1</span> Der Datensatz</h2>
+<p>Aufgrund der fehlenden Verfügbarkeit eines bereits existierenden Datensatzes soll im Folgenden auf einen künstlich erzeugten, geeigneten Datensatz zurückgegriffen werden.
+Die Aufgabe zu diesem Datensatz lautet:</p>
+<p><em>Ordnen Sie die folgenden Strukturen nach ihrer Größe (kleinste zuerst).</em></p>
+<p><em>1) DNA-Doppelhelix 2) Ribosom 3) AIDS-Virus 4) Bakterien 5) rote Blutkörperchen 6) menschliche Leberzelle 7) menschliche Eizelle 8) große Amöbe</em> (aus <span class="citation">Bayrhuber (<a href="#ref-Linder" role="doc-biblioref">2010</a>)</span>)
+<!---
+<center><img src="Datensatz.png" alt="Datensatz" width="350"> </center>
+Abbildung 1: Beispiel für Sortieraufgabe
+--></p>
+<p>Der Datensatz ist im Anhang und unter INSERT_LINK_TO_XLS verfügbar. Aus Gründen der Nachvollziehbarkeit lautet die korrekte Sortierung 1) 2) 3) 4) 5) 6) 7) 8).</p>
+<p>In R wird der Datensatz folgendermaßen eingelesen:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb22-1"></a><span class="co">#library(xlsx)</span></span>
+<span id="cb22-2"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb22-2"></a>sorting &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Dataset_Sorting_Task.csv&quot;</span>) <span class="co"># Daten einlesen</span></span>
+<span id="cb22-3"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb22-3"></a><span class="kw">head</span>(sorting) <span class="co">#ersten Einträge des Datensatzes ausgeben</span></span>
+<span id="cb22-4"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb22-4"></a>Fehlergrad &lt;-<span class="st"> </span>sorting <span class="co">#Matrix erstellen um den Fehlergrad für jede ID zu erfassen</span></span></code></pre></div>
+<p>Der ,Fehlergrad’ soll im Folgenden immer den Hinweis auf die Schwere des Fehlers geben und ist abhängig vom verwendeten Algorithmus.</p>
+<table>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Sortierung</th>
+<th>‚Fehlertyp‘</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><span style="color: green;">12345678</span></td>
+<td>korrekt</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1<span style="color: red;">32</span>45678</td>
+<td>Nachbarpositionen vertauscht</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><span style="color: red;">3</span>2<span style="color: red;">1</span>45678</td>
+<td>Zwei Positionen vertauscht</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><span style="color: red;">4</span>23<span style="color: red;">1</span>5678</td>
+<td>Zwei Positionen vertauscht</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><span style="color: red;">8</span>234567<span style="color: red;">1</span></td>
+<td>Randpositionen vertauscht</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><span style="color: red;">231</span>45567</td>
+<td>Eine Position falsch eingeordnet</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td><span style="color: red;">21</span>3456<span style="color: red;">87</span></td>
+<td>Zwei Nachbarn vertauscht</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td><span style="color: red;">321</span>45<span style="color: red;">876</span></td>
+<td>Zwei Positionen falsch eingeordnet</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td><span style="color: red;">23456781</span></td>
+<td>Jeweils um 1 verschoben</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td><span style="color: red;">87654321</span></td>
+<td>Rückwärts</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="die-auswertungsmöglichkeiten" class="section level2">
+<h2><span class="header-section-number">5.2</span> Die Auswertungsmöglichkeiten</h2>
+<p>In den folgenden Teilkapiteln werden die unterschiedlichen Auswertungsmöglichkeiten vorgestellt.</p>
+<div id="dichotom-sortierung-ist-richtig-oder-falsch" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Dichotom: Sortierung ist richtig oder falsch</h3>
+<p>Die einfachste Möglichkeit der Auswertung von Sortieraufgaben ist zu entscheiden, ob die Sortierung korrekt oder nicht korrekt vorgenommen wurde. Diese Art der Auswertung ist etwa sinnvoll, wenn allein die absolute Anzahl bzw. der Anteil der korrekten Antworten von Interesse ist.
+In R ist diese Auswertung schnell zu implementieren:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb23-1"></a><span class="co">#Schleife über alle ID</span></span>
+<span id="cb23-2"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb23-2"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(sorting<span class="op">$</span>ID)){</span>
+<span id="cb23-3"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb23-3"></a>  <span class="cf">if</span>(sorting<span class="op">$</span>Sorting[i] <span class="op">==</span><span class="st"> </span><span class="dv">1234567</span>){</span>
+<span id="cb23-4"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb23-4"></a>    Fehlergrad<span class="op">$</span>Sorting[i] &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb23-5"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb23-5"></a>  }</span>
+<span id="cb23-6"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb23-6"></a>  <span class="cf">else</span> {</span>
+<span id="cb23-7"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb23-7"></a>    Fehlergrad<span class="op">$</span>Sorting[i] &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb23-8"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb23-8"></a>  }</span>
+<span id="cb23-9"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb23-9"></a>}</span></code></pre></div>
+<p>Die Ausgabe bei Verwendung des Beispieldatensatzes lautet (zur besseren Lesbarkeit wurde die Ausgabe stets in der Formatierung aufbereitet):</p>
+<table>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Sortierung</th>
+<th>Fehlergrad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><span style="color: green;">12345678</span></td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1<span style="color: red;">32</span>45678</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><span style="color: red;">3</span>2<span style="color: red;">1</span>45678</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><span style="color: red;">4</span>23<span style="color: red;">1</span>5678</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><span style="color: red;">8</span>234567<span style="color: red;">1</span></td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><span style="color: red;">231</span>45567</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td><span style="color: red;">21</span>3456<span style="color: red;">87</span></td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td><span style="color: red;">321</span>45<span style="color: red;">876</span></td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td><span style="color: red;">23456781</span></td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td><span style="color: red;">87654321</span></td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Wenn die Sortierung korrekt angegeben wird beträgt der Fehlergrad 0, alle anderen Sortierungen – unabhängig von der Schwere des Fehlers – werden undifferenziert als falsch (Fehlergrad 1) gewertet. Eine Differenzierung des Fehlergrades findet also nicht statt.</p>
+</div>
+<div id="summe-der-korrekten-oder-falschen-positionen" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Summe der korrekten oder falschen Positionen</h3>
+<p>Differenziertere Ergebnisse liefert die Wertung der Anzahl der korrekten oder - invertiert - der falschen Positionen in der Sortierung. Es werden die einzelnen Positionen der Sortierung durchlaufen und für jede Position wird geprüft, ob diese korrekt (bzw. falsch) ist. Eine Implementation in R kann folgendermaßen umgesetzt werden:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb24-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(sorting<span class="op">$</span>ID)){</span>
+<span id="cb24-2"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb24-2"></a>  <span class="co">#die Zahlenkette wird aufgetrennt und als Vekor einzelner Ziffern in hold abgespeichert</span></span>
+<span id="cb24-3"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb24-3"></a>  hold &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">strsplit</span>(<span class="kw">as.character</span>(sorting<span class="op">$</span>Sorting[i]), <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]])</span>
+<span id="cb24-4"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb24-4"></a>  </span>
+<span id="cb24-5"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb24-5"></a>  Fehlergrad<span class="op">$</span>Sorting[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(hold <span class="op">!=</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>))</span>
+<span id="cb24-6"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb24-6"></a>}</span></code></pre></div>
+<p>Die Ausgabe des Beispieldatensatzes ist:</p>
+<table>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Sortierung</th>
+<th>Fehlergrad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><span style="color: green;">12345678</span></td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1<span style="color: red;">32</span>45678</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><span style="color: red;">3</span>2<span style="color: red;">1</span>45678</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><span style="color: red;">4</span>23<span style="color: red;">1</span>5678</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><span style="color: red;">8</span>234567<span style="color: red;">1</span></td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><span style="color: red;">231</span>45567</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td><span style="color: red;">21</span>3456<span style="color: red;">87</span></td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td><span style="color: red;">321</span>45<span style="color: red;">876</span></td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td><span style="color: red;">23456781</span></td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td><span style="color: red;">87654321</span></td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p>Mit dieser Art der Auswertung können bereits unterschiedliche Fehlergrade bestimmt werden, jedoch sind die einzelnen Fehler nicht nach Distanz gewichtet, so wiegt das Vertauschen benachbarter Positionen bei dieser Auswertungsmethode ebenso schwer wie das intuitiv ungleich problematischere Vertauschen der Anfangs- und Endposition der Sortierung.
+Im Fehlergrad wird unterschieden, ob allein zwei Positionen (ID 2-5) oder mehrere (bzw. alle) Positionen vertauscht angegeben wurden (ID 6-10).</p>
+</div>
+<div id="spearman-korrelation" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Spearman-Korrelation</h3>
+<p>Die Rangkorrelationsanalyse nach Spearman ist ein Verfahren zur Berechnung eines Korrelationskoeffizienten welches auf
+den Rängen der Variablen basiert. Der errechnete Korrelationskoeffizient <span class="math inline">\(\rho\)</span>, die sogenannte Spearman-Korrelation, ist ein Maß für die Ähnlichkeit zweier Variablen (vgl. <span class="citation">Bortz (<a href="#ref-Bortz" role="doc-biblioref">2011</a>)</span>). Die Berechnung des Korrelationskoeffizienten ist in R über die bereits angelegte Funtion <code>cor(x,y)</code> schnell möglich. Es ergibt sich folgender Code:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb25-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(sorting<span class="op">$</span>ID)){</span>
+<span id="cb25-2"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb25-2"></a>  <span class="co">#die Zahlenkette wird aufgetrennt und als Vekor einzelner Ziffern in hold abgespeichert</span></span>
+<span id="cb25-3"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb25-3"></a>  hold &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">strsplit</span>(<span class="kw">as.character</span>(sorting<span class="op">$</span>Sorting[i]), <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]])</span>
+<span id="cb25-4"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb25-4"></a></span>
+<span id="cb25-5"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb25-5"></a>  Fehlergrad<span class="op">$</span>Sorting[i] &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">cor</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>), hold, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>),<span class="dv">2</span>)</span>
+<span id="cb25-6"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb25-6"></a>}</span></code></pre></div>
+<p>Die Ausgabe bei Anwendung der Rangkorrelation nach Spearman auf die Beispielsortierungen lautet:</p>
+<table>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Sortierung</th>
+<th>Fehlergrad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><span style="color: green;">12345678</span></td>
+<td>1.00</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1<span style="color: red;">32</span>45678</td>
+<td>0.98</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><span style="color: red;">3</span>2<span style="color: red;">1</span>45678</td>
+<td>0.90</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><span style="color: red;">4</span>23<span style="color: red;">1</span>5678</td>
+<td>0.79</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><span style="color: red;">8</span>234567<span style="color: red;">1</span></td>
+<td>-0.17</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><span style="color: red;">231</span>45567</td>
+<td>0.93</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td><span style="color: red;">21</span>3456<span style="color: red;">87</span></td>
+<td>0.95</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td><span style="color: red;">321</span>45<span style="color: red;">876</span></td>
+<td>0.81</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td><span style="color: red;">23456781</span></td>
+<td>0.33</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td><span style="color: red;">87654321</span></td>
+<td>-1.00</td>
+</tr>
+</tbody>
+</table>
+<p>Der Korrelationskoeffizient <span class="math inline">\(\rho\)</span> nimmt Werte zwischen -1 (vollständige Verschiedenheit) und 1 (vollständige Übereinstimmung) an. Sowohl die Distanz einer fehlerhaften Sortierung als auch die Anzahl der Fehler fließt in den Korrelationskoeffizienten (hier als Fehlergrad bezeichnet) ein.</p>
+</div>
+<div id="levenshtein-algorithmus" class="section level3">
+<h3><span class="header-section-number">5.2.4</span> Levenshtein-Algorithmus</h3>
+<p>Der Levenshtein-Algorithmus <span class="citation">(Levenshtein, <a href="#ref-Levenshtein" role="doc-biblioref">1966</a>)</span> berechnet die minimale Anzahl an Einfügeoperationen, Löschoperationen und Ersetzungen, die benötigt werden um die Eingabe in die korrekte Sortierung zu transformieren.
+Der Levenshtein-Algorithmus kann über das Package <code>stringdist</code> als Funktion aufgerufen werden. Der Rückgabewert ist die minimale Anzahl der Operationen. In R ergibt sich folgender Code:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb26-1"></a><span class="kw">library</span>(stringdist)</span>
+<span id="cb26-2"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb26-2"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(sorting<span class="op">$</span>ID)){</span>
+<span id="cb26-3"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb26-3"></a>  Fehlergrad<span class="op">$</span>Sorting[i] &lt;-<span class="st"> </span><span class="kw">stringdist</span>(<span class="st">&#39;1234567&#39;</span>,sorting<span class="op">$</span>Sorting[i],<span class="dt">method=</span><span class="st">&#39;lv&#39;</span>)</span>
+<span id="cb26-4"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb26-4"></a>}</span></code></pre></div>
+<p>Die Ausgabe bei Anwendung des Levenstein-Algorithmus auf die Beispielsortierungen lautet:</p>
+<table>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Sortierung</th>
+<th>Fehlergrad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><span style="color: green;">12345678</span></td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1<span style="color: red;">32</span>45678</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><span style="color: red;">3</span>2<span style="color: red;">1</span>45678</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><span style="color: red;">4</span>23<span style="color: red;">1</span>5678</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><span style="color: red;">8</span>234567<span style="color: red;">1</span></td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><span style="color: red;">231</span>45567</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td><span style="color: red;">21</span>3456<span style="color: red;">87</span></td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td><span style="color: red;">321</span>45<span style="color: red;">876</span></td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td><span style="color: red;">23456781</span></td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td><span style="color: red;">87654321</span></td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p>Zu erkennen ist, dass die Distanz einer fehlerhaften Sortierung nicht in den Fehlergrad einfließt, die Anzahl der Fehler hingegen, analog zum vorherigen Algorithmus (‚Korrekte Position‘), schon.</p>
+</div>
+<div id="der-bubblesort-algorithmus" class="section level3">
+<h3><span class="header-section-number">5.2.5</span> Der Bubblesort-Algorithmus</h3>
+<p>Der Bubblesort-Algorithmus <span class="citation">(Knuth, <a href="#ref-Bubble" role="doc-biblioref">2010</a>)</span> ist ein Algorithmus zur Sortierung von Werten aus dem Fachbereich der Informatik. Der Name ‚Bubblesort‘ leitet sich von der den Algorithmus erklärenden Analogie aufsteigender Kohlensäurebläschen in einem Glas ab. Der Algorithmus vergleicht, beginnend mit dem ersten Wert <span class="math inline">\(x_1\)</span> der zu sortierenden Folge, paarweise benachbarte Werte. Ist der rechte Wert <span class="math inline">\(x_{i+1}\)</span> größer oder gleich dem linken Wert <span class="math inline">\(x_i\)</span> findet keine Tauschoperation statt. Ist der rechte Wert <span class="math inline">\(x_{i+1}\)</span> jedoch kleiner als der linke Wert <span class="math inline">\(x_i\)</span>, werden die Positionen der beiden Werte vertauscht. Anschließend bearbeitet der Algorithmus das nächste Datenpaar <span class="math inline">\((x_{i+1}; x_{i+2})\)</span>. Große Werte steigen somit wie große Kohlensäurebläschen an kleineren Werten vorbei.
+In R lässt sich der Bubblesort-Algorithmus folgendermaßen implementieren:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-1"></a>sortiere.bubble &lt;-<span class="st"> </span><span class="cf">function</span>(x)</span>
+<span id="cb27-2"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-2"></a>{</span>
+<span id="cb27-3"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-3"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.unsorted</span>(x)){</span>
+<span id="cb27-4"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-4"></a>    <span class="kw">return</span>(<span class="dt">summe_tauschoperationen =</span> <span class="dv">0</span>) </span>
+<span id="cb27-5"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-5"></a>    <span class="kw">stop</span>(<span class="st">&quot;Vektor ist bereits sortiert&quot;</span>)</span>
+<span id="cb27-6"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-6"></a>  }</span>
+<span id="cb27-7"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-7"></a>  </span>
+<span id="cb27-8"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-8"></a>  n =<span class="st"> </span><span class="kw">length</span>(x)</span>
+<span id="cb27-9"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-9"></a>  v =<span class="st"> </span>x</span>
+<span id="cb27-10"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-10"></a>  </span>
+<span id="cb27-11"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-11"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>(n<span class="dv">-1</span>))</span>
+<span id="cb27-12"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-12"></a>  {</span>
+<span id="cb27-13"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-13"></a>    <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>(n<span class="op">-</span>j))</span>
+<span id="cb27-14"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-14"></a>    {</span>
+<span id="cb27-15"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-15"></a>      <span class="co">#wenn der Nachfolger kleiner als der aktuelle Wert, vertausche beide Werte</span></span>
+<span id="cb27-16"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-16"></a>      <span class="cf">if</span>(v[i<span class="op">+</span><span class="dv">1</span>]<span class="op">&lt;</span>v[i])</span>
+<span id="cb27-17"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-17"></a>      {</span>
+<span id="cb27-18"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-18"></a>        t =<span class="st"> </span>v[i<span class="op">+</span><span class="dv">1</span>]</span>
+<span id="cb27-19"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-19"></a>        v[i<span class="op">+</span><span class="dv">1</span>] =<span class="st"> </span>v[i]</span>
+<span id="cb27-20"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-20"></a>        v[i] =<span class="st"> </span>t</span>
+<span id="cb27-21"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-21"></a>        </span>
+<span id="cb27-22"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-22"></a>        summe_tauschoperationen =<span class="st"> </span>summe_tauschoperationen <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb27-23"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-23"></a>        <span class="kw">print</span>(summe_tauschoperationen)</span>
+<span id="cb27-24"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-24"></a>      }</span>
+<span id="cb27-25"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-25"></a>    }</span>
+<span id="cb27-26"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-26"></a>  }</span>
+<span id="cb27-27"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-27"></a>  <span class="kw">print</span>(v)</span>
+<span id="cb27-28"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-28"></a>  x =<span class="st"> </span>v</span>
+<span id="cb27-29"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-29"></a>  <span class="kw">return</span>(summe_tauschoperationen)</span>
+<span id="cb27-30"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-30"></a>}</span>
+<span id="cb27-31"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-31"></a></span>
+<span id="cb27-32"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-32"></a><span class="co">#Counter setzen</span></span>
+<span id="cb27-33"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-33"></a>summe_tauschoperationen =<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb27-34"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-34"></a><span class="co">#Schleife über alle Pre-Bögen</span></span>
+<span id="cb27-35"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-35"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(sorting<span class="op">$</span>ID)){</span>
+<span id="cb27-36"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-36"></a>  hold &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">strsplit</span>(<span class="kw">as.character</span>(sorting<span class="op">$</span>Sorting[i]), <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]])</span>
+<span id="cb27-37"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-37"></a>  <span class="co">#Algorithmus anwenden</span></span>
+<span id="cb27-38"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-38"></a>  Fehlergrad<span class="op">$</span>Sorting[i] &lt;-<span class="st"> </span><span class="kw">sortiere.bubble</span>(hold)</span>
+<span id="cb27-39"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb27-39"></a>}</span></code></pre></div>
+<p>Der Beispieldatensatz führt zu folgender Ausgabe:</p>
+<table>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Sortierung</th>
+<th>Fehlergrad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><span style="color: green;">12345678</span></td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1<span style="color: red;">32</span>45678</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><span style="color: red;">3</span>2<span style="color: red;">1</span>45678</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><span style="color: red;">4</span>23<span style="color: red;">1</span>5678</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><span style="color: red;">8</span>234567<span style="color: red;">1</span></td>
+<td>13</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><span style="color: red;">231</span>45567</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td><span style="color: red;">21</span>3456<span style="color: red;">87</span></td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td><span style="color: red;">321</span>45<span style="color: red;">876</span></td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td><span style="color: red;">23456781</span></td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td><span style="color: red;">87654321</span></td>
+<td>28</td>
+</tr>
+</tbody>
+</table>
+<p>Durch Zählen der Tauschoperationen ist eine sensible Erfassung des Fehlergrades möglich. So ‚kostet‘ die Korrektur falsch sortierter benachbarter Werte nur eine Tauschoperation. Je weiter jedoch die falsch zugeordneten Werte auseinander liegen, desto mehr Tauschoperationen werden nötig – das Maß für den Fehlergrad steigt.</p>
+</div>
+<div id="der-jaro-algorithmus-jaro-distanz" class="section level3">
+<h3><span class="header-section-number">5.2.6</span> Der Jaro-Algorithmus (Jaro-Distanz)</h3>
+<p>Die Jaro-Distanz ist definiert als</p>
+<p><span class="math inline">\(dj=\frac{1}{3}\Bigl(\frac{m}{|s1|} +\frac{m}{|s2|} +\frac{(m-t)}{m}\Bigr)\)</span> mit</p>
+<p><span class="math inline">\(m\)</span> = Anzahl der übereinstimmenden Buchstaben (Ziffern)</p>
+<p><span class="math inline">\(s\)</span> = Länge der Zeichenkette</p>
+<p><span class="math inline">\(t\)</span> = Hälfte der Anzahl der Umstellungen der Buchstaben die nötig sind, damit die Buchstabenketten identisch sind.</p>
+<p>Der Jaro-Algorithmus <span class="citation">(Jaro, <a href="#ref-Jaro" role="doc-biblioref">1989</a>)</span> kann über das Package stringdist als Funktion aufgerufen werden. Der Rückgabewert ist die minimale Anzahl der Operationen. In R ergibt sich folgender Code:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb28-1"></a><span class="kw">library</span>(stringdist)</span>
+<span id="cb28-2"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb28-2"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(sorting<span class="op">$</span>ID)){</span>
+<span id="cb28-3"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb28-3"></a>  Fehlergrad<span class="op">$</span>Sorting[i] &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">stringdist</span>(<span class="st">&#39;1234567&#39;</span>,sorting<span class="op">$</span>Sorting[i],<span class="dt">method=</span><span class="st">&#39;jw&#39;</span>, <span class="dt">p =</span> <span class="dv">0</span>),<span class="dv">2</span>)</span>
+<span id="cb28-4"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#cb28-4"></a>}</span></code></pre></div>
+<p>Als Erweiterung der Jaro-Distanz kann auch die Jaro-Winkler-Distanz verwendet werden. Hierzu sei auf die Dokumentation des Packages stringdist verwiesen.
+Der Beispieldatensatz führt zu folgender Ausgabe:</p>
+<table>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Sortierung</th>
+<th>Fehlergrad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><span style="color: green;">12345678</span></td>
+<td>0.00</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1<span style="color: red;">32</span>45678</td>
+<td>0.04</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><span style="color: red;">3</span>2<span style="color: red;">1</span>45678</td>
+<td>0.04</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><span style="color: red;">4</span>23<span style="color: red;">1</span>5678</td>
+<td>0.04</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><span style="color: red;">8</span>234567<span style="color: red;">1</span></td>
+<td>0.17</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><span style="color: red;">231</span>45567</td>
+<td>0.06</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td><span style="color: red;">21</span>3456<span style="color: red;">87</span></td>
+<td>0.08</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td><span style="color: red;">321</span>45<span style="color: red;">876</span></td>
+<td>0.08</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td><span style="color: red;">23456781</span></td>
+<td>0.08</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td><span style="color: red;">87654321</span></td>
+<td>0.50</td>
+</tr>
+</tbody>
+</table>
+<p>Der Fehlergrad wird als Wert zwischen 0 (exakte Übereinstimmung) und 1 (totale Verschiedenheit) angegeben. Der Wert 1 kann nur erreicht werden, wenn die einzelnen Ziffern nicht in der korrekten Sortierung vorkommen, etwa wenn Buchstaben statt wie gefordert Zahlen angegeben werden.
+Analog zum Bubblesort-Algorithmus nimmt auch hier der Fehlergrad mit zunehmendem Abstand der falsch zugeordneten Positionen zu.</p>
+</div>
+</div>
+<div id="vergleich-und-diskussion" class="section level2">
+<h2><span class="header-section-number">5.3</span> Vergleich und Diskussion</h2>
+<p>Zum Vergleich der einzelnen Algorithmen wurde jeweils eine Rangfolge vom niedrigsten zum höchsten Fehlergrad gebildet:</p>
+<table class="table table-condensed">
+<thead>
+<tr>
+<th style="text-align:left;">
+ID
+</th>
+<th style="text-align:center;">
+Sorting
+</th>
+<th style="text-align:center;">
+dichotom
+</th>
+<th style="text-align:center;">
+kor.Position
+</th>
+<th style="text-align:center;">
+Spearman
+</th>
+<th style="text-align:center;">
+Levenshtein
+</th>
+<th style="text-align:center;">
+Bubblesort
+</th>
+<th style="text-align:center;">
+JaroDist
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:center;">
+12345678
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f2fdff">0</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f2fdff">0</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f2fdff">0</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f2fdff">0</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f2fdff">0</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f2fdff">0</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:center;">
+13245678
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:center;">
+32145678
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #86cdd9">4</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #a1d9e3">3</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:center;">
+42315678
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #50b5c7">6</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #86cdd9">4</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:center;">
+82345671
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #1a9db4">8</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #35a9bd">7</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #35a9bd">7</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:center;">
+23145678
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #6bc1d0">5</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #a1d9e3">3</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #bce5ec">2</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #bce5ec">2</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:center;">
+21345687
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #50b5c7">6</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #bce5ec">2</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #35a9bd">7</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #bce5ec">2</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #86cdd9">4</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:center;">
+32145876
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #50b5c7">6</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #6bc1d0">5</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #35a9bd">7</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #6bc1d0">5</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #86cdd9">4</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:center;">
+23456781
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #1a9db4">8</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #35a9bd">7</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #50b5c7">6</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #86cdd9">4</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:center;">
+87654321
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #d7f1f5">1</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #1a9db4">8</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #0091ab">9</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #1a9db4">8</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #1a9db4">8</span>
+</td>
+<td style="text-align:center;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #1a9db4">8</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Deutlich werden zwei Eigenschaften:</p>
+<ol style="list-style-type: decimal">
+<li><p>Es gibt große Unterschiede bezüglich der Sensibilität des Fehlergrades (vgl. dichotom mit dem Bubblesort- oder Jaro-Algorithmus sowie der Spearman-Korrelation).</p></li>
+<li><p>Auswertungen über die Dichotomie korrekt/falsch, die Methode korrekte Position sowie den Levenshtein-Algorithmus sind nicht sensibel gegenüber der Distanz einer falschen Sortierung (vgl. jeweils ID 1-5).</p></li>
+</ol>
+<p>Der Zweck der Auswertung sollte stets ihre Methode bestimmen und die Aussage nicht durch beschränkte Auswertungsmethoden limitiert oder sogar verzerrt werden. Wie gezeigt werden konnte, hat jede Methode spezifische Eigenheiten und gewichtet unterschiedliche Fehlertypen verschieden, wobei besonders die Spearman-Korrelation sowie Sortieralgorithmen aus der Informatik oft geeignet scheinen den Fehlergrad differenzierter zu bestimmen als klassische Methoden der statistischen Analyse. Möglicherweise erschließen sich auch, je nach Zweck der Auswertung, durch eine gewichtete Kombination zweier Algorithmen weitere geeignete Auswertungsmethoden.</p>
+
+</div>
+</div>
+<h3> Bibliographie</h3>
+<div id="refs" class="references">
+<div id="ref-Backes">
+<p>Backes, O. S., A.; Tepner. (o. J.). Test zum experimentell-fachdidaktischen Wissen von Chemielehrkräften.</p>
+</div>
+<div id="ref-Linder">
+<p>Bayrhuber, H. K., H.; Linder. (2010). <em>Linder Biologie - Lehrbuch für die Oberstufe: Gesamtbund</em> (LINDER Biologie SII / Auflage 2010). Schroedel.</p>
+</div>
+<div id="ref-ZFDN">
+<p>Binder, P. und T., T.; Schmiemann. (2019). Erfassung von fachspezifischen Problemlöseprozessen mit Sortieraufgaben in Biologie und Physik. <em>ZfDN</em>, <em>25</em>, 25–42.</p>
+</div>
+<div id="ref-Bortz">
+<p>Bortz, C., J. und Schuster. (2011). <em>Statistik für Human- und Sozialwissenschaftler</em>. Berlin, Heidelberg: Springer.</p>
+</div>
+<div id="ref-Buehner">
+<p>Bühner, D. E. (1998). <em>The Art of Computer Programming, Band 3: Sorting and Searching</em>. USA: Addison Wesley.</p>
+</div>
+<div id="ref-Friege">
+<p>Friege, G. (2001). <em>Wissen und Problemlösen: eine empirische Untersuchung des wissenszentrierten Problemlösens im Gebiet der Elektrizitätslehre auf der Grundlage des Experten-Novizen-Vergleichs</em>. Logos.</p>
+</div>
+<div id="ref-Jaro">
+<p>Jaro, M. A. (1989). Advances in Record-Linkage Methodology as Applied to Matching the 1985 Census of Tampa, Florida. <em>Journal of the American Statistical Association</em>, <em>84</em>(406), 414–420. Taylor &amp; Francis.</p>
+</div>
+<div id="ref-Bubble">
+<p>Knuth, D. E. (2010). <em>Einführung in die Test- und Fragebogenkonstruktion</em>. Hallbergmoos: Pearson Studium.</p>
+</div>
+<div id="ref-Levenshtein">
+<p>Levenshtein, V. I. (1966). Binary codes capable of correcting deletions, insertions and reversals. <em>Soviet Physics Doklady</em>, <em>10</em>(8), 707–710.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="typische-fehlvorstellungen.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -24,6 +24,16 @@ gegenüberstellung-leichtes---schweres-item
 interpretation
 gegenüberstellung-icc-rasch---2pl
 deutung
+auswertungsmöglichkeiten-von-sortieraufgaben
+der-datensatz-1
+die-auswertungsmöglichkeiten
+dichotom-sortierung-ist-richtig-oder-falsch
+summe-der-korrekten-oder-falschen-positionen
+spearman-korrelation
+levenshtein-algorithmus
+der-bubblesort-algorithmus
+der-jaro-algorithmus-jaro-distanz
+vergleich-und-diskussion
 typische-fehlvorstellungen
 das-rasch-modell-berücksichtigt-im-gegensatz-zur-klassischen-testtheorie-welche-aufgaben-richtig-bearbeitet-werden
 anwendung-eines-t-tests-für-unabhängige-stichproben-auf-abhängige-stichproben
