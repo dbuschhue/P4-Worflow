@@ -9,11 +9,11 @@ Eine weitere Möglichkeit stellt das Sortieren von Strukturen ihrer Größe nach
 
 Doch wie können die mittels eines solchen Tests gewonnenen Daten ausgewertet werden? Eine dichotome Auswertung nach ,richtig sortiert'/,falsch sortiert' liegt auf der Hand, jedoch ist diese Methode nicht besonders sensibel bezüglich des Fehlergrades:
 
-1.	Bei einer Sortierung, bei welcher der Proband nur zwei benachbarte Teilprozesse vertauscht hat, wird der Fehler als ebenso schwerwiegend gewertet als wenn der Start- und Endprozess vertauscht werden.
+1.	Bei einer Sortierung, bei welcher der Proband nur zwei benachbarte Positionen vertauscht hat, wird der Fehler als ebenso schwerwiegend gewertet als wenn der Start- und Endposition vertauscht werden.
 
-2.	Eine Sortierung, bei welcher der Proband nur zwei Teilprozesse vertauscht hat wird als ebenso schwerwiegend gewertet, als wenn er mehrere (alle) Teilprozesse falsch zugeordnet hat.
+2.	Eine Sortierung, bei welcher der Proband nur zwei Positionen vertauscht hat wird als ebenso schwerwiegend gewertet, als wenn er mehrere (alle) Positionen falsch zugeordnet hat.
 
-Es gelten bei Sortieraufgaben also im Wesentlichen zwei Faktoren, welche auf den Grad des Fehlers einwirken: Die Anzahl der falsch sortierten Teilprozesse und der Abstand der falsch sortierten Teilprozesse zueinander. Im Folgenden sollen verschiedene Algorithmen zur Bestimmung des Fehlergrades, sowie ihre Implementation in R, vorgestellt werden.
+Es gelten bei Sortieraufgaben also im Wesentlichen zwei Faktoren, welche auf den Grad des Fehlers einwirken: Die Anzahl der falsch sortierten Positionen und der Abstand der falsch sortierten Positionen zueinander. Im Folgenden sollen verschiedene Algorithmen zur Bestimmung des Fehlergrades, sowie ihre Implementation in R, vorgestellt werden.
 
 Anstatt der hier im Folgenden vorgestellten strukturellen (mathematischen) Maße können Sortieraufgaben auch nach inhaltlichen Kriterien ausgewertet werden, siehe hierzu beispielhaft @ZFDN.
 
@@ -29,7 +29,7 @@ Die Aufgabe zu diesem Datensatz lautet:
 Abbildung 1: Beispiel für Sortieraufgabe
 -->
 
-Der Datensatz ist im Anhang und unter INSERT_LINK_TO_XLS verfügbar. Aus Gründen der Nachvollziehbarkeit lautet die korrekte Sortierung 1) 2) 3) 4) 5) 6) 7) 8).
+Der Datensatz ist im [GitHub-Verzeichnis](https://github.com/dbuschhue/P4-Worflow/blob/master/Dataset_Sorting_Task.csv) dieser Publikation verfügbar. Aus Gründen der Nachvollziehbarkeit lautet die korrekte Sortierung 1) 2) 3) 4) 5) 6) 7) 8).
 
 In R wird der Datensatz folgendermaßen eingelesen:
 
