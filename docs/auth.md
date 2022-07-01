@@ -12,10 +12,14 @@
 |:----------------|-----:|:----------------------------------------------|:-------------------|
 |Arne Bewersdorff |  2021|„Auswertungsmöglichkeiten für Sortieraufgaben“ |-                   |
 
-
-|Autor*innen                    | Datum|Titel                          |Weitere Beitragende |
-|:------------------------------|-----:|:------------------------------|:-------------------|
-|Daniel Rehfeldt, Martin Brämer |  2022|Basiswissen für R: Praxisguide |-                   |
+#```{r echo=FALSE, message=FALSE, warning=FALSE}
+#baseknowledge_R <- read_delim("baseknowledge_R.csv", 
+#    delim = ";", escape_double = FALSE, locale = locale(encoding = "ISO-8859-1"), 
+#    trim_ws = TRUE)
+#colnames(baseknowledge_R) <- c("Autor*innen","Datum","Titel","Weitere Beitragende")
+#
+#knitr::kable(baseknowledge_R)
+#```
 
 ## Beiträge zu Fehlvorstellungen
 

@@ -19,14 +19,14 @@ colnames(sorting_tasks) <- c("Autor*innen","Datum","Titel","Weitere Beitragende"
 knitr::kable(sorting_tasks)
 ```
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-baseknowledge_R <- read_delim("baseknowledge_R.csv", 
-    delim = ";", escape_double = FALSE, locale = locale(encoding = "ISO-8859-1"), 
-    trim_ws = TRUE)
-colnames(baseknowledge_R) <- c("Autor*innen","Datum","Titel","Weitere Beitragende")
-
-knitr::kable(baseknowledge_R)
-```
+#```{r echo=FALSE, message=FALSE, warning=FALSE}
+#baseknowledge_R <- read_delim("baseknowledge_R.csv", 
+#    delim = ";", escape_double = FALSE, locale = locale(encoding = "ISO-8859-1"), 
+#    trim_ws = TRUE)
+#colnames(baseknowledge_R) <- c("Autor*innen","Datum","Titel","Weitere Beitragende")
+#
+#knitr::kable(baseknowledge_R)
+#```
 
 ## Beiträge zu Fehlvorstellungen
 
