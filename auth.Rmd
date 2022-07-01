@@ -4,6 +4,7 @@
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
+library(readr)
 
 kapitel <- read.csv2(file = "kapitel.csv")
 colnames(kapitel) <- c("Autor*innen","Datum","Titel","Weitere Beitragende")
@@ -19,10 +20,12 @@ knitr::kable(sorting_tasks)
 ```
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-baseknowledge_R <- read.csv2(file = "baseknowledge_R.csv")
+baseknowledge_R <- read_delim("baseknowledge_R.csv", 
+    delim = ";", escape_double = FALSE, locale = locale(encoding = "ISO-8859-1"), 
+    trim_ws = TRUE)
 colnames(baseknowledge_R) <- c("Autor*innen","Datum","Titel","Weitere Beitragende")
 
-knitr::kable(sorting_tasks)
+knitr::kable(baseknowledge_R)
 ```
 
 ## Beiträge zu Fehlvorstellungen

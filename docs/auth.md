@@ -13,9 +13,9 @@
 |Arne Bewersdorff |  2021|„Auswertungsmöglichkeiten für Sortieraufgaben“ |-                   |
 
 
-|Autor*innen      | Datum|Titel                                          |Weitere Beitragende |
-|:----------------|-----:|:----------------------------------------------|:-------------------|
-|Arne Bewersdorff |  2021|„Auswertungsmöglichkeiten für Sortieraufgaben“ |-                   |
+|Autor*innen                    | Datum|Titel                          |Weitere Beitragende |
+|:------------------------------|-----:|:------------------------------|:-------------------|
+|Daniel Rehfeldt, Martin Brämer |  2022|Basiswissen für R: Praxisguide |-                   |
 
 ## Beiträge zu Fehlvorstellungen
 
