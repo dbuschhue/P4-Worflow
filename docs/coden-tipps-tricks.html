@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Coden: Tipps &amp; Tricks | Statistische Analysen mit R in den MINT-Didaktiken Eine Tutorial-Sammlung</title>
+  <meta name="description" content="Alles was ich hätte wissen wollen" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Coden: Tipps &amp; Tricks | Statistische Analysen mit R in den MINT-Didaktiken Eine Tutorial-Sammlung" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Alles was ich hätte wissen wollen" />
+  <meta name="github-repo" content="dbuschhue/P4-Worflow" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Coden: Tipps &amp; Tricks | Statistische Analysen mit R in den MINT-Didaktiken Eine Tutorial-Sammlung" />
+  
+  <meta name="twitter:description" content="Alles was ich hätte wissen wollen" />
+  
+
+<meta name="author" content="Tina Grottke, Philipp Möhrke, Marvin Rost, David Buschhüter (Hrsg.)" />
+
+
+<meta name="date" content="2022-08-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="objekte-in-r.html"/>
+<link rel="next" href="teil-datensaetze.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Files</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> DISCLAIMER</a></li>
+<li class="chapter" data-level="2" data-path="ziel-dieses-buches.html"><a href="ziel-dieses-buches.html"><i class="fa fa-check"></i><b>2</b> Ziel dieses Buches</a></li>
+<li class="chapter" data-level="3" data-path="wie-kann-ich-zu-diesem-sammelband-einen-beitrag-leisten.html"><a href="wie-kann-ich-zu-diesem-sammelband-einen-beitrag-leisten.html"><i class="fa fa-check"></i><b>3</b> Wie kann ich zu diesem Sammelband einen Beitrag leisten?</a></li>
+<li class="chapter" data-level="4" data-path="basiswissen-für-r-praxisguide.html"><a href="basiswissen-für-r-praxisguide.html"><i class="fa fa-check"></i><b>4</b> Basiswissen für R: Praxisguide</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="basiswissen-für-r-praxisguide.html"><a href="basiswissen-für-r-praxisguide.html#motivation"><i class="fa fa-check"></i><b>4.1</b> Motivation</a></li>
+<li class="chapter" data-level="4.2" data-path="basiswissen-für-r-praxisguide.html"><a href="basiswissen-für-r-praxisguide.html#inhalte"><i class="fa fa-check"></i><b>4.2</b> Inhalte</a></li>
+<li class="chapter" data-level="4.3" data-path="basiswissen-für-r-praxisguide.html"><a href="basiswissen-für-r-praxisguide.html#rstudio"><i class="fa fa-check"></i><b>4.3</b> RStudio</a></li>
+<li class="chapter" data-level="4.4" data-path="basiswissen-für-r-praxisguide.html"><a href="basiswissen-für-r-praxisguide.html#pakete"><i class="fa fa-check"></i><b>4.4</b> Pakete</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="objekte-in-r.html"><a href="objekte-in-r.html"><i class="fa fa-check"></i><b>5</b> Objekte in R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="objekte-in-r.html"><a href="objekte-in-r.html#datensätze-typen"><i class="fa fa-check"></i><b>5.1</b> Datensätze: Typen</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="objekte-in-r.html"><a href="objekte-in-r.html#dataframe"><i class="fa fa-check"></i><b>5.1.1</b> Dataframe</a></li>
+<li class="chapter" data-level="5.1.2" data-path="objekte-in-r.html"><a href="objekte-in-r.html#matrix"><i class="fa fa-check"></i><b>5.1.2</b> Matrix</a></li>
+<li class="chapter" data-level="5.1.3" data-path="objekte-in-r.html"><a href="objekte-in-r.html#listen"><i class="fa fa-check"></i><b>5.1.3</b> Listen</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="objekte-in-r.html"><a href="objekte-in-r.html#variablen-typen"><i class="fa fa-check"></i><b>5.2</b> Variablen: Typen</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="objekte-in-r.html"><a href="objekte-in-r.html#numeric"><i class="fa fa-check"></i><b>5.2.1</b> Numeric</a></li>
+<li class="chapter" data-level="5.2.2" data-path="objekte-in-r.html"><a href="objekte-in-r.html#character"><i class="fa fa-check"></i><b>5.2.2</b> Character</a></li>
+<li class="chapter" data-level="5.2.3" data-path="objekte-in-r.html"><a href="objekte-in-r.html#factor"><i class="fa fa-check"></i><b>5.2.3</b> Factor</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="coden-tipps-tricks.html"><a href="coden-tipps-tricks.html"><i class="fa fa-check"></i><b>6</b> Coden: Tipps &amp; Tricks</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="coden-tipps-tricks.html"><a href="coden-tipps-tricks.html#umgang-mit-klammern"><i class="fa fa-check"></i><b>6.1</b> Umgang mit Klammern</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="coden-tipps-tricks.html"><a href="coden-tipps-tricks.html#schleifen"><i class="fa fa-check"></i><b>6.1.1</b> Schleifen</a></li>
+<li class="chapter" data-level="6.1.2" data-path="coden-tipps-tricks.html"><a href="coden-tipps-tricks.html#eigene-funktionen"><i class="fa fa-check"></i><b>6.1.2</b> Eigene Funktionen</a></li>
+<li class="chapter" data-level="6.1.3" data-path="coden-tipps-tricks.html"><a href="coden-tipps-tricks.html#klammern-in-rstudio"><i class="fa fa-check"></i><b>6.1.3</b> Klammern in RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="coden-tipps-tricks.html"><a href="coden-tipps-tricks.html#übersichtlich-coden"><i class="fa fa-check"></i><b>6.2</b> Übersichtlich Coden</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="coden-tipps-tricks.html"><a href="coden-tipps-tricks.html#schneller-coden-shortcuts"><i class="fa fa-check"></i><b>6.2.1</b> Schneller Coden: Shortcuts</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="teil-datensaetze.html"><a href="teil-datensaetze.html"><i class="fa fa-check"></i><b>7</b> Datensätze: Teil-Datensätze bilden</a></li>
+<li class="chapter" data-level="8" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><i class="fa fa-check"></i><b>8</b> Praxisorientierte Einführung in die Item-Response-Theorie mit dem Fokus auf das Rasch-Modell</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#motivation-und-konzeptuelle-herleitung"><i class="fa fa-check"></i><b>8.1</b> Motivation und konzeptuelle Herleitung</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#beispiel"><i class="fa fa-check"></i><b>8.1.1</b> Beispiel</a></li>
+<li class="chapter" data-level="8.1.2" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#wie-wird-der-beste-fit-gefunden"><i class="fa fa-check"></i><b>8.1.2</b> Wie wird der beste Fit gefunden?</a></li>
+<li class="chapter" data-level="8.1.3" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#zum-weiterlesen"><i class="fa fa-check"></i><b>8.1.3</b> zum Weiterlesen</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#der-datensatz"><i class="fa fa-check"></i><b>8.2</b> Der Datensatz</a></li>
+<li class="chapter" data-level="8.3" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#laden-der-benötigten-pakete-und-des-datensatzes"><i class="fa fa-check"></i><b>8.3</b> Laden der benötigten Pakete und des Datensatzes</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#paketquellen"><i class="fa fa-check"></i><b>8.3.1</b> Paketquellen</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#modellschätzung"><i class="fa fa-check"></i><b>8.4</b> Modellschätzung</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#deutung-der-aufgabenschwierigkeiten"><i class="fa fa-check"></i><b>8.4.1</b> Deutung der Aufgabenschwierigkeiten</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#erzeugen-einer-wright-map"><i class="fa fa-check"></i><b>8.5</b> Erzeugen einer Wright-Map</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#deutung-der-wright-maps"><i class="fa fa-check"></i><b>8.5.1</b> Deutung der Wright-Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#icc-item-characteristic-curve"><i class="fa fa-check"></i><b>8.6</b> ICC (Item Characteristic Curve)</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#input"><i class="fa fa-check"></i><b>8.6.1</b> Input</a></li>
+<li class="chapter" data-level="8.6.2" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#r-befehl-für-generierung-der-icc-in-tam"><i class="fa fa-check"></i><b>8.6.2</b> R-Befehl für Generierung der ICC in TAM</a></li>
+<li class="chapter" data-level="8.6.3" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#interpretation-icc-im-rasch-modell-wu2016"><i class="fa fa-check"></i><b>8.6.3</b> Interpretation ICC im Rasch-Modell <span class="citation">(<span>Wu et al., 2016</span>)</span></a></li>
+<li class="chapter" data-level="8.6.4" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#gegenüberstellung-leichtes---schweres-item"><i class="fa fa-check"></i><b>8.6.4</b> Gegenüberstellung leichtes - schweres Item</a></li>
+<li class="chapter" data-level="8.6.5" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#gegenüberstellung-icc-rasch---2pl"><i class="fa fa-check"></i><b>8.6.5</b> Gegenüberstellung ICC Rasch - 2PL</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html"><i class="fa fa-check"></i><b>9</b> Auswertungsmöglichkeiten von Sortieraufgaben</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#der-datensatz-1"><i class="fa fa-check"></i><b>9.1</b> Der Datensatz</a></li>
+<li class="chapter" data-level="9.2" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#die-auswertungsmöglichkeiten"><i class="fa fa-check"></i><b>9.2</b> Die Auswertungsmöglichkeiten</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#dichotom-sortierung-ist-richtig-oder-falsch"><i class="fa fa-check"></i><b>9.2.1</b> Dichotom: Sortierung ist richtig oder falsch</a></li>
+<li class="chapter" data-level="9.2.2" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#summe-der-korrekten-oder-falschen-positionen"><i class="fa fa-check"></i><b>9.2.2</b> Summe der korrekten oder falschen Positionen</a></li>
+<li class="chapter" data-level="9.2.3" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#spearman-korrelation"><i class="fa fa-check"></i><b>9.2.3</b> Spearman-Korrelation</a></li>
+<li class="chapter" data-level="9.2.4" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#levenshtein-algorithmus"><i class="fa fa-check"></i><b>9.2.4</b> Levenshtein-Algorithmus</a></li>
+<li class="chapter" data-level="9.2.5" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#der-bubblesort-algorithmus"><i class="fa fa-check"></i><b>9.2.5</b> Der Bubblesort-Algorithmus</a></li>
+<li class="chapter" data-level="9.2.6" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#der-jaro-algorithmus-jaro-distanz"><i class="fa fa-check"></i><b>9.2.6</b> Der Jaro-Algorithmus (Jaro-Distanz)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#vergleich-und-diskussion"><i class="fa fa-check"></i><b>9.3</b> Vergleich und Diskussion</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html"><i class="fa fa-check"></i><b>10</b> Typische Fehlvorstellungen</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#das-rasch-modell-berücksichtigt-im-gegensatz-zur-klassischen-testtheorie-welche-aufgaben-richtig-bearbeitet-werden"><i class="fa fa-check"></i><b>10.1</b> „Das Rasch-Modell berücksichtigt im Gegensatz zur klassischen Testtheorie, welche Aufgaben richtig bearbeitet werden“</a></li>
+<li class="chapter" data-level="10.2" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#anwendung-eines-t-tests-für-unabhängige-stichproben-auf-abhängige-stichproben"><i class="fa fa-check"></i><b>10.2</b> Anwendung eines t-Tests für unabhängige Stichproben auf abhängige Stichproben</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="glossar.html"><a href="glossar.html"><i class="fa fa-check"></i><b>11</b> Glossar</a></li>
+<li class="chapter" data-level="12" data-path="verzeichnis-der-beiträge-und-autorinnen.html"><a href="verzeichnis-der-beiträge-und-autorinnen.html"><i class="fa fa-check"></i><b>12</b> Verzeichnis der Beiträge und Autor*innen</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="verzeichnis-der-beiträge-und-autorinnen.html"><a href="verzeichnis-der-beiträge-und-autorinnen.html#kapitel"><i class="fa fa-check"></i><b>12.1</b> Kapitel</a></li>
+<li class="chapter" data-level="12.2" data-path="verzeichnis-der-beiträge-und-autorinnen.html"><a href="verzeichnis-der-beiträge-und-autorinnen.html#beiträge-zu-fehlvorstellungen"><i class="fa fa-check"></i><b>12.2</b> Beiträge zu Fehlvorstellungen</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="bibliographie.html"><a href="bibliographie.html"><i class="fa fa-check"></i><b>13</b> Bibliographie</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistische Analysen mit R in den MINT-Didaktiken<br />
+Eine Tutorial-Sammlung</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="coden-tipps-tricks" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Coden: Tipps &amp; Tricks<a href="coden-tipps-tricks.html#coden-tipps-tricks" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Vorweg sei auf eine für Anfänger*innen, aber auch Fortgeschrittene <strong>unerlässliche Hilfe</strong> hingewiesen: Eine einfache Websuche des jeweiligen Problems. Durch die gewaltige R-User-Community liefern Websites wie <a href="https://stackoverflow.com/">Stack Overflow</a> in fast allen Fällen konkrete und sofortige Hilfe – und dies meist deutlich verständlicher als die Standard R-Hilfe.</p>
+<div id="umgang-mit-klammern" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Umgang mit Klammern<a href="coden-tipps-tricks.html#umgang-mit-klammern" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Wie viele Programmiersprachen arbeitet auch R mit Klammern. Betrachtet man den Typus der Klammer, kann man hieraus häufig deren Funktion herleiten und gewinnt so an Orientierung.
+Dafür ein paar Beispiele:</p>
+<p><strong>Runde Klammern</strong> deuten meist auf Funktionen hin, das Argument (das, worauf die Funktion angewandt wird) steht in der Klammer:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="coden-tipps-tricks.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(demodata) <span class="co"># liefert einen Überblick (Funktion summary() ) über die Daten des Dataframes demodata (das Argument)</span></span></code></pre></div>
+<p><strong>Eckige Klammern</strong> kommen z. B. bei der Auswahl von Teil-Daten(sätzen) zum Einsatz (vgl. Abschnitt <a href="teil-datensaetze.html#teil-datensaetze">7</a>):</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="coden-tipps-tricks.html#cb23-1" aria-hidden="true" tabindex="-1"></a>demodata[<span class="dv">1</span>,<span class="dv">2</span>] <span class="co">#liefert den Eintrag in der ersten Zeile und zweiten Spalte des Dataframes</span></span></code></pre></div>
+<pre><code>## [1] weiblich
+## Levels: weiblich männlich divers</code></pre>
+<p><strong>Geschweifte Klammern</strong> werden z. B. für Wenn-Dann-Beziehungen, Schleifen und selbst kreierte Funktionen gebraucht. Findet man diese vor (z. B. bei der Online-Recherche), handelt es sich also meist um einen solchen Fall. Ein kleines Beispiel für eine Schleife folgt nach einer kurzen Einführung:</p>
+<div id="schleifen" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Schleifen<a href="coden-tipps-tricks.html#schleifen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Für Einsteiger*innen in R können Schleifen herausfordernd sein, daher fassen wir uns hier kurz. Viele gewünschte Operationen sind auch ohne Schleifen möglich, Schleifen können allerdings gerade bei großen Datensätzen eine enorme Zeitersparnis bedeuten.</p>
+<p>Der Datensatz für das Beispiel ist im <a href="https://github.com/dbuschhue/P4-Worflow/blob/master/data_for_chapters/baseknowledge_R/df_unrein_1_neu.rds">GitHub-Verzeichnis</a> dieser Publikation verfügbar.</p>
+<p>Ein Beispiel zu Schleifen: Für die <em>Fach im Abitur gehabt ja/nein</em>-Variablen erhalten wir einen Datensatz, der 1 für <em>ja</em> und <code>NA</code> für <em>nein</em> enthält. Wir möchten gern eine 0 statt <code>NA</code>:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="coden-tipps-tricks.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Betrachte beispielhaft die ersten beiden Abitur-Variablen</span></span>
+<span id="cb25-2"><a href="coden-tipps-tricks.html#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="coden-tipps-tricks.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Finde die Spaltennummer der Abitur-Variablen über die Funktion names():</span></span>
+<span id="cb25-4"><a href="coden-tipps-tricks.html#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="coden-tipps-tricks.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(demodata)</span></code></pre></div>
+<pre><code>##  [1] &quot;pcode&quot;                  &quot;VW.theo&quot;                &quot;VW.prax&quot;               
+##  [4] &quot;VW.plan&quot;                &quot;VW.durch&quot;               &quot;VW.reflex&quot;             
+##  [7] &quot;Abitur_Fach_Biologie&quot;   &quot;Abitur_Fach_Chemie&quot;     &quot;Abitur_Fach_Geographie&quot;
+## [10] &quot;Abitur_Fach_Geschichte&quot; &quot;Abitur_Fach_Informatik&quot; &quot;Abitur_Fach_Physik&quot;    
+## [13] &quot;Abitur_Fach_PW&quot;         &quot;geschlecht&quot;             &quot;alter&quot;                 
+## [16] &quot;semester.pre&quot;           &quot;abi&quot;                    &quot;dozent&quot;</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="coden-tipps-tricks.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Die Abitur-Variablen beginnen also ab Spalte 7.</span></span>
+<span id="cb27-2"><a href="coden-tipps-tricks.html#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="coden-tipps-tricks.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Betrachte beispielhaft die ersten beiden solchen Variablen:</span></span>
+<span id="cb27-4"><a href="coden-tipps-tricks.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(demodata[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>), <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">8</span>)]) </span></code></pre></div>
+<pre><code>##   Abitur_Fach_Biologie Abitur_Fach_Chemie
+## 1                   NA                 NA
+## 2                   NA                 NA
+## 3                   NA                 NA
+## 4                   NA                 NA
+## 5                   NA                 NA
+## 6                   NA                 NA</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="coden-tipps-tricks.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Variante ohne Schleife: Jede Variable einzeln:</span></span>
+<span id="cb29-2"><a href="coden-tipps-tricks.html#cb29-2" aria-hidden="true" tabindex="-1"></a>demodata[<span class="fu">is.na</span>(demodata[, <span class="dv">7</span>]) <span class="sc">==</span> T, <span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co">#Diejenigen Personen,</span></span>
+<span id="cb29-3"><a href="coden-tipps-tricks.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># die in Variable 7 ein NA aufweisen,</span></span>
+<span id="cb29-4"><a href="coden-tipps-tricks.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># erhalten als Wert nun eine 0</span></span>
+<span id="cb29-5"><a href="coden-tipps-tricks.html#cb29-5" aria-hidden="true" tabindex="-1"></a>demodata[<span class="fu">is.na</span>(demodata[, <span class="dv">8</span>]) <span class="sc">==</span> T, <span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb29-6"><a href="coden-tipps-tricks.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co"># usw. bis Variable 13.</span></span>
+<span id="cb29-7"><a href="coden-tipps-tricks.html#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="coden-tipps-tricks.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Überprüfe:</span></span>
+<span id="cb29-9"><a href="coden-tipps-tricks.html#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(demodata[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>), <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">8</span>)])</span></code></pre></div>
+<pre><code>##   Abitur_Fach_Biologie Abitur_Fach_Chemie
+## 1                    0                  0
+## 2                    0                  0
+## 3                    0                  0
+## 4                    0                  0
+## 5                    0                  0
+## 6                    0                  0</code></pre>
+<p>Als Schleife sähe es – wohlgemerkt für alle Abitur-Variablen gleichzeitig (!) – wie folgt aus:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="coden-tipps-tricks.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">7</span><span class="sc">:</span><span class="dv">13</span>) { <span class="co"># Abitur-Variablen stehen in den Spalten 7 bis 13</span></span>
+<span id="cb31-2"><a href="coden-tipps-tricks.html#cb31-2" aria-hidden="true" tabindex="-1"></a>  demodata[<span class="fu">is.na</span>(demodata[, i]) <span class="sc">==</span> T, i] <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># Wo NAs stehen, soll 0 gesetzt werden</span></span>
+<span id="cb31-3"><a href="coden-tipps-tricks.html#cb31-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb31-4"><a href="coden-tipps-tricks.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(demodata[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>), <span class="fu">c</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">13</span>)]) <span class="co"># Überprüfe</span></span></code></pre></div>
+<pre><code>##   Abitur_Fach_Biologie Abitur_Fach_Chemie Abitur_Fach_Geographie
+## 1                    0                  0                      0
+## 2                    0                  0                      0
+## 3                    0                  0                      0
+## 4                    0                  0                      0
+## 5                    0                  0                      0
+## 6                    0                  0                      0
+##   Abitur_Fach_Geschichte Abitur_Fach_Informatik Abitur_Fach_Physik
+## 1                      0                      0                  0
+## 2                      0                      0                  0
+## 3                      0                      0                  0
+## 4                      0                      0                  0
+## 5                      0                      0                  0
+## 6                      0                      0                  0
+##   Abitur_Fach_PW
+## 1              0
+## 2              0
+## 3              0
+## 4              0
+## 5              0
+## 6              0</code></pre>
+<p>Die <code>for()</code>-Schleife enthält hierbei immer zwei Klammer-Typen. Die runde Klammer umschließt die Laufzahl <code>i</code> und welche Werte sie durchläuft, die geschweifte Klammer umschließt die Operationen, die je Laufzahldurchgang erfolgen sollen.</p>
+</div>
+<div id="eigene-funktionen" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Eigene Funktionen<a href="coden-tipps-tricks.html#eigene-funktionen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Da eigene Funktionen auch für Einsteiger*innen eine hohe Komplexität aufweisen können, wird hier nur auf <a href="https://de.wikibooks.org/wiki/GNU_R:_Eigene_Funktionen_programmieren">diese Quelle</a> verwiesen.</p>
+</div>
+<div id="klammern-in-rstudio" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Klammern in RStudio<a href="coden-tipps-tricks.html#klammern-in-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Um die Übersicht über die Klammern zu erhalten, empfiehlt sich wie bereits erwähnt die Nutzung von <a href="https://rstudio.com/">RStudio:</a>, da hier:</p>
+<ol style="list-style-type: decimal">
+<li>Zusammengehörende Klammern hervorgehoben erscheinen</li>
+<li>Das Öffnen einer Klammer stets von einer sofortig erscheinenden <em>Schließ-Klammer</em> begleitet wird.</li>
+<li>Klammern auch gut nachträglich gesetzt werden können:
+<ul>
+<li>Code z. B. mit der Maus markieren,</li>
+<li>Klammer eintippen,</li>
+<li>der Code erscheint automatisch in Klammern eingeschlossen</li>
+</ul></li>
+</ol>
+<p>Dies veranschaulicht Abb. <a href="coden-tipps-tricks.html#fig:klammern-in-r">6.1</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:klammern-in-r"></span>
+<img src="figs/klammern-rstudio.png" alt="Klammern und visuelle Hilfen in RStudio" width="570" />
+<p class="caption">
+Figure 6.1: Klammern und visuelle Hilfen in RStudio
+</p>
+</div>
+</div>
+</div>
+<div id="übersichtlich-coden" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Übersichtlich Coden<a href="coden-tipps-tricks.html#übersichtlich-coden" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Informatiker*innen lernen bereits im Studium Grundsätze kennen, mit denen sich so übersichtlich Coden lässt, dass auch andere sich schnell in einem fremden Code zurechtfinden können. Glücklicherweise gibt es für die Anordnung von Code ein Tastenkürzel in R, das auch dabei hilft, selbst den Überblick zu behalten:</p>
+<ol style="list-style-type: decimal">
+<li>Code markieren</li>
+<li>STRG + UMSCH + A`</li>
+</ol>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="coden-tipps-tricks.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vorher:</span></span>
+<span id="cb33-2"><a href="coden-tipps-tricks.html#cb33-2" aria-hidden="true" tabindex="-1"></a>demodata<span class="sc">$</span>geschlecht<span class="ot">&lt;-</span><span class="fu">factor</span>(demodata<span class="sc">$</span>geschlecht,<span class="at">levels=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;weiblich&quot;</span>,<span class="st">&quot;männlich&quot;</span>,<span class="st">&quot;divers&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="coden-tipps-tricks.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nachher:</span></span>
+<span id="cb34-2"><a href="coden-tipps-tricks.html#cb34-2" aria-hidden="true" tabindex="-1"></a>demodata<span class="sc">$</span>geschlecht <span class="ot">&lt;-</span></span>
+<span id="cb34-3"><a href="coden-tipps-tricks.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">factor</span>(</span>
+<span id="cb34-4"><a href="coden-tipps-tricks.html#cb34-4" aria-hidden="true" tabindex="-1"></a>    demodata<span class="sc">$</span>geschlecht,</span>
+<span id="cb34-5"><a href="coden-tipps-tricks.html#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb34-6"><a href="coden-tipps-tricks.html#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;weiblich&quot;</span>, <span class="st">&quot;männlich&quot;</span>, <span class="st">&quot;divers&quot;</span>)</span>
+<span id="cb34-7"><a href="coden-tipps-tricks.html#cb34-7" aria-hidden="true" tabindex="-1"></a>  ) </span></code></pre></div>
+<div id="schneller-coden-shortcuts" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Schneller Coden: Shortcuts<a href="coden-tipps-tricks.html#schneller-coden-shortcuts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>RStudio beherrscht diverse Tastenkombinationen, die einem den Coding-Alltag erleichtern, hier unsere Favoriten:</p>
+<ul>
+<li><code>[ALT] + [-]</code> erzeugt den <em>Zuweisepfeil</em> <code>&lt;-</code></li>
+<li><code>[STRG] + [R]</code> oder <code>[STRG] + [ENTER]</code> führen den markierten Code aus (<em>run</em>).</li>
+<li><code>[STRG] + [ALT] + [B]</code> führen den Code bis zur aktuellen Cursor-Position aus</li>
+</ul>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="objekte-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="teil-datensaetze.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

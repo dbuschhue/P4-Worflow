@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Datensätze: Teil-Datensätze bilden | Statistische Analysen mit R in den MINT-Didaktiken Eine Tutorial-Sammlung</title>
+  <meta name="description" content="Alles was ich hätte wissen wollen" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Datensätze: Teil-Datensätze bilden | Statistische Analysen mit R in den MINT-Didaktiken Eine Tutorial-Sammlung" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Alles was ich hätte wissen wollen" />
+  <meta name="github-repo" content="dbuschhue/P4-Worflow" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Datensätze: Teil-Datensätze bilden | Statistische Analysen mit R in den MINT-Didaktiken Eine Tutorial-Sammlung" />
+  
+  <meta name="twitter:description" content="Alles was ich hätte wissen wollen" />
+  
+
+<meta name="author" content="Tina Grottke, Philipp Möhrke, Marvin Rost, David Buschhüter (Hrsg.)" />
+
+
+<meta name="date" content="2022-08-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="coden-tipps-tricks.html"/>
+<link rel="next" href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Files</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> DISCLAIMER</a></li>
+<li class="chapter" data-level="2" data-path="ziel-dieses-buches.html"><a href="ziel-dieses-buches.html"><i class="fa fa-check"></i><b>2</b> Ziel dieses Buches</a></li>
+<li class="chapter" data-level="3" data-path="wie-kann-ich-zu-diesem-sammelband-einen-beitrag-leisten.html"><a href="wie-kann-ich-zu-diesem-sammelband-einen-beitrag-leisten.html"><i class="fa fa-check"></i><b>3</b> Wie kann ich zu diesem Sammelband einen Beitrag leisten?</a></li>
+<li class="chapter" data-level="4" data-path="basiswissen-für-r-praxisguide.html"><a href="basiswissen-für-r-praxisguide.html"><i class="fa fa-check"></i><b>4</b> Basiswissen für R: Praxisguide</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="basiswissen-für-r-praxisguide.html"><a href="basiswissen-für-r-praxisguide.html#motivation"><i class="fa fa-check"></i><b>4.1</b> Motivation</a></li>
+<li class="chapter" data-level="4.2" data-path="basiswissen-für-r-praxisguide.html"><a href="basiswissen-für-r-praxisguide.html#inhalte"><i class="fa fa-check"></i><b>4.2</b> Inhalte</a></li>
+<li class="chapter" data-level="4.3" data-path="basiswissen-für-r-praxisguide.html"><a href="basiswissen-für-r-praxisguide.html#rstudio"><i class="fa fa-check"></i><b>4.3</b> RStudio</a></li>
+<li class="chapter" data-level="4.4" data-path="basiswissen-für-r-praxisguide.html"><a href="basiswissen-für-r-praxisguide.html#pakete"><i class="fa fa-check"></i><b>4.4</b> Pakete</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="objekte-in-r.html"><a href="objekte-in-r.html"><i class="fa fa-check"></i><b>5</b> Objekte in R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="objekte-in-r.html"><a href="objekte-in-r.html#datensätze-typen"><i class="fa fa-check"></i><b>5.1</b> Datensätze: Typen</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="objekte-in-r.html"><a href="objekte-in-r.html#dataframe"><i class="fa fa-check"></i><b>5.1.1</b> Dataframe</a></li>
+<li class="chapter" data-level="5.1.2" data-path="objekte-in-r.html"><a href="objekte-in-r.html#matrix"><i class="fa fa-check"></i><b>5.1.2</b> Matrix</a></li>
+<li class="chapter" data-level="5.1.3" data-path="objekte-in-r.html"><a href="objekte-in-r.html#listen"><i class="fa fa-check"></i><b>5.1.3</b> Listen</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="objekte-in-r.html"><a href="objekte-in-r.html#variablen-typen"><i class="fa fa-check"></i><b>5.2</b> Variablen: Typen</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="objekte-in-r.html"><a href="objekte-in-r.html#numeric"><i class="fa fa-check"></i><b>5.2.1</b> Numeric</a></li>
+<li class="chapter" data-level="5.2.2" data-path="objekte-in-r.html"><a href="objekte-in-r.html#character"><i class="fa fa-check"></i><b>5.2.2</b> Character</a></li>
+<li class="chapter" data-level="5.2.3" data-path="objekte-in-r.html"><a href="objekte-in-r.html#factor"><i class="fa fa-check"></i><b>5.2.3</b> Factor</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="coden-tipps-tricks.html"><a href="coden-tipps-tricks.html"><i class="fa fa-check"></i><b>6</b> Coden: Tipps &amp; Tricks</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="coden-tipps-tricks.html"><a href="coden-tipps-tricks.html#umgang-mit-klammern"><i class="fa fa-check"></i><b>6.1</b> Umgang mit Klammern</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="coden-tipps-tricks.html"><a href="coden-tipps-tricks.html#schleifen"><i class="fa fa-check"></i><b>6.1.1</b> Schleifen</a></li>
+<li class="chapter" data-level="6.1.2" data-path="coden-tipps-tricks.html"><a href="coden-tipps-tricks.html#eigene-funktionen"><i class="fa fa-check"></i><b>6.1.2</b> Eigene Funktionen</a></li>
+<li class="chapter" data-level="6.1.3" data-path="coden-tipps-tricks.html"><a href="coden-tipps-tricks.html#klammern-in-rstudio"><i class="fa fa-check"></i><b>6.1.3</b> Klammern in RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="coden-tipps-tricks.html"><a href="coden-tipps-tricks.html#übersichtlich-coden"><i class="fa fa-check"></i><b>6.2</b> Übersichtlich Coden</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="coden-tipps-tricks.html"><a href="coden-tipps-tricks.html#schneller-coden-shortcuts"><i class="fa fa-check"></i><b>6.2.1</b> Schneller Coden: Shortcuts</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="teil-datensaetze.html"><a href="teil-datensaetze.html"><i class="fa fa-check"></i><b>7</b> Datensätze: Teil-Datensätze bilden</a></li>
+<li class="chapter" data-level="8" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><i class="fa fa-check"></i><b>8</b> Praxisorientierte Einführung in die Item-Response-Theorie mit dem Fokus auf das Rasch-Modell</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#motivation-und-konzeptuelle-herleitung"><i class="fa fa-check"></i><b>8.1</b> Motivation und konzeptuelle Herleitung</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#beispiel"><i class="fa fa-check"></i><b>8.1.1</b> Beispiel</a></li>
+<li class="chapter" data-level="8.1.2" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#wie-wird-der-beste-fit-gefunden"><i class="fa fa-check"></i><b>8.1.2</b> Wie wird der beste Fit gefunden?</a></li>
+<li class="chapter" data-level="8.1.3" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#zum-weiterlesen"><i class="fa fa-check"></i><b>8.1.3</b> zum Weiterlesen</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#der-datensatz"><i class="fa fa-check"></i><b>8.2</b> Der Datensatz</a></li>
+<li class="chapter" data-level="8.3" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#laden-der-benötigten-pakete-und-des-datensatzes"><i class="fa fa-check"></i><b>8.3</b> Laden der benötigten Pakete und des Datensatzes</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#paketquellen"><i class="fa fa-check"></i><b>8.3.1</b> Paketquellen</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#modellschätzung"><i class="fa fa-check"></i><b>8.4</b> Modellschätzung</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#deutung-der-aufgabenschwierigkeiten"><i class="fa fa-check"></i><b>8.4.1</b> Deutung der Aufgabenschwierigkeiten</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#erzeugen-einer-wright-map"><i class="fa fa-check"></i><b>8.5</b> Erzeugen einer Wright-Map</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#deutung-der-wright-maps"><i class="fa fa-check"></i><b>8.5.1</b> Deutung der Wright-Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#icc-item-characteristic-curve"><i class="fa fa-check"></i><b>8.6</b> ICC (Item Characteristic Curve)</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#input"><i class="fa fa-check"></i><b>8.6.1</b> Input</a></li>
+<li class="chapter" data-level="8.6.2" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#r-befehl-für-generierung-der-icc-in-tam"><i class="fa fa-check"></i><b>8.6.2</b> R-Befehl für Generierung der ICC in TAM</a></li>
+<li class="chapter" data-level="8.6.3" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#interpretation-icc-im-rasch-modell-wu2016"><i class="fa fa-check"></i><b>8.6.3</b> Interpretation ICC im Rasch-Modell <span class="citation">(<span>Wu et al., 2016</span>)</span></a></li>
+<li class="chapter" data-level="8.6.4" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#gegenüberstellung-leichtes---schweres-item"><i class="fa fa-check"></i><b>8.6.4</b> Gegenüberstellung leichtes - schweres Item</a></li>
+<li class="chapter" data-level="8.6.5" data-path="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html"><a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html#gegenüberstellung-icc-rasch---2pl"><i class="fa fa-check"></i><b>8.6.5</b> Gegenüberstellung ICC Rasch - 2PL</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html"><i class="fa fa-check"></i><b>9</b> Auswertungsmöglichkeiten von Sortieraufgaben</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#der-datensatz-1"><i class="fa fa-check"></i><b>9.1</b> Der Datensatz</a></li>
+<li class="chapter" data-level="9.2" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#die-auswertungsmöglichkeiten"><i class="fa fa-check"></i><b>9.2</b> Die Auswertungsmöglichkeiten</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#dichotom-sortierung-ist-richtig-oder-falsch"><i class="fa fa-check"></i><b>9.2.1</b> Dichotom: Sortierung ist richtig oder falsch</a></li>
+<li class="chapter" data-level="9.2.2" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#summe-der-korrekten-oder-falschen-positionen"><i class="fa fa-check"></i><b>9.2.2</b> Summe der korrekten oder falschen Positionen</a></li>
+<li class="chapter" data-level="9.2.3" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#spearman-korrelation"><i class="fa fa-check"></i><b>9.2.3</b> Spearman-Korrelation</a></li>
+<li class="chapter" data-level="9.2.4" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#levenshtein-algorithmus"><i class="fa fa-check"></i><b>9.2.4</b> Levenshtein-Algorithmus</a></li>
+<li class="chapter" data-level="9.2.5" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#der-bubblesort-algorithmus"><i class="fa fa-check"></i><b>9.2.5</b> Der Bubblesort-Algorithmus</a></li>
+<li class="chapter" data-level="9.2.6" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#der-jaro-algorithmus-jaro-distanz"><i class="fa fa-check"></i><b>9.2.6</b> Der Jaro-Algorithmus (Jaro-Distanz)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="auswertungsmöglichkeiten-von-sortieraufgaben.html"><a href="auswertungsmöglichkeiten-von-sortieraufgaben.html#vergleich-und-diskussion"><i class="fa fa-check"></i><b>9.3</b> Vergleich und Diskussion</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html"><i class="fa fa-check"></i><b>10</b> Typische Fehlvorstellungen</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#das-rasch-modell-berücksichtigt-im-gegensatz-zur-klassischen-testtheorie-welche-aufgaben-richtig-bearbeitet-werden"><i class="fa fa-check"></i><b>10.1</b> „Das Rasch-Modell berücksichtigt im Gegensatz zur klassischen Testtheorie, welche Aufgaben richtig bearbeitet werden“</a></li>
+<li class="chapter" data-level="10.2" data-path="typische-fehlvorstellungen.html"><a href="typische-fehlvorstellungen.html#anwendung-eines-t-tests-für-unabhängige-stichproben-auf-abhängige-stichproben"><i class="fa fa-check"></i><b>10.2</b> Anwendung eines t-Tests für unabhängige Stichproben auf abhängige Stichproben</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="glossar.html"><a href="glossar.html"><i class="fa fa-check"></i><b>11</b> Glossar</a></li>
+<li class="chapter" data-level="12" data-path="verzeichnis-der-beiträge-und-autorinnen.html"><a href="verzeichnis-der-beiträge-und-autorinnen.html"><i class="fa fa-check"></i><b>12</b> Verzeichnis der Beiträge und Autor*innen</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="verzeichnis-der-beiträge-und-autorinnen.html"><a href="verzeichnis-der-beiträge-und-autorinnen.html#kapitel"><i class="fa fa-check"></i><b>12.1</b> Kapitel</a></li>
+<li class="chapter" data-level="12.2" data-path="verzeichnis-der-beiträge-und-autorinnen.html"><a href="verzeichnis-der-beiträge-und-autorinnen.html#beiträge-zu-fehlvorstellungen"><i class="fa fa-check"></i><b>12.2</b> Beiträge zu Fehlvorstellungen</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="bibliographie.html"><a href="bibliographie.html"><i class="fa fa-check"></i><b>13</b> Bibliographie</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistische Analysen mit R in den MINT-Didaktiken<br />
+Eine Tutorial-Sammlung</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="teil-datensaetze" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Datensätze: Teil-Datensätze bilden<a href="teil-datensaetze.html#teil-datensaetze" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Nun kommen wir zu einer für die Datenaufbereitung besonders wichtigen Fähigkeit in R – dem Bilden von Teil-Datensätzen.
+Diese werden zum Beispiel gebraucht, wenn eine Aufbereitung oder Analyse nur bestimmte Zeilen (z. B. Personen) oder Spalten (z. B. Variablen) berücksichtigen soll. Eine universelle Formel für das Bilden von Teildatensätzen lautet:</p>
+<p><code>datensatz[Zeilenauswahl, Spaltenauswahl]</code></p>
+<p>Es gibt hierbei mehrere Wege, Zeilen und/oder Spalten auszuwählen, hier einige Beispiele:</p>
+<p><strong>Weg 1</strong>: Direkte Auswahl der Proband*innen (Zeilen) und Variablen (Spalten) über ihre Nummer:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="teil-datensaetze.html#cb35-1" aria-hidden="true" tabindex="-1"></a>demodata <span class="co">#zeigt gesamten Datensatz (zu groß, daher hier nicht dargestellt)</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="teil-datensaetze.html#cb36-1" aria-hidden="true" tabindex="-1"></a>demodata[<span class="dv">1</span>, <span class="dv">3</span>] <span class="co">#wählt Person 1 und Variable 3 aus</span></span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="teil-datensaetze.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Person 1 hat also in der Variablen 3 die Ausprägung 4</span></span>
+<span id="cb38-2"><a href="teil-datensaetze.html#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="teil-datensaetze.html#cb38-3" aria-hidden="true" tabindex="-1"></a>demodata[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>),] <span class="co">#wählt Personen 1, 2 und 3 in allen Variablen aus </span></span></code></pre></div>
+<pre><code>##        pcode VW.theo VW.prax VW.plan VW.durch VW.reflex Abitur_Fach_Biologie
+## 1 01.01.2000       4       4       2        2         5                    0
+## 2 01.04.1987       3       4       5        4         4                    0
+## 3         06       3       3       4        4         4                    0
+##   Abitur_Fach_Chemie Abitur_Fach_Geographie Abitur_Fach_Geschichte
+## 1                  0                      0                      0
+## 2                  0                      0                      0
+## 3                  0                      0                      0
+##   Abitur_Fach_Informatik Abitur_Fach_Physik Abitur_Fach_PW geschlecht alter
+## 1                      0                  0              0          4    NA
+## 2                      0                  0              0          4    NA
+## 3                      0                  0              0          4    NA
+##   semester.pre abi dozent
+## 1           NA  NA Brämer
+## 2           NA  NA Brämer
+## 3           NA  NA Brämer</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="teil-datensaetze.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Folgendes wählt alle Personen, aber nur die Variablen 1, 2 und 3, aus </span></span>
+<span id="cb40-2"><a href="teil-datensaetze.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (entspricht ersten drei Spalten des Dataframes):</span></span>
+<span id="cb40-3"><a href="teil-datensaetze.html#cb40-3" aria-hidden="true" tabindex="-1"></a>demodata[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)] </span>
+<span id="cb40-4"><a href="teil-datensaetze.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Output wäre zu groß, daher mit head():</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="teil-datensaetze.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(demodata[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)]) </span></code></pre></div>
+<pre><code>##                 pcode VW.theo VW.prax
+## 1          01.01.2000       4       4
+## 2          01.04.1987       3       4
+## 3                  06       3       3
+## 4    1.NA2.NA3.284.10       2       1
+## 5              141651       5       5
+## 6 141651BIEN105411138       3       4</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="teil-datensaetze.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Folgendes wählt alle Personen AUßER Person 1, 2 und 3 in allen Variablen aus.</span></span>
+<span id="cb43-2"><a href="teil-datensaetze.html#cb43-2" aria-hidden="true" tabindex="-1"></a>demodata[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>),] </span>
+<span id="cb43-3"><a href="teil-datensaetze.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Output wäre zu groß, daher mit head():</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="teil-datensaetze.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(demodata[, <span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)]) </span></code></pre></div>
+<pre><code>##   VW.plan VW.durch VW.reflex Abitur_Fach_Biologie Abitur_Fach_Chemie
+## 1       2        2         5                    0                  0
+## 2       5        4         4                    0                  0
+## 3       4        4         4                    0                  0
+## 4       1        1         2                    0                  0
+## 5       4        4         5                    0                  0
+## 6       4        4         4                    0                  0
+##   Abitur_Fach_Geographie Abitur_Fach_Geschichte Abitur_Fach_Informatik
+## 1                      0                      0                      0
+## 2                      0                      0                      0
+## 3                      0                      0                      0
+## 4                      0                      0                      0
+## 5                      0                      0                      0
+## 6                      0                      0                      0
+##   Abitur_Fach_Physik Abitur_Fach_PW geschlecht alter semester.pre abi dozent
+## 1                  0              0          4    NA           NA  NA Brämer
+## 2                  0              0          4    NA           NA  NA Brämer
+## 3                  0              0          4    NA           NA  NA Brämer
+## 4                  0              0          4    NA           NA  NA Brämer
+## 5                  0              0          4    NA           NA  NA Brämer
+## 6                  0              0          4    NA           NA  NA Brämer</code></pre>
+<p><strong>Weg 2</strong>: Auswahl der Variablen über den Variablennamen:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="teil-datensaetze.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Folgendes wählt die Variable &quot;geschlecht&quot; für alle Personen aus. </span></span>
+<span id="cb46-2"><a href="teil-datensaetze.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Die Anführungszeichen kommen immer dann zum Einsatz, </span></span>
+<span id="cb46-3"><a href="teil-datensaetze.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># wenn Text als Argument genutzt wird. head() liefert nur die ersten 7 Zeilen.</span></span>
+<span id="cb46-4"><a href="teil-datensaetze.html#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="teil-datensaetze.html#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(demodata[, <span class="fu">c</span>(<span class="st">&quot;geschlecht&quot;</span>)])</span></code></pre></div>
+<pre><code>## [1] keine Angabe keine Angabe keine Angabe keine Angabe keine Angabe
+## [6] keine Angabe
+## Levels: weiblich männlich divers keine Angabe</code></pre>
+<p><strong>Weg 3</strong>: Auswahl von Personen über Bedingungen:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="teil-datensaetze.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Wählt alle weiblichen Personen und alle Variablen aus:</span></span>
+<span id="cb48-2"><a href="teil-datensaetze.html#cb48-2" aria-hidden="true" tabindex="-1"></a>demodata[demodata<span class="sc">$</span>geschlecht <span class="sc">==</span> <span class="st">&quot;weiblich&quot;</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="teil-datensaetze.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output wäre zu groß, daher mit head():</span></span>
+<span id="cb49-2"><a href="teil-datensaetze.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(demodata[demodata<span class="sc">$</span>geschlecht <span class="sc">==</span> <span class="st">&quot;weiblich&quot;</span>, ])</span></code></pre></div>
+<pre><code>##           pcode VW.theo VW.prax VW.plan VW.durch VW.reflex Abitur_Fach_Biologie
+## 13     ALLY2570       4      99       3        3         3                    1
+## 14     ALNA2397       2       2       4        3         3                    1
+## 21   Anan1913         1       2       1        1         1                    1
+## 23     ANDA2157       2       2       3        3         3                    1
+## 27     ANER0110       2       3       2        2         2                    0
+## 31     ANIA1696       2       3       2        5         3                    1
+##    Abitur_Fach_Chemie Abitur_Fach_Geographie Abitur_Fach_Geschichte
+## 13                  1                      1                      1
+## 14                  0                      0                      1
+## 21                  1                      1                      1
+## 23                  1                      0                      1
+## 27                  0                      0                      1
+## 31                  0                      0                      1
+##    Abitur_Fach_Informatik Abitur_Fach_Physik Abitur_Fach_PW geschlecht alter
+## 13                      0                  0              1   weiblich     2
+## 14                      0                  0              0   weiblich     6
+## 21                      0                  0              0   weiblich     5
+## 23                      0                  1              1   weiblich     7
+## 27                      0                  0              1   weiblich    17
+## 31                      0                  0              1   weiblich     5
+##    semester.pre abi dozent
+## 13            1 3.1 Brämer
+## 14            1 2.7 Brämer
+## 21            1 2.7 Brämer
+## 23            1 3.1 Brämer
+## 27            1 3.1 Brämer
+## 31            1 2.7 Brämer</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="teil-datensaetze.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#wählt nur Personen mit vollständigen Daten aus = Zeilen ohne &quot;NA&quot;:</span></span>
+<span id="cb51-2"><a href="teil-datensaetze.html#cb51-2" aria-hidden="true" tabindex="-1"></a>demodata[<span class="fu">complete.cases</span>(demodata),]</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="teil-datensaetze.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output wäre zu groß, daher mit head():</span></span>
+<span id="cb52-2"><a href="teil-datensaetze.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(demodata[<span class="fu">complete.cases</span>(demodata),])</span></code></pre></div>
+<pre><code>##           pcode VW.theo VW.prax VW.plan VW.durch VW.reflex Abitur_Fach_Biologie
+## 13     ALLY2570       4      99       3        3         3                    1
+## 14     ALNA2397       2       2       4        3         3                    1
+## 15     ALNA2754       1       2       1        1         1                    1
+## 20     ANAN0770       4       5       6        6         4                    1
+## 21   Anan1913         1       2       1        1         1                    1
+## 23     ANDA2157       2       2       3        3         3                    1
+##    Abitur_Fach_Chemie Abitur_Fach_Geographie Abitur_Fach_Geschichte
+## 13                  1                      1                      1
+## 14                  0                      0                      1
+## 15                  0                      0                      1
+## 20                  0                      1                      0
+## 21                  1                      1                      1
+## 23                  1                      0                      1
+##    Abitur_Fach_Informatik Abitur_Fach_Physik Abitur_Fach_PW geschlecht alter
+## 13                      0                  0              1   weiblich     2
+## 14                      0                  0              0   weiblich     6
+## 15                      0                  0              1     divers    16
+## 20                      1                  0              0   männlich    13
+## 21                      0                  0              0   weiblich     5
+## 23                      0                  1              1   weiblich     7
+##    semester.pre abi dozent
+## 13            1 3.1 Brämer
+## 14            1 2.7 Brämer
+## 15            1 2.4 Brämer
+## 20            1 3.5 Brämer
+## 21            1 2.7 Brämer
+## 23            1 3.1 Brämer</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="teil-datensaetze.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Folgendes wählt nur Personen aus, die in der Variablen &quot;dozent&quot; den Text &quot;Brämer&quot;</span></span>
+<span id="cb54-2"><a href="teil-datensaetze.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co"># enthalten. Dies geht allerdings nur, wenn die Variable vom Typ &quot;Character&quot; ist:</span></span>
+<span id="cb54-3"><a href="teil-datensaetze.html#cb54-3" aria-hidden="true" tabindex="-1"></a>demodata[<span class="fu">grepl</span>(<span class="st">&quot;Brämer&quot;</span>, demodata<span class="sc">$</span>dozent),] </span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="teil-datensaetze.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output wäre zu groß, daher mit head():</span></span>
+<span id="cb55-2"><a href="teil-datensaetze.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(demodata[<span class="fu">grepl</span>(<span class="st">&quot;Brämer&quot;</span>, demodata<span class="sc">$</span>dozent),] )</span></code></pre></div>
+<pre><code>##                 pcode VW.theo VW.prax VW.plan VW.durch VW.reflex
+## 1          01.01.2000       4       4       2        2         5
+## 2          01.04.1987       3       4       5        4         4
+## 3                  06       3       3       4        4         4
+## 4    1.NA2.NA3.284.10       2       1       1        1         2
+## 5              141651       5       5       4        4         5
+## 6 141651BIEN105411138       3       4       4        4         4
+##   Abitur_Fach_Biologie Abitur_Fach_Chemie Abitur_Fach_Geographie
+## 1                    0                  0                      0
+## 2                    0                  0                      0
+## 3                    0                  0                      0
+## 4                    0                  0                      0
+## 5                    0                  0                      0
+## 6                    0                  0                      0
+##   Abitur_Fach_Geschichte Abitur_Fach_Informatik Abitur_Fach_Physik
+## 1                      0                      0                  0
+## 2                      0                      0                  0
+## 3                      0                      0                  0
+## 4                      0                      0                  0
+## 5                      0                      0                  0
+## 6                      0                      0                  0
+##   Abitur_Fach_PW   geschlecht alter semester.pre abi dozent
+## 1              0 keine Angabe    NA           NA  NA Brämer
+## 2              0 keine Angabe    NA           NA  NA Brämer
+## 3              0 keine Angabe    NA           NA  NA Brämer
+## 4              0 keine Angabe    NA           NA  NA Brämer
+## 5              0 keine Angabe    NA           NA  NA Brämer
+## 6              0 keine Angabe    NA           NA  NA Brämer</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="teil-datensaetze.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">#wählt Personen aus, die zwischen 17 und 19 Jahren alt sind:</span></span>
+<span id="cb57-2"><a href="teil-datensaetze.html#cb57-2" aria-hidden="true" tabindex="-1"></a>demodata[demodata<span class="sc">$</span>alter <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">17</span><span class="sc">:</span><span class="dv">19</span>), ] </span></code></pre></div>
+<pre><code>##        pcode VW.theo VW.prax VW.plan VW.durch VW.reflex Abitur_Fach_Biologie
+## 27  ANER0110       2       3       2        2         2                    0
+## 251 JANA2801       2       2       2        1         2                    1
+## 271 KAER0824       1       1       1        3         1                    1
+## 476 SONA1510       4       5       2        4         3                    0
+##     Abitur_Fach_Chemie Abitur_Fach_Geographie Abitur_Fach_Geschichte
+## 27                   0                      0                      1
+## 251                  0                      1                      1
+## 271                  0                      0                      0
+## 476                  1                      0                      1
+##     Abitur_Fach_Informatik Abitur_Fach_Physik Abitur_Fach_PW geschlecht alter
+## 27                       0                  0              1   weiblich    17
+## 251                      0                  0              0   weiblich    17
+## 271                      0                  0              0   weiblich    17
+## 476                      0                  0              1   weiblich    18
+##     semester.pre abi dozent
+## 27             1 3.1 Brämer
+## 251            1 3.1 Brämer
+## 271            1 2.7 Brämer
+## 476            1 3.9 Brämer</code></pre>
+<p>Auch Funktionen können Teil-Datensätze erzeugen, wie beispielsweise <code>subset()</code>.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="teil-datensaetze.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(demodata,demodata<span class="sc">$</span>alter <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">17</span><span class="sc">:</span><span class="dv">19</span>)) <span class="co">#wählt Personen aus, die zwischen 17 und 19 Jahren alt sind</span></span></code></pre></div>
+<pre><code>##        pcode VW.theo VW.prax VW.plan VW.durch VW.reflex Abitur_Fach_Biologie
+## 27  ANER0110       2       3       2        2         2                    0
+## 251 JANA2801       2       2       2        1         2                    1
+## 271 KAER0824       1       1       1        3         1                    1
+## 476 SONA1510       4       5       2        4         3                    0
+##     Abitur_Fach_Chemie Abitur_Fach_Geographie Abitur_Fach_Geschichte
+## 27                   0                      0                      1
+## 251                  0                      1                      1
+## 271                  0                      0                      0
+## 476                  1                      0                      1
+##     Abitur_Fach_Informatik Abitur_Fach_Physik Abitur_Fach_PW geschlecht alter
+## 27                       0                  0              1   weiblich    17
+## 251                      0                  0              0   weiblich    17
+## 271                      0                  0              0   weiblich    17
+## 476                      0                  0              1   weiblich    18
+##     semester.pre abi dozent
+## 27             1 3.1 Brämer
+## 251            1 3.1 Brämer
+## 271            1 2.7 Brämer
+## 476            1 3.9 Brämer</code></pre>
+<p>Um einen mit den Wegen 1 bis 3 ausgewählten Datensatz als Objekt in R zu speichern, nutzt man den Zuweisepfeil:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="teil-datensaetze.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Links steht das neu kreierte Objekt, rechts ein bereits bekanntes</span></span>
+<span id="cb61-2"><a href="teil-datensaetze.html#cb61-2" aria-hidden="true" tabindex="-1"></a>demodata_vollstaendige_daten <span class="ot">&lt;-</span> demodata[<span class="fu">complete.cases</span>(demodata), ] </span></code></pre></div>
+<p>Im obigen Beispiel wird ein Datensatz mit dem Namen “demodata_vollstaendige_daten” erzeugt, der dann für spätere Operationen genutzt werden kann.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="coden-tipps-tricks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="praxisorientierte-einführung-in-die-item-response-theorie-mit-dem-fokus-auf-das-rasch-modell.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

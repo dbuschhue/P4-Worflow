@@ -34,7 +34,7 @@ Der Datensatz ist im [GitHub-Verzeichnis](https://github.com/dbuschhue/P4-Worflo
 In R wird der Datensatz folgendermaßen eingelesen:
 ```{r dataset, message = FALSE, results='hide', warning = FALSE}
 #library(xlsx)
-sorting <- read.csv("Dataset_Sorting_Task.csv") # Daten einlesen
+sorting <- read.csv("./data_for_chapters/sorting_tasks/Dataset_Sorting_Task.csv") # Daten einlesen
 head(sorting) #ersten Einträge des Datensatzes ausgeben
 Fehlergrad <- sorting #Matrix erstellen um den Fehlergrad für jede ID zu erfassen
 ```

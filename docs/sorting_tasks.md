@@ -29,13 +29,13 @@ Die Aufgabe zu diesem Datensatz lautet:
 Abbildung 1: Beispiel für Sortieraufgabe
 -->
 
-Der Datensatz ist im [GitHub-Verzeichnis](https://github.com/dbuschhue/P4-Worflow/blob/master/Dataset_Sorting_Task.csv) dieser Publikation verfügbar. Aus Gründen der Nachvollziehbarkeit lautet die korrekte Sortierung 1) 2) 3) 4) 5) 6) 7) 8).
+Der Datensatz ist im [GitHub-Verzeichnis](https://github.com/dbuschhue/P4-Worflow/blob/master/data_for_chapters/sorting_tasks/Dataset_Sorting_Task.csv) dieser Publikation verfügbar. Aus Gründen der Nachvollziehbarkeit lautet die korrekte Sortierung 1) 2) 3) 4) 5) 6) 7) 8).
 
 In R wird der Datensatz folgendermaßen eingelesen:
 
 ```r
 #library(xlsx)
-sorting <- read.csv("Dataset_Sorting_Task.csv") # Daten einlesen
+sorting <- read.csv("./data_for_chapters/sorting_tasks/Dataset_Sorting_Task.csv") # Daten einlesen
 head(sorting) #ersten Einträge des Datensatzes ausgeben
 Fehlergrad <- sorting #Matrix erstellen um den Fehlergrad für jede ID zu erfassen
 ```
