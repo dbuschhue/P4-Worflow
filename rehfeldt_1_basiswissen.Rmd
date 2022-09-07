@@ -10,7 +10,7 @@ Der Praxisguide startet mit einer knappen Einführung in die Objekttypen in R mi
 
 - Funktionen und Pakete (Pakete), die den *Werkzeugkasten*"* R ausmachen.
 - Datensätzen (wie sie aus quantitativen Erhebungen resultieren), 
-- Variablen (z. B. resultierend aus Fragebogen-Fragen resultierend), sowie 
+- Variablen (z. B. resultierend aus Fragebogen-Fragen resultierend)
 
 Nach Klärung dieses Grundwissens werden handlungsnahe, praktische Tipps zum Coden in R gegeben, damit bereits von Beginn an eine gewisse Stringenz und Sauberkeit erlernt wird, die z. B. ein späteres Referenzieren und Nachschlagen, sowie die Weitergabe von z. B. Code-Chunks erleichtert.
 Abgeschlossen wird diese kleine Einführung mit einer Anleitung zur Bildung von Teil-Datensätzen, die in sehr vielen Funktionen von R benötigt werden bzw. den Umgang mit den Daten wesentlich erleichtern. Für fortgeschrittene Techniken sei auf unseren zweiten Beitrag zum Thema Datenaufbereitung (auch in dieser Reihe) verwiesen.
