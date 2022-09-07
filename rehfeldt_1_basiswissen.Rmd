@@ -8,9 +8,9 @@ Herzlich Willkommen zum Beitrag *Basiswissen für R*. Viele Einführungswerke od
 ## Inhalte
 Der Praxisguide startet mit einer knappen Einführung in die Objekttypen in R mit Fokus auf 
 
-- Funktionen und Pakete (Pakete), die den *Werkzeugkasten*"* R ausmachen.
-- Datensätzen (wie sie aus quantitativen Erhebungen resultieren), 
-- Variablen (z. B. resultierend aus Fragebogen-Fragen resultierend)
+- Funktionen und Paketen, die den *Werkzeugkasten* von R ausmachen.
+- Datensätzen (wie sie aus quantitativen Erhebungen resultieren). 
+- Variablen (z. B. resultierend aus Fragebogen-Fragen).
 
 Nach Klärung dieses Grundwissens werden handlungsnahe, praktische Tipps zum Coden in R gegeben, damit bereits von Beginn an eine gewisse Stringenz und Sauberkeit erlernt wird, die z. B. ein späteres Referenzieren und Nachschlagen, sowie die Weitergabe von z. B. Code-Chunks erleichtert.
 Abgeschlossen wird diese kleine Einführung mit einer Anleitung zur Bildung von Teil-Datensätzen, die in sehr vielen Funktionen von R benötigt werden bzw. den Umgang mit den Daten wesentlich erleichtern. Für fortgeschrittene Techniken sei auf unseren zweiten Beitrag zum Thema Datenaufbereitung (auch in dieser Reihe) verwiesen.
@@ -24,9 +24,9 @@ Genauso kann auch *ent-kommentiert* werden.
 Den Lesenden sollte zudem bewusst sein, dass R mittlerweile eine derart umfangreiche Paketauswahl unterstützt, dass für jedes (Datenbereinigungs-)Problem mehrere Lösungen existieren, von denen wir hier nur wenige vorstellen.
 
 ## RStudio
-Für ein deutlich übersichtlicheres Coden und Arbeiten empfehlen wir die Benutzung der Oberfläche [RStudio:](https://rstudio.com/):
+Für ein deutlich übersichtlicheres Coden und Arbeiten empfehlen wir die Benutzung der Oberfläche [RStudio:](https://rstudio.com/)
 
-```{r rstudio, echo=F, eval=T, fig.align = 'center', fig.show='hold', fig.cap="RStudio im Vergleich zu Basis-R (oben:  von xmodulo, lizensiert unter CC BY 2.0. https://creativecommons.org/licenses/by/2.0/?ref=openverse, unten: von Daniel Rehfeldt"}
+```{r rstudio, echo=F, eval=T, fig.align = 'center', fig.show='hold', fig.cap="RStudio im Vergleich zu Basis-R (oben:  von xmodulo, lizensiert unter CC BY 2.0. https://creativecommons.org/licenses/by/2.0/?ref=openverse, unten: von Daniel Rehfeldt)"}
 knitr::include_graphics("./figs/rstudio.jpg")
 knitr::include_graphics("./figs/r.jpg")
 
@@ -34,16 +34,16 @@ knitr::include_graphics("./figs/r.jpg")
 
 Der Installationsprozess gestaltet sich folgendermaßen:
 
-1. Installieren der Software R selbst: [Link](https://www.r-project.org/)
-2. Installieren von [RStudio:](https://rstudio.com/)
+1. Installieren der [Software R](https://www.r-project.org/)
+2. Installieren von [RStudio](https://rstudio.com/)
 
 Rstudio bietet gegenüber basalem R so viele Vorteile, dass seine Nutzung obligatorisch geworden ist:
 
-1. Zusammengehöriger Code wird bereits beim Schreiben durch *Highlighting* und Farbgebung ausgezeichnet
-2. RStudio bietet mehrere Fenster, die unterschiedliche Funktionen erfüllen (Coden, Objekte, Output, Grafiken usw.)
+1. Zusammengehöriger Code wird bereits beim Schreiben durch *Highlighting* und Farbgebung ausgezeichnet.
+2. RStudio bietet mehrere Fenster, die unterschiedliche Funktionen erfüllen (Coden, Objekte, Output, Grafiken usw.).
 3. Autovervollständigung von Funktions- oder Objektnamen (ähnlich wie z. B. Excel)
-4. erleichterte Paketverwaltung
-5. Erleichterte Bedienung über z. B. View-Tab (vgl. Kapitel "Datenaufbereitung"), direktes Betrachten von Datensätzen usw. im `Environment`-Fenster
+4. Erleichterte Paketverwaltung
+5. Erleichterte Bedienung über z. B. View-Tab (vgl. Kapitel *Datenaufbereitung*), direktes Betrachten von Datensätzen usw. im `Environment`-Fenster
 6. Speichern des R-Scripts, `run` und `re-run` des Codes direkt
 7. Integrierte Hilfefunktion (u. a. `Cheatsheets` zum Spicken unter `help – cheatsheets`)
 
@@ -54,14 +54,14 @@ Um einige zusätzliche Funktionen nutzen zu können, werden zunächst Pakete in 
 Informationen zu einzelnen Paketen finden sich über eine einfache Web-Suche.
 Das Nutzen von Paketen wird über zwei Schritte realisiert.
 
-(1) Den ersten und nur einmalig durchzuführenden Schritt bildet das Installieren das Pakets (`install.package()`) – ähnlich, wie ein Programm am PC nur einmalig installiert werden muss. 
-(2) Zweiter Schritt ist dass das Aktivieren bzw. Laden des Pakets (`library()`) – vergleichbar mit dem Starten eines Programms am PC. Ebenso analog dazu muss nach jedem Neustart von RStudio auch das Paket neu geladen werden.
+(1) Den ersten und nur einmalig durchzuführenden Schritt bildet das Installieren das Pakets über `install.package()` – ähnlich, wie ein Programm am PC nur einmalig installiert werden muss. 
+(2) Zweiter Schritt ist dass das Aktivieren bzw. Laden des Pakets über `library()` – vergleichbar mit dem Starten eines Programms am PC. Ebenso analog dazu muss nach jedem Neustart von RStudio auch das Paket neu geladen werden.
 
 ```{r installiere_und_lade_packages, message=FALSE, warning=F}
 # Installiere und lade die benötigten Pakete
 # install.Pakete("xlsx") # da dieses Paket bereits zuvor vom Autor installiert wurde, muss es hier nicht erneut installiert werden und ist daher auskommentiert
 # install.Pakete("psych") # da dieses Paket bereits zuvor vom Autor installiert wurde, muss es hier nicht erneut installiert werden und ist daher auskommentiert
-library(psych) # liefert psychometrisch nützliche Funktionen
+
 library(xlsx) # hilft beim Import von Excel-Daten
 
 ```
