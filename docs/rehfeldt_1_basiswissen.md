@@ -8,9 +8,9 @@ Herzlich Willkommen zum Beitrag *Basiswissen für R*. Viele Einführungswerke od
 ## Inhalte
 Der Praxisguide startet mit einer knappen Einführung in die Objekttypen in R mit Fokus auf 
 
-- Funktionen und Pakete (Pakete), die den *Werkzeugkasten*"* R ausmachen.
-- Datensätzen (wie sie aus quantitativen Erhebungen resultieren), 
-- Variablen (z. B. resultierend aus Fragebogen-Fragen resultierend), sowie 
+- Funktionen und Paketen, die den *Werkzeugkasten* von R ausmachen.
+- Datensätzen (wie sie aus quantitativen Erhebungen resultieren). 
+- Variablen (z. B. resultierend aus Fragebogen-Fragen).
 
 Nach Klärung dieses Grundwissens werden handlungsnahe, praktische Tipps zum Coden in R gegeben, damit bereits von Beginn an eine gewisse Stringenz und Sauberkeit erlernt wird, die z. B. ein späteres Referenzieren und Nachschlagen, sowie die Weitergabe von z. B. Code-Chunks erleichtert.
 Abgeschlossen wird diese kleine Einführung mit einer Anleitung zur Bildung von Teil-Datensätzen, die in sehr vielen Funktionen von R benötigt werden bzw. den Umgang mit den Daten wesentlich erleichtern. Für fortgeschrittene Techniken sei auf unseren zweiten Beitrag zum Thema Datenaufbereitung (auch in dieser Reihe) verwiesen.
@@ -24,25 +24,25 @@ Genauso kann auch *ent-kommentiert* werden.
 Den Lesenden sollte zudem bewusst sein, dass R mittlerweile eine derart umfangreiche Paketauswahl unterstützt, dass für jedes (Datenbereinigungs-)Problem mehrere Lösungen existieren, von denen wir hier nur wenige vorstellen.
 
 ## RStudio
-Für ein deutlich übersichtlicheres Coden und Arbeiten empfehlen wir die Benutzung der Oberfläche [RStudio:](https://rstudio.com/):
+Für ein deutlich übersichtlicheres Coden und Arbeiten empfehlen wir die Benutzung der Oberfläche [RStudio:](https://rstudio.com/)
 
 <div class="figure" style="text-align: center">
-<img src="./figs/rstudio.jpg" alt="RStudio im Vergleich zu Basis-R (oben:  von xmodulo, lizensiert unter CC BY 2.0. https://creativecommons.org/licenses/by/2.0/?ref=openverse, unten: von Daniel Rehfeldt" width="800" /><img src="./figs/r.jpg" alt="RStudio im Vergleich zu Basis-R (oben:  von xmodulo, lizensiert unter CC BY 2.0. https://creativecommons.org/licenses/by/2.0/?ref=openverse, unten: von Daniel Rehfeldt" width="396" />
-<p class="caption">(\#fig:rstudio)RStudio im Vergleich zu Basis-R (oben:  von xmodulo, lizensiert unter CC BY 2.0. https://creativecommons.org/licenses/by/2.0/?ref=openverse, unten: von Daniel Rehfeldt</p>
+<img src="./figs/rstudio.jpg" alt="RStudio im Vergleich zu Basis-R (oben:  von xmodulo, lizensiert unter CC BY 2.0. https://creativecommons.org/licenses/by/2.0/?ref=openverse, unten: von Daniel Rehfeldt)"  /><img src="./figs/r.jpg" alt="RStudio im Vergleich zu Basis-R (oben:  von xmodulo, lizensiert unter CC BY 2.0. https://creativecommons.org/licenses/by/2.0/?ref=openverse, unten: von Daniel Rehfeldt)"  />
+<p class="caption">(\#fig:rstudio)RStudio im Vergleich zu Basis-R (oben:  von xmodulo, lizensiert unter CC BY 2.0. https://creativecommons.org/licenses/by/2.0/?ref=openverse, unten: von Daniel Rehfeldt)</p>
 </div>
 
 Der Installationsprozess gestaltet sich folgendermaßen:
 
-1. Installieren der Software R selbst: [Link](https://www.r-project.org/)
-2. Installieren von [RStudio:](https://rstudio.com/)
+1. Installieren der [Software R](https://www.r-project.org/)
+2. Installieren von [RStudio](https://rstudio.com/)
 
 Rstudio bietet gegenüber basalem R so viele Vorteile, dass seine Nutzung obligatorisch geworden ist:
 
-1. Zusammengehöriger Code wird bereits beim Schreiben durch *Highlighting* und Farbgebung ausgezeichnet
-2. RStudio bietet mehrere Fenster, die unterschiedliche Funktionen erfüllen (Coden, Objekte, Output, Grafiken usw.)
+1. Zusammengehöriger Code wird bereits beim Schreiben durch *Highlighting* und Farbgebung ausgezeichnet.
+2. RStudio bietet mehrere Fenster, die unterschiedliche Funktionen erfüllen (Coden, Objekte, Output, Grafiken usw.).
 3. Autovervollständigung von Funktions- oder Objektnamen (ähnlich wie z. B. Excel)
-4. erleichterte Paketverwaltung
-5. Erleichterte Bedienung über z. B. View-Tab (vgl. Kapitel "Datenaufbereitung"), direktes Betrachten von Datensätzen usw. im `Environment`-Fenster
+4. Erleichterte Paketverwaltung
+5. Erleichterte Bedienung über z. B. View-Tab (vgl. Kapitel *Datenaufbereitung*), direktes Betrachten von Datensätzen usw. im `Environment`-Fenster
 6. Speichern des R-Scripts, `run` und `re-run` des Codes direkt
 7. Integrierte Hilfefunktion (u. a. `Cheatsheets` zum Spicken unter `help – cheatsheets`)
 
@@ -53,16 +53,17 @@ Um einige zusätzliche Funktionen nutzen zu können, werden zunächst Pakete in 
 Informationen zu einzelnen Paketen finden sich über eine einfache Web-Suche.
 Das Nutzen von Paketen wird über zwei Schritte realisiert.
 
-(1) Den ersten und nur einmalig durchzuführenden Schritt bildet das Installieren das Pakets (`install.package()`) – ähnlich, wie ein Programm am PC nur einmalig installiert werden muss. 
-(2) Zweiter Schritt ist dass das Aktivieren bzw. Laden des Pakets (`library()`) – vergleichbar mit dem Starten eines Programms am PC. Ebenso analog dazu muss nach jedem Neustart von RStudio auch das Paket neu geladen werden.
+(1) Den ersten und nur einmalig durchzuführenden Schritt bildet das Installieren das Pakets über `install.package()` – ähnlich, wie ein Programm am PC nur einmalig installiert werden muss. 
+(2) Zweiter Schritt ist dass das Aktivieren bzw. Laden des Pakets über `library()` – vergleichbar mit dem Starten eines Programms am PC. Ebenso analog dazu muss nach jedem Neustart von RStudio auch das Paket neu geladen werden.
 
 
 ```r
 # Installiere und lade die benötigten Pakete
 # install.Pakete("xlsx") # da dieses Paket bereits zuvor vom Autor installiert wurde, muss es hier nicht erneut installiert werden und ist daher auskommentiert
 # install.Pakete("psych") # da dieses Paket bereits zuvor vom Autor installiert wurde, muss es hier nicht erneut installiert werden und ist daher auskommentiert
-library(psych) # liefert psychometrisch nützliche Funktionen
+
 library(xlsx) # hilft beim Import von Excel-Daten
+library(psych) # bietet psychometrische Funktionen
 ```
 
 
@@ -390,7 +391,7 @@ Die `for()`-Schleife enthält hierbei immer zwei Klammer-Typen. Die runde Klamme
 Da eigene Funktionen auch für Einsteiger\*innen eine hohe Komplexität aufweisen können, wird hier nur auf [diese Quelle](https://de.wikibooks.org/wiki/GNU_R:_Eigene_Funktionen_programmieren) verwiesen.
 
 ### Klammern in RStudio
-Um die Übersicht über die Klammern zu erhalten, empfiehlt sich wie bereits erwähnt die Nutzung von [RStudio:](https://rstudio.com/), da hier:
+Um die Übersicht über die Klammern zu erhalten, empfiehlt sich wie bereits erwähnt die Nutzung von [RStudio](https://rstudio.com/), da hier:
 
 1. Zusammengehörende Klammern hervorgehoben erscheinen
 2. Das Öffnen einer Klammer stets von einer sofortig erscheinenden *Schließ-Klammer* begleitet wird.
@@ -403,7 +404,7 @@ Dies veranschaulicht Abb. \@ref(fig:klammern-in-r).
 
 
 <div class="figure" style="text-align: center">
-<img src="./figs/klammern-rstudio.png" alt="Klammern und visuelle Hilfen in RStudio" width="570" />
+<img src="./figs/klammern-rstudio.png" alt="Klammern und visuelle Hilfen in RStudio"  />
 <p class="caption">(\#fig:klammern-in-r)Klammern und visuelle Hilfen in RStudio</p>
 </div>
   
@@ -436,7 +437,7 @@ RStudio beherrscht diverse Tastenkombinationen, die einem den Coding-Alltag erle
 
 - `[ALT] + [-]` erzeugt den *Zuweisepfeil* `<-`
 - `[STRG] + [R]` oder `[STRG] + [ENTER]` führen den markierten Code aus (*run*).
-- `[STRG] + [ALT] + [B]` führen den Code bis zur aktuellen Cursor-Position aus 
+- `[STRG] + [ALT] + [B]` führen den Code bis zur aktuellen Cursor-Position aus. 
 
 ## Datensätze: Teil-Datensätze bilden {#teil-datensaetze}
 Nun kommen wir zu einer für die Datenaufbereitung besonders wichtigen Fähigkeit in R – dem Bilden von Teil-Datensätzen.
@@ -524,31 +525,38 @@ demodata[-c(1:3),]
 
 
 ```r
-head(demodata[, -c(1:3)]) 
+head(demodata[-c(1:3),]) 
 ```
 
 ```
-##   VW.plan VW.durch VW.reflex Abitur_Fach_Biologie Abitur_Fach_Chemie
-## 1       2        2         5                    0                  0
-## 2       5        4         4                    0                  0
-## 3       4        4         4                    0                  0
-## 4       1        1         2                    0                  0
-## 5       4        4         5                    0                  0
-## 6       4        4         4                    0                  0
-##   Abitur_Fach_Geographie Abitur_Fach_Geschichte Abitur_Fach_Informatik
-## 1                      0                      0                      0
-## 2                      0                      0                      0
-## 3                      0                      0                      0
-## 4                      0                      0                      0
-## 5                      0                      0                      0
-## 6                      0                      0                      0
-##   Abitur_Fach_Physik Abitur_Fach_PW geschlecht alter semester.pre abi dozent
-## 1                  0              0          4    NA           NA  NA Brämer
-## 2                  0              0          4    NA           NA  NA Brämer
-## 3                  0              0          4    NA           NA  NA Brämer
-## 4                  0              0          4    NA           NA  NA Brämer
-## 5                  0              0          4    NA           NA  NA Brämer
-## 6                  0              0          4    NA           NA  NA Brämer
+##                  pcode VW.theo VW.prax VW.plan VW.durch VW.reflex
+## 4     1.NA2.NA3.284.10       2       1       1        1         2
+## 5               141651       5       5       4        4         5
+## 6  141651BIEN105411138       3       4       4        4         4
+## 7 141651DESA1802199942       2       2       5        5         2
+## 8                   15       1       1       1        1         1
+## 9                 2810       3       3       3        3         4
+##   Abitur_Fach_Biologie Abitur_Fach_Chemie Abitur_Fach_Geographie
+## 4                    0                  0                      0
+## 5                    0                  0                      0
+## 6                    0                  0                      0
+## 7                    0                  0                      0
+## 8                    0                  0                      0
+## 9                    0                  0                      0
+##   Abitur_Fach_Geschichte Abitur_Fach_Informatik Abitur_Fach_Physik
+## 4                      0                      0                  0
+## 5                      0                      0                  0
+## 6                      0                      0                  0
+## 7                      0                      0                  0
+## 8                      0                      0                  0
+## 9                      0                      0                  0
+##   Abitur_Fach_PW geschlecht alter semester.pre abi dozent
+## 4              0          4    NA           NA  NA Brämer
+## 5              0          4    NA           NA  NA Brämer
+## 6              0          4    NA           NA  NA Brämer
+## 7              0          4    NA           NA  NA Brämer
+## 8              0          4    NA           NA  NA Brämer
+## 9              0          4    NA           NA  NA Brämer
 ```
 
 

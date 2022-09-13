@@ -181,7 +181,7 @@ Einen, wie oben bereits angedeutet, eher gewohnten, grafischen Überblick gibt d
 datensatz_roh <- datensatz_roh_duplikat_1
 ```
 
-```{r view_df, echo = T}
+```{r view_df, echo = T, eval=FALSE}
 View(datensatz_roh)
 ```
 
@@ -279,9 +279,8 @@ table(datensatz_renamed$Abitur_Fach_Biologie, datensatz_renamed$Abitur_Fach_Phys
 
 Interpretation: Es wird nur der Fall (1, 1) angezeigt, also diejenigen Personen, die sowohl Physik, als auch Biologie belegten. Weshalb dies so angezeigt wird, kann über eine Inspektion mittels `View()` nachvollzogen werden:
 
-```{r chunkname, echo=TRUE}
+```{r chunkname, echo=TRUE, eval=FALSE}
 View(datensatz_renamed[,c("Abitur_Fach_Physik","Abitur_Fach_Biologie")])
-
 ```
 
 Es ist hier ersichtlich, dass im Datensatz (durch die Erhebungssoftware begründet) je `NA`, also ein fehlender Wert vergeben wurde für `nicht im Abitur belegt`. R schließt diese fehlenden Werte bei vielen Funktionen aus Analysen aus.
@@ -350,9 +349,9 @@ Wir starten mit dem Import der Rohdaten und mit der `View()`-Funktion, um Inform
 ```{r view_df_2, echo=TRUE}
 # Importiere Rohdaten. Diese liegen hier im R-eigenen rds-Format vor:
 datensatz_roh <- readRDS("./data_for_chapters/data_cleaning/df_POST_1_neu.rds")
-
+```
+```{r view_df_2a, echo=TRUE, eval=FALSE}
 View(datensatz_roh)
-
 ```
 
 Zunächst sollte ein Umbennenen der Variablen erfolgen. Hilfreich kann dazu das Original-Befragungsdokument sein oder eine Tabelle, die vor der Befragung die Reihenfolge der Items festlegte (Noch besser wäre eine Befragungssoftware, in der die Namen selbst festgelegt werden können, z. B. [SosciSurvey](https://www.soscisurvey.de/en/index)).
@@ -380,7 +379,8 @@ datensatz_renamed <- plyr::rename(datensatz_roh,
                    ))
 #Überprüfe:
 names(datensatz_renamed)
-
+```
+```{r rename_df_visible2, echo=TRUE, eval=FALSE}
 # Überblicke den Datensatz:
 View(datensatz_renamed)
 ```
@@ -645,10 +645,9 @@ datensatz_renamed[duplicated(datensatz_renamed$pcode) == T &
 
 Nun führen wir noch eine abschließende Prüfung durch:
 
-```{r schluss_pruefung_pcode1, echo=TRUE}
+```{r schluss_pruefung_pcode1, echo=TRUE, eval=FALSE}
 # Prüfe "per Auge", ob nun noch eine Aufbereitung nötig ist 
 View(datensatz_renamed)
-
 ```
 
 ```{r schluss_pruefung_pcode2, echo=TRUE}

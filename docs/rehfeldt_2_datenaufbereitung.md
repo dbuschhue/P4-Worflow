@@ -24,13 +24,13 @@ library(psych) # liefert psychometrische Funktionen
 ## Motivation
 Vor jeder statistischen Analyse steht ein nur selten ehrlich beschriebener Prozess, die Datenaufbereitung. Diese ist essenziell, um einen Überblick über die Güte der Rohdaten zu erhalten und überhaupt weitere Analysen adäquat durchführen zu können. Beim manuellen Aufbereiten von Daten, sei es händisch in Excel oder SPSS, kann es sehr schnell zu Unaufmerksamkeiten und demnach zu Fehlern kommen, die aufgrund ihrer Nicht-Nachvollziehbarkeit schwere Konsequenzen für die Qualität des Datenmaterials und somit die spätere Analyse haben können. Wir verdeutlichen das einmal an einem Beispiel: 
 
-Eine versehentliche Verschiebung der Spaltennamen *um 1 nach rechts* kann dazu führen, dass der komplette Datensatz unnachvollziehbar beschädigt wird. Denn im Nachhinein erscheint es gerade bei großen Datensätzen fast unmöglich zu entscheiden, zu welcher Variable die jeweilige Spalte von Werten gehört.
+Eine versehentliche Verschiebung der Spaltennamen *um 1 nach rechts* kann dazu führen, dass der komplette Datensatz unnachvollziehbar beschädigt wird. Denn im Nachhinein erscheint es gerade bei großen Datensätzen, die bereits verändert wurden, fast unmöglich zu entscheiden, zu welcher Variable die jeweilige Spalte von Werten gehört.
 
 Hier zeigt sich eine Stärke Code-basierter Statistiksoftware: Jede Manipulation am Datensatz ist schriftlich fixiert und jederzeit retrospektiv nachvollzieh- oder veränderbar.
-Das praktische Rüstzeug für eine basale Datenaufbereitung in R soll dieser Praxisguide liefern. Das Wissen zu vielen Basis-Funktionen, Datentypen und vielem mehr sind in unserem anderen Beitrag zum *Basiswissen für R* enthalten, deren Kenntnis in der nachfolgenden statistischen Analyse von Vorteil sein kann.
+Das praktische Rüstzeug für eine basale Datenaufbereitung in R soll dieser Praxisguide liefern. Das Wissen zu vielen Basis-Funktionen, Datentypen und vielem mehr sind in unserem vorherigen Kapitel *Basiswissen für R* enthalten, deren Kenntnis in der nachfolgenden statistischen Analyse von Vorteil sein kann.
 
 ## Inhalte
-Es handelt sich bei allen genutzten Beispielen um Datensätze, die bei Fragebogen-Erhebungen mit Likert-Skalen sowie Angaben zur Person allgemein oder Ähnlichem entstehen. Eine Übertragbarkeit auf andere quantitative Erhebungsformen ist aber oft gegeben.
+Es handelt sich bei allen fortan genutzten Beispielen um Datensätze, die bei Fragebogen-Erhebungen mit Likert-Skalen sowie Angaben zur Person allgemein oder Ähnlichem entstehen. Eine Übertragbarkeit auf andere quantitative Erhebungsformen ist aber oft gegeben.
 
 Der Praxisguide umfasst diverse übliche Schritte der Datenaufbereitung:
 
@@ -55,7 +55,7 @@ Gemeint sind hiermit alle Maßnahmen innerhalb der Befragungssoftware oder des P
 Ein Beispiel wäre etwa die Nutzung von Personencodes mit Einführung von Restriktionen. Besteht ein solcher Code etwa aus vier Buchstaben und vier Ziffern, so kann ein und dieselbe Person z. B. "ERNW1665" oder "ernw1665" oder "eRnW1665" schreiben. Wird hier – sofern die Erhebungssoftware dies erlaubt – die Restriktion auf Großbuchstaben eingeführt, so ist ein Aufbereitungsschritt gespart. Wenn zudem (beim Online-Fragebogen) die Restriktion eingeführt wird, dass der Fragebogen nur fortgesetzt werden kann, wenn tatsächlich vier Buchstaben, gefolgt von vier Ziffern niedergeschrieben wurden, vermeidet man Codes wie "ERNW16", "1665" usw. – und ja, dies sind reale Beispiele.
 
 Weiters sollten Antwortoptionen erschöpfend sein [@porst_fragebogen_2014], um die Datenaufbereitung und -interpretation zu gewährleisten. Die Frage *Welche der folgenden Fächer belegten Sie im Abitur?*, gefolgt von den Ankreuzmöglichkeiten *Physik* und *Chemie* führt nämlich zu der Frage, welche Interpretation erfolgt, wenn keine der beiden Möglichkeiten angekreuzt wurde. Hat die Person die Frage übersprungen? Hat sie beide Fächer nicht belegt? Es müsste hier die Antwortoption *keine der beiden* unbedingt ergänzt werden.
-Ein letztes exemplarisches Beispiel ist die Abitur- oder Hochschulzugangsberechtigungsnote. Die Wahl eines Freitextfeldes zur Beantwortung der Frage ist hier unbedingt zu vermeiden, da sonst Antworten wie "sehr gut", "weiß ich nicht", "zweikommazwei", "1.3" oder "1,7" erfolgen können, ein Albtraum für die Datenaufbereitung. Ich empfehle hier je nach Genauigkeitswunsch entweder a) das Nutzen von Ankreuzmöglichkeiten in Ranges, also "1,0–1,3", "1,4–1,7", …, und *weiß ich nicht* oder bei guter Befragungssoftware das Nutzen von Feldern, die nur die Schreibweise `[Ziffer],[Ziffer]` zulassen.
+Ein letztes exemplarisches Beispiel ist die Abitur- oder Hochschulzugangsberechtigungsnote. Die Wahl eines Freitextfeldes zur Beantwortung der Frage ist hier unbedingt zu vermeiden, da sonst Antworten wie "sehr gut", "weiß ich nicht", "zweikommazwei", "1.3" oder "1,7" erfolgen können, ein Albtraum für die Datenaufbereitung. Wir empfehlen hier je nach Genauigkeitswunsch entweder a) das Nutzen von Ankreuzmöglichkeiten in *Ranges*, also "1,0–1,3", "1,4–1,7", …, und *weiß ich nicht* oder bei guter Befragungssoftware das Nutzen von Feldern, die nur die Schreibweise `[Ziffer],[Ziffer]` zulassen.
 
 ## Daten importieren
 Nun beginnt der tatsächliche Anwendungsfall einer Datenbereinigung mit einem großen und unübersichtlichen Datensatz, der mit dem Import der Daten in R beginnt. Je nach Ausgangsformat der Daten gibt es hierzu eine Anleitung. R bietet den großen Vorteil, dass es mit allen regulären und auch exotischen Datentypen umgehen kann.
@@ -68,7 +68,7 @@ Daten, die auf `.xlsx` oder `.xls` enden, können folgendermaßen importiert wer
 demodata_xlsx <- read.xlsx("Dateiname.xlsx", 1) # "Dateiname.xls" bei xls-Dateien 
 ```
 
-Dies importiert einen Standard-Excel-Datensatz korrekt, der Daten im Excel-Arbeitsblatt 1 enthält und in der ersten Zeile die Variablennamen enthält. Weitere Optionen siehe [hier](https://cran.r-project.org/web/Pakete/xlsx/xlsx.pdf).
+Dies importiert einen Standard-Excel-Datensatz korrekt, der Daten im Excel-Arbeitsblatt 1 enthält und in der ersten Zeile die Variablennamen enthält. Weitere Optionen siehe [hier](https://cran.r-project.org/web/packages/xlsx/xlsx.pdf).
 
 ### Import von CSV
 Daten die auf .csv enden, können folgendermaßen importiert werden:
@@ -76,9 +76,11 @@ Daten die auf .csv enden, können folgendermaßen importiert werden:
 demodata_csv <- read.csv2(file = "Dateiname.csv")  
 ```
 
+Falls der Import fehlschlägt, meist wegen Heterogenität der csv-Formatierungen, gibt es [hier](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/read.table) Hilfe.
+
 
 ### Import von SPSS
-Daten die auf .sav enden und aus SPSS stammen, können folgendermaßen importiert werden (mehr Erläuterungen finden sich  [hier](https://www.rdocumentation.org/Pakete/foreign/versions/0.8-82/topics/read.spss)):
+Daten die auf *.sav* enden und aus SPSS stammen, können folgendermaßen importiert werden (mehr Erläuterungen finden sich  [hier](https://www.rdocumentation.org/Pakete/foreign/versions/0.8-82/topics/read.spss)):
 
 ```
 demodata_spss <-
@@ -201,13 +203,13 @@ View(datensatz_roh)
 
 
 <div class="figure" style="text-align: center">
-<img src="./figs/View.png" alt="View-Tab in RStudio (von Daniel Rehfeldt)" width="252" />
+<img src="./figs/View.png" alt="View-Tab in RStudio (von Daniel Rehfeldt)"  />
 <p class="caption">(\#fig:view-tab)View-Tab in RStudio (von Daniel Rehfeldt)</p>
 </div>
   
 
 <div class="figure" style="text-align: center">
-<img src="./figs/View-Funktionalitaet.png" alt="Filter-Funktion und *Show in new Window*-Funktion (von Daniel Rehfeldt)" width="253" />
+<img src="./figs/View-Funktionalitaet.png" alt="Filter-Funktion und *Show in new Window*-Funktion (von Daniel Rehfeldt)"  />
 <p class="caption">(\#fig:view-funk)Filter-Funktion und *Show in new Window*-Funktion (von Daniel Rehfeldt)</p>
 </div>
 
@@ -280,7 +282,7 @@ names(datensatz_renamed)
 
 ## Erste deskriptive Analyse
 
-Will man einen ersten Überblick über deskriptive, quantitative Statistiken gewinnen (z. B. für Items aus Skalen oder numerische Kovariaten wie das Alter), so stehen diverse Funktionen zur Verfügung.
+Will man einen ersten Überblick über deskriptive, quantitative Statistiken gewinnen (z. B. für Items aus Skalen oder numerische Kovariaten wie das Alter), so stehen diverse Funktionen zur Verfügung, von denen wir einige nun vorstellen.
 
 ### Deskriptive Statistiken
 
@@ -466,7 +468,7 @@ Dies sind zwei basale Visualisierungsoptionen, weitere, professionellere Optione
 ![Beispiel-Visualisierungen ggplot (von plosone-phylo, lizensiert unter CC BY 2.0. https://creativecommons.org/licenses/by/2.0/?ref=openverse.)](./figs/ggplot.jpg)
 
 ## Einen Aufbereitungsplan machen
-### Beispiele für "schmutzige" Daten
+### Beispiele für *schmutzige* Daten
 Nachdem ein Überblick über die Daten gewonnen wurde, sind bereits einige Bereinigungsschritte deutlich geworden, hier ein paar Beispiele:
 
 -	Es gibt leere oder spaltenweit identisch ausgeprägte Variablen, z. B. *Dozent*, stets mit der Ausprägung *Brämer*. 
@@ -475,7 +477,7 @@ Nachdem ein Überblick über die Daten gewonnen wurde, sind bereits einige Berei
 -	Es gibt identische Fälle (Zeilen) im Datensatz. Dies kann Erhebungssoftware-bedingt sein oder durch Verschmelzen von Datensätzen passieren.
 -	Variablen weisen inadäquate Ausprägungen auf, dies konnte bereits im Scatterplot in Abb. \@ref(fig:plotdf) vermutet werden. Ein anderes Beispiel sind Variablen wie *Seminar* mit den Ausprägungen 1, 2 und 3. Diese könnte bspw.  eine Frage an die Proband:innen danach sein, welches Seminar sie gerade besuchen, das bei Herrn Müller, bei Frau Genf oder bei Frau Darn. Je nach Anordnung dieser Antwortoptionen kann nun 1 für Herrn Müller, Frau Genf oder Frau Darn stehen, dies sollte deutlicher aus der Variablen herauszulesen sein, beispielweise über die Bennenung als `factor`-Variablen (vgl. z. B. Abschnitt \@ref(nominalvars)).
 -	Likert-skalierte Variablen sind manchmal invertiert, z. B. wenn bei Fragebögen einmal positiv und einmal negativ gepolt befragt wird (*Physik macht mir Spaß.* vs. *Physik reizt mich nicht.*).
--	Zur Anonymisierung verwendete Personencodes wurden von den Proband:innen uneinheitlich eingegeben, etwa "`ERHU0502`", "`ebji8706`", "`ER33   `" usw. 
+-	Zur Anonymisierung verwendete Personencodes wurden von den Proband:innen uneinheitlich eingegeben, etwa `ERHU0502`, `ebji8706`, `ER33   ` usw. 
 -	Eine Variable enthält versetzte Werte: Beispiel: *Alter in Jahren* wurde über ein Dropdown-Menü mit den Zahlen 17 bis 70 (für Studierende) erfragt. Nun setzt das Erhebungsprogramm z. B. eine "1" für 17 Jahre, eine "2" für 18 Jahre usw. Es gibt also einen Versatz von 16 Jahren.
 -	Textlastige Variablen weisen Leerzeichen o. Ä. am Anfang und/oder Ende der Antwort auf. Ein Beispiel: Die Variable *Kommentar* wird zur Erfassung von Kommentaren zur Erhebung genutzt und darf mit bis zu 160 Zeichen beschrieben werden. Darin finden sich Antworten wie "     Ich fand die Befragung zu lang     ". Dies kann zu Darstellungsproblemen in R führen.
 -	Beim Import von Variablen kann die automatische Erkennung und Faktorisierung von Variablen nützlich sein, die numerischen Ausprägungen der Antwortoptionen sind allerdings manchmal unbrauchbar. Ein Beispiel: Die Variable `geschlecht` mit Antwortoptionen wie *männlich*, *weiblich*, *divers* , *keine Angabe* wurde beim Import automatisch faktorisiert. Die zu den Labels *männlich*, *weiblich*, *divers*, *keine Angabe* gehörenden numerischen Werte wurden als 2, 3, 4 und 5 festgelegt.
@@ -485,7 +487,7 @@ a) Physik
 b) Chemie
 c) Biologie 
 
-Dies wird von mancher Erhebungs-Software in drei dichotome *Ja/NA-Variablen* aufgeteilt, in denen sie das setzen eines Kreuzes als *Ja*, das weglassen als `NA` registrieren. Das Weglassen des Kreuzes entspricht in diesem Beispiel jedoch einem *Nein*. Steht jedoch bei allen Fächern ein `NA`, so ist nicht klar, ob die Person die Frage einfach nicht beantwortet hat, oder ob sie tatsächlich alle drei Fächer nicht im Abitur belegt hatte. Eine weitere Antwortoption  *keine dieser drei* oder eine freie Antwortmöglichkeit *Sonstiges, und zwar:* wäre hier sinnvoll (vgl. Abschnitt \@ref(praeventivedatenaufbereitung)).
+Dies wird von mancher Erhebungs-Software in drei dichotome *Ja/NA-Variablen* aufgeteilt, in denen sie das setzen eines Kreuzes als *Ja*, das weglassen als `NA` registrieren. Das Weglassen des Kreuzes entspricht in diesem Beispiel allerdings einem *Nein*. Steht jedoch bei allen drei Fächern ein `NA`, so ist nicht klar, ob die Person die Frage einfach nicht beantwortet hat, oder ob sie tatsächlich alle drei Fächer nicht im Abitur belegt hatte. Eine weitere Antwortoption  *keine dieser drei* oder eine freie Antwortmöglichkeit *Sonstiges, und zwar* wäre hier sinnvoll (vgl. Abschnitt \@ref(praeventivedatenaufbereitung)).
 
 ### Detaillierte Erstellung eines Aufbereitungsplans an einem echten Beispiel {#aufplan}
 Wir starten mit dem Import der Rohdaten und mit der `View()`-Funktion, um Informationen für unseren Aufbereitungsplan zu erhalten:
@@ -494,7 +496,9 @@ Wir starten mit dem Import der Rohdaten und mit der `View()`-Funktion, um Inform
 ```r
 # Importiere Rohdaten. Diese liegen hier im R-eigenen rds-Format vor:
 datensatz_roh <- readRDS("./data_for_chapters/data_cleaning/df_POST_1_neu.rds")
+```
 
+```r
 View(datensatz_roh)
 ```
 
@@ -612,7 +616,7 @@ Wir fügen also zum Aufbereitungsplan hinzu:
 ```
 Hierbei ist die Reihenfolge der beiden Operationen wichtig, da durch die erste Bereinigung neue NAs entstehen könnten.
 
-Weiter geht es mit den Variablen zur Wahl der Abiturfächer in den Spalten 7 bis 13. Hier ist ersichtlich, dass es anscheinend nur die Ausprägungen `NA` und 1 gibt, wir prüfen kurz mit der `summary()`-Funktion und es bestätigt sich. Die Items waren so gestellt, dass die Personen je Abiturfach entweder ein Häkchen setzen konnten für *im Abitur belegt* oder das Ankreuzfeld leer ließen für *nicht im Abitur belegt*. Problematisch ist nun, dass kein Wert in den Variablen existiert, der auf ein klares *Nein* hindeutet. Es finden sich nur `NA`s, die entweder 
+Weiter geht es mit den Variablen zur Wahl der Abiturfächer in den Spalten 7 bis 13. Hier ist ersichtlich, dass es anscheinend nur die Ausprägungen `NA` und 1 gibt, wir prüfen kurz mit der `summary()`-Funktion und es bestätigt sich. Die Items waren so gestellt, dass die Personen je Abiturfach entweder ein Häkchen setzen konnten für *im Abitur belegt* oder das Ankreuzfeld leer ließen für *nicht im Abitur belegt*. Problematisch ist nun, dass kein Wert in den Variablen existiert, der auf ein klares *Nein* hindeutet. Es finden sich nur `NAs`, die entweder 
 
 a) bedeuten, dass ein Fach **nicht** im Abitur gewählt wurde oder 
 b) dass es sich um einen fehlenden Wert handelt, die Person etwa die Frage übersprungen hat.
@@ -620,7 +624,7 @@ b) dass es sich um einen fehlenden Wert handelt, die Person etwa die Frage über
 Dieser Fall stellt also eine Herausforderung für die Datenbereinigung dar.
 Nach einiger Überlegung kann folgendes festgehalten werden:
 
-1. Personen, die mindestens bei einem Fach eine 1 für *Ja* aufweisen, können wohl guten Gewissens als Personen angesehen werden, die alle Fragen zum Abitur beantwortet haben. Die `NA`s in den je anderen Abitur-Variablen dieser Personen können also `0 = Nein` gesetzt werden.
+1. Personen, die mindestens bei einem Fach eine 1 für *Ja* aufweisen, können wohl guten Gewissens als Personen angesehen werden, die alle Fragen zum Abitur beantwortet haben. Die `NAs` in den je anderen Abitur-Variablen dieser Personen können also `0 = Nein` gesetzt werden.
 2. Schwieriger ist es bei Personen, die **überall** in den Abitur-Variablen `NA` aufweisen. Aufgrund der Fülle an ankreuzbaren Abiturfächern kann allerdings mit recht gutem Gewissen darauf geschlussfolgert werden, dass die Personen tatsächlich diese Items nicht bearbeitet haben, die `NAs` bleiben hier also bestehen.
 3. Wenn diese Änderungen vorgenommen sind, könnten diese Variablen in `Factor`-Variablen mit `0 = nein` und `1 = ja` umgewandelt werden.
 
@@ -939,7 +943,7 @@ datensatz_renamed[duplicated(datensatz_renamed$pcode) == T &
 ```
 
 ```r
-# keine doppelted pcodes mehr
+# keine doppelten pcodes mehr
 ```
 
 Nun führen wir noch eine abschließende Prüfung durch:
@@ -985,7 +989,7 @@ Für die Likert-skalierten Variablen soll gemäß Aufbereitungsplan folgendes er
 
 ```
 	#Likert-skalierte Variablen allgemein
-		#Ersetze in allen Likert-Skalierten Variablen "99" durch NA
+		#Ersetze in allen Likert-skalierten Variablen "99" durch NA
     #Variablen Vorwissen (2 bis 6, "VW...")
       #Schließe Personen aus, die in ALLEN Variablen missing-Quoten von über 60% aufweisen.
       # Variable VW.reflex: Umpolen
@@ -1448,6 +1452,8 @@ Der Datensatz ist nun bereinigt:
 ```r
 datensatz_clean <- datensatz_cleaned_pcode_likert_nominal
 ```
+
+Nachfolgend werden noch fortgeschrittenere Techniken der Datenaufbereitung vorgestellt, wie das Verschmelzen von Datensätzen.
 
 ## Fortgeschrittene Datenaufbereitung
 
@@ -1918,7 +1924,7 @@ df_chemie_pre[df_chemie_pre$pcode == "ZB8900", "vorwissen_pre"] <-
 
 Die Person hat, wie es bei Fragebogenfragen üblich ist, das Kreuz beim Vorwissen nicht exakt gleich gesetzt. Eine Möglichkeit ist hier, den Mittelwert zu bilden.
 
-Aus dem Physik-Datensatz soll nun die doppelte Person entfernt werden, dies gelingt über ein Überschreiben des Datensatzes mit einem Datensatz ohne diese Person:
+Aus dem Physik-Datensatz soll nun die doppelte Person entfernt werden:
 
 
 ```r
